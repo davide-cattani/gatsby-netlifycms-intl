@@ -1,12 +1,12 @@
 ---
 template: index-page
 slug: /
-title: Wyatt Morriss
-tagline: Graphic Designer
-featuredImage: /assets/toa-heftiba-0rlfirsdvzu-unsplash.jpg
+title: Titolone
+tagline: Sottotitolo importante
+featuredImage: /assets/placeholder.png
 cta:
-  ctaText: Know more
+  ctaText: Calltoaction
   ctaLink: /about
 ---
 
-He is a award winning gaming graphic designer, based in sunny side of California. Working as Principal designer at Bethesda
+Testo descrittivo in prima pagina, quindi molto importante! Descriviamo bene cosa facciamo dai, così magari la gente è invogliata ad esplorare un pò il sito e contattarci.

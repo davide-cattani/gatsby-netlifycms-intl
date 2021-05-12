@@ -4,7 +4,8 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const blogList = path.resolve(`./src/templates/blog-list.js`)
+  // const blogList = path.resolve(`./src/templates/blog-list.js`)
+  const artistList = path.resolve(`./src/templates/artist-list.js`)
 
   const result = await graphql(`
     {
@@ -16,6 +17,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               slug
               template
               title
+              fullname
             }
           }
         }
@@ -32,6 +34,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Create markdown pages
   const posts = result.data.allMarkdownRemark.edges
   let blogPostsCount = 0
+  let artistCount = 0
 
   posts.forEach((post, index) => {
     const id = post.node.id
@@ -55,24 +58,47 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     if (post.node.frontmatter.template === "blog-post") {
       blogPostsCount++
     }
+    // Count artists.
+    if (post.node.frontmatter.template === "artist") {
+      artistCount++
+    }
+
   })
 
   // Create blog-list pages
-  const postsPerPage = 9
-  const numPages = Math.ceil(blogPostsCount / postsPerPage)
+  // const postsPerPage = 9
+  // const numPages = Math.ceil(blogPostsCount / postsPerPage)
+
+  // Array.from({ length: numPages }).forEach((_, i) => {
+  //   createPage({
+  //     path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
+  //     component: blogList,
+  //     context: {
+  //       limit: postsPerPage,
+  //       skip: i * postsPerPage,
+  //       numPages,
+  //       currentPage: i + 1,
+  //     },
+  //   })
+  // })
+
+  // Create artist pages
+  const artistsPerPage = 12
+  const numPages = Math.ceil(artistCount / artistsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: blogList,
+      path: i === 0 ? `/artists` : `/artists/${i + 1}`,
+      component: artistList,
       context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
+        limit: artistsPerPage,
+        skip: i * artistsPerPage,
         numPages,
         currentPage: i + 1,
       },
     })
   })
+
 }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

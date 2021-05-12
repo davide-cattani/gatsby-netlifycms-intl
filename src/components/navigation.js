@@ -12,11 +12,11 @@ const MenuItems = [
   },
   {
     path: "/about",
-    title: "About",
+    title: "Lo Studio",
   },
   {
-    path: "/blog",
-    title: "Blog",
+    path: "/artists",
+    title: "Gli Artisti",
   },
   {
     path: "/contact",
@@ -64,10 +64,10 @@ class Navigation extends React.Component {
         </button>
         <ul>
           {listMenuItems}
-          <div sx={navStyle.border}></div>
-          <div sx={navStyle.theme}>
-            <Theme />
-          </div>
+          {/* <div sx={navStyle.border}></div> */}
+          {/* <div sx={navStyle.theme}> */}
+            {/* <Theme /> */}
+          {/* </div> */}
         </ul>
       </nav>
     )

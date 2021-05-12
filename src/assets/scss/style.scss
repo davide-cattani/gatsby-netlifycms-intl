@@ -28,21 +28,21 @@
     margin-left: 20px;
   }
   a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(2, 2, 2, 0.6);
     text-decoration: none;
     &:hover {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(2,2,2, 0.8);
     }
   }
   a[aria-current="page"] {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(2,2,2, 1);
   }
   .menu-trigger {
     display: none;
     font-size: 24px;
     background: none;
     border: none;
-    color: white;
+    color: #222;
     padding: 0;
     cursor: pointer;
   }
@@ -344,13 +344,13 @@ article img {
   padding: 20px 0;
   p {
     margin: 0;
-    color: #fff;
+    color: #222;
   }
   a {
     font-weight: normal;
   }
   a:hover {
-    color: #fff;
+    color: #222;
   }
 }
 

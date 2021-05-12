@@ -61,6 +61,52 @@ collections:
           widget: "markdown",
           hint: "Main content goes here.",
         }
+  - name: "artists" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Artists" # Used in the UI
+    label_singular: "Artist" # Used in the UI, ie: "New Post"
+    description: >
+      The awesome artists working in the studio.
+    folder: "src/content/artists"
+    slug: "{{slug}}"
+    summary: "{{fullname}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {
+          label: "Template",
+          name: "template",
+          widget: "hidden",
+          default: "artist",
+        }
+      - { label: "Full Name", name: "fullname", widget: "string", tagname: "h1" }
+      - {
+          label: "Join Date",
+          name: "date",
+          widget: "datetime",
+          dateFormat: "YYYY-MM-DD",
+          timeFormat: "HH:mm",
+          format: "YYYY-MM-DD HH:mm",
+        }
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          hint: "Start slug with /. Use only alphanumeric characters, - and _. Avoid spaces in any cases.",
+        }
+      - { label: "SEO Description", name: "description", widget: "text" }
+      - {
+          label: "Portrait Photo",
+          name: "portrait",
+          widget: "image",
+          required: true,
+          tagname: "",
+        }
+
+      - {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          hint: "Main artist description.",
+        }
   - label: "Pages"
     name: "pages"
     files:

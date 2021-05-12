@@ -1,5 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { ThemeProvider } from "theme-ui"
+import theme from "../gatsby-plugin-theme-ui/index.js"
+
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
@@ -26,26 +29,31 @@ const query = graphql`
 
 const Layout = ({ children, className, props }) => {
   const { site, siteSearchIndex } = useStaticQuery(query)
-  const { siteTitle } = site.siteMetadata
+  const { siteTitle, image } = site.siteMetadata
 
   return (
-    <div className="primary-container">
-      <Header>
-        <Logo title={siteTitle} />
-        <div sx={layoutStyle.nav}>
-          <div sx={{ display: ["flex", "flex", "flex", "none"] }}>
-            <Search searchIndex={siteSearchIndex.index} />
+    <ThemeProvider theme={theme}>
+      <div className="primary-container">
+        <Header>
+          <Logo
+            title={siteTitle}
+            logo={"/static/assets/sketch-studios-logo.png"}
+          />
+          <div sx={layoutStyle.nav}>
+            <div sx={{ display: ["flex", "flex", "flex", "none"] }}>
+              {/* <Search searchIndex={siteSearchIndex.index} /> */}
+            </div>
+            <Navigation />
           </div>
-          <Navigation />
-        </div>
-        <div sx={layoutStyle.appearance}>
-          <Search searchIndex={siteSearchIndex.index} />
-          <Theme />
-        </div>
-      </Header>
-      <main className={"container " + className}>{children}</main>
-      <Footer />
-    </div>
+          <div sx={layoutStyle.appearance}>
+            {/* <Search searchIndex={siteSearchIndex.index} /> */}
+            {/* <Theme /> */}
+          </div>
+        </Header>
+        <main className={"container " + className}>{children}</main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
 
