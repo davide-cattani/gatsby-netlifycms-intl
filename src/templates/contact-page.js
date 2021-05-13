@@ -97,13 +97,13 @@ export default Contact
 const contactStyles = {
   contactPage: {
     input: {
-      border: "6px solid",
+      border: "1px solid",
       borderColor: "inputBorder",
       bg: "inputBackground",
       outline: "none",
     },
     textarea: {
-      border: "6px solid",
+      border: "1px solid",
       borderColor: "inputBorder",
       bg: "inputBackground",
       outline: "none",
