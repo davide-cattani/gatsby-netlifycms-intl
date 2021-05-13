@@ -47,6 +47,9 @@ const Contact = ({ data }) => {
     setLoading(true);
 
     let data = { name, email, subject, message }
+
+    console.log(data);
+
     axios.post(endpoints.contact, JSON.stringify(data)).then(response => {
       if (response.status !== 200) {
         handleError()

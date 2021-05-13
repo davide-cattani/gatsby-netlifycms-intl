@@ -16,27 +16,17 @@ const mg = mailgun({
   domain: process.env.MAILGUN_DOMAIN,
   host: 'api.eu.mailgun.net'
 })
-const mailOptions = {
-  from: `${name} <${email}>`,
-  to: process.env.MY_EMAIL_ADDRESS,
-  replyTo: email,
-  subject: `${subject}`,
-  text: `${message}`,
-}
-mg.messages().send(mailOptions, function(error, body) {
-  console.log(body)
-})
 
 // Our Netlify function
 export function handler(event, context, callback) {
   let data = JSON.parse(event.body)
-  let { name, email, message } = data
+  let { name, email, subject, message } = data
   let mailOptions = {
     from: `${name} <${email}>`,
     to: process.env.MY_EMAIL_ADDRESS,
     replyTo: email,
-    subject: `${subject}`,
-    text: `${message}`,
+    subject: subject,
+    text: message,
   }
 // Our Mailgun code
   mg.messages().send(mailOptions, function(error, body) {
