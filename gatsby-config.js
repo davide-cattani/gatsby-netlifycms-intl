@@ -25,6 +25,8 @@ module.exports = {
     )
   },
 
+  flags: { PRESERVE_WEBPACK_CACHE: true },
+
   siteMetadata: settings.meta,
   plugins: [
     {
