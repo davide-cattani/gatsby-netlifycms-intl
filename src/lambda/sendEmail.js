@@ -20,6 +20,7 @@ const mailOptions = {
   from: `${name} <${email}>`,
   to: process.env.MY_EMAIL_ADDRESS,
   replyTo: email,
+  subject: `${subject}`,
   text: `${message}`,
 }
 mg.messages().send(mailOptions, function(error, body) {
@@ -34,6 +35,7 @@ export function handler(event, context, callback) {
     from: `${name} <${email}>`,
     to: process.env.MY_EMAIL_ADDRESS,
     replyTo: email,
+    subject: `${subject}`,
     text: `${message}`,
   }
 // Our Mailgun code

@@ -96,24 +96,24 @@ const Contact = ({ data }) => {
           <p>
             <label>
               Name
-              <input type="text" name="name" required value={name}/>
+              <input type="text" name="name" required value={name} onChange={e => setName(e.target.value)}/>
             </label>
           </p>
           <p>
             <label>
               Email
-              <input type="email" name="email" required value={email}/>
+              <input type="email" name="email" required value={email} onChange={e => setEmail(e.target.value)}/>
             </label>
           </p>
           <p>
             <label>
               Subject
-              <input type="text" name="subject" required value={subject}/>
+              <input type="text" name="subject" required value={subject} onChange={e => setSubject(e.target.value)}/>
             </label>
           </p>
           <p>
             <label>
-              Message<textarea name="message" required value={message}></textarea>
+              Message<textarea name="message" required value={message} onChange={e => setMessage(e.target.value)}></textarea>
             </label>
           </p>
           <p className="text-align-right">
