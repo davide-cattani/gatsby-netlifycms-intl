@@ -12,14 +12,10 @@
     "url": "https://github.com/stackrole/gatsby-starter-foundation/issues"
   },
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages && netlify-lambda build src/lambda",
-    "build:app": "gatsby build",
-    "build:lambda": "netlify-lambda build src/lambda",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "run-p start:**",
-    "start:app": "npm run develop",
-    "start:lambda": "netlify-lambda serve src/lambda",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
@@ -47,7 +43,6 @@
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-transformer-remark": "^3.1.0",
     "gatsby-transformer-sharp": "^3.1.0",
-    "mailgun-js": "^0.22.0",
     "netlify-cms-app": "2.14.32",
     "node-sass": "5",
     "prismjs": "^1.23.0",
@@ -58,8 +53,6 @@
     "theme-ui": "^0.6.0"
   },
   "devDependencies": {
-    "http-proxy-middleware": "^0.19.1",
-    "netlify-lambda": "^2.0.6",
     "npm-run-all": "^4.1.5"
   }
 }
