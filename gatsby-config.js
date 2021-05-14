@@ -1,5 +1,3 @@
-const createProxyMiddleware = require("http-proxy-middleware")
-
 const netlifyCmsPaths = {
   resolve: `gatsby-plugin-netlify-cms-paths`,
   options: {
@@ -10,20 +8,6 @@ const netlifyCmsPaths = {
 const settings = require("./src/util/site.json")
 
 module.exports = {
-
-  // for avoiding CORS while developing Netlify Functions locally
-  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
-  developMiddleware: app => {
-    app.use(
-      "/.netlify/functions/",
-      createProxyMiddleware({
-        target: "http://localhost:9000",
-        pathRewrite: {
-          "/.netlify/functions/": "",
-        },
-      })
-    )
-  },
 
   flags: { PRESERVE_WEBPACK_CACHE: true },
 
@@ -109,18 +93,18 @@ module.exports = {
     //   },
     // },
     //`gatsby-plugin-sitemap`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Foundation`,
-    //     short_name: `Foundation`,
-    //     start_url: `/`,
-    //     background_color: `#f7f0eb`,
-    //     theme_color: `#a2466c`,
-    //     display: `standalone`,
-    //     icon: "static" + settings.meta.iconimage,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Sketch Studios`,
+        short_name: `sketch-studios`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: "static" + settings.meta.iconimage,
+      },
+    },
     //"gatsby-plugin-offline",
   ],
 }

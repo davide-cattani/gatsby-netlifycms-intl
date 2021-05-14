@@ -1,15 +1,15 @@
 {
-  "name": "@stackrole/gatsby-starter-foundation",
+  "name": "sketch-studios-site",
   "description": "A starter to launch your blazing fast personal website and a blog, Built with Gatsby and Netlify CMS. Made with ❤ by Stackrole",
   "version": "2.0.0",
-  "author": "Stackrole <stackrole@gmail.com>",
+  "author": "catta <davide.cattani1991@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stackrole/gatsby-starter-foundation.git"
+    "url": "https://github.com/davide-cattani/sketch-studios.git"
   },
   "bugs": {
-    "url": "https://github.com/stackrole/gatsby-starter-foundation/issues"
+    "url": "https://github.com/davide-cattani/sketch-studios.git/issues"
   },
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",

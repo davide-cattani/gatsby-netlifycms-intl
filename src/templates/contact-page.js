@@ -7,11 +7,6 @@ import { RiSendPlane2Line } from "react-icons/ri"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const endpoints = {
-  contact: "/.netlify/functions/sendEmail",
-}
-const axios = require("axios")
-
 export const pageQuery = graphql`
   query ContactQuery($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -54,29 +49,31 @@ const Contact = ({ data }) => {
           data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <p>
+
+          <div>
             <label>
-              Name
+              Nome
               <input type="text" name="name" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <label>
               Email
               <input type="email" name="email" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <label>
-              Subject
+              Oggetto
               <input type="text" name="subject" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <label>
-              Message<textarea name="message" required ></textarea>
+              Messaggio<textarea name="message" required></textarea>
             </label>
-          </p>
+          </div>
+
           <p className="text-align-right">
             <button
               className="button"
@@ -85,7 +82,7 @@ const Contact = ({ data }) => {
               }}
               type="submit"
             >
-              Send Message{" "}
+              Invia Messaggio{" "}
               <span className="icon -right">
                 <RiSendPlane2Line />
               </span>

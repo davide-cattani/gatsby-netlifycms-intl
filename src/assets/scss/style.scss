@@ -8,7 +8,7 @@
 // 	min-height: 100vh;
 // }
 .primary-container main {
-  min-height: calc(100vh - 60px - 81px);
+  min-height: calc(100vh - 60px - 100px);
 }
 .site-header {
   display: flex;
@@ -73,8 +73,7 @@
       top: 100%;
       z-index: 1;
       width: 100%;
-      max-width: 320px;
-      border-radius: 0 0 0 12px;
+      border-radius: 0 0 16px 16px;
       overflow: hidden;
     }
     ul li {
@@ -314,6 +313,9 @@ article img {
 }
 .contact-form {
   margin-top: 36px;
+  div {
+    margin-bottom: 6px;
+  }
   label {
     color: var(--label-text);
   }
@@ -325,8 +327,7 @@ article img {
     padding: 16px;
     border-radius: 12px;
     appearance: none;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
     &:focus {
       border-color: var(--input-focus-border);
     }
