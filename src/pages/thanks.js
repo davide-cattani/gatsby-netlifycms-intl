@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 
 const Thanks = () => (
   <Layout className="thanks-page">
-    <Seo title="Thank you" />
+    <Seo title="Grazie!" />
     <div
       className="wrapper"
       style={{
@@ -20,11 +20,11 @@ const Thanks = () => (
           color: "var(--primary-color)",
         }}
       />
-      <h1>Got your message</h1>
-      <p>Thank you for getting in touch us. We will get back to you shortly.</p>
+      <h1>Abbiamo ricevuto il tuo messaggio ;)</h1>
+      <p>Grazie per averci scritto. Ti risponderemo dopo esserci puliti le mani dall'inchiostro.</p>
       <Link to="/" className="button">
         <RiArrowLeftSLine className="icon -left" />
-        Lets go back to Homepage
+        Nel frattempo, torna alla home
       </Link>
     </div>
   </Layout>
