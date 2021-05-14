@@ -1,9 +1,8 @@
 ---
 template: contact-page
 slug: /contact
-title: Get in touch
+title: Scrivici!
 ---
+Hai una domanda sullo studio? Vuoi chiedere informazioni sul co-working? Curiosità?
 
-Got a burning question regarding **JAMstack**, Need a new **Website**, or just anything in general. We are happy to talk.
-
-Just send us a message using the form below or you can send us a DM on [Twitter](https://twitter.com/stackrole)
+Mandaci un messaggio utilizzando la form qui sotto oppure scrivici su [instagram](https://www.instagram.com/sketchstudios_carpi/)
