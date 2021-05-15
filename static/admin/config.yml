@@ -45,7 +45,7 @@ collections:
     fields: # The fields each document in this collection have
       - { label: "Template", name: "template", widget: "hidden", default: "artist" }
       - { label: "Full Name", name: "fullname", widget: "string", tagname: "h1" }
-      - { label: "Join Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD }
+      - { label: "Join Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
       - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
       - { label: "SEO Description", name: "description", widget: "text" }
       - { label: "Portrait Photo", name: "portrait", widget: "image", required: true, tagname: "" }
