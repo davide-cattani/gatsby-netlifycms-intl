@@ -58,7 +58,7 @@ collections:
           - label: "Image"
             name: "image"
             widget: "image"
-            allow_multiple: "true"
+            allow_multiple: true
           - label: "Title"
             name: "title"
             widget: "string"
@@ -107,7 +107,7 @@ collections:
               - label: "Image"
                 name: "image"
                 widget: "image"
-                allow_multiple: "false"
+                allow_multiple: false
               - label: "Title"
                 name: "title"
                 widget: "string"
