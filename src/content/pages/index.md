@@ -1,6 +1,7 @@
 ---
+type: page
 template: index-page
-slug: /
+slug: ''
 title: Titolone
 tagline: Sottotitolo importante
 featuredImage: /assets/placeholder.png

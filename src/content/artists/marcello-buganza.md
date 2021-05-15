@@ -2,7 +2,7 @@
 template: artist
 fullname: Marcello Buganza
 date: 2020-05-09T05:53:16.102Z
-slug: /marcello-buganza
+slug: marcello-buganza
 description: The founder
 portrait: /assets/placeholder.png
 ---

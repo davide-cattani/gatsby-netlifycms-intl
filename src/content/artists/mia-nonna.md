@@ -2,7 +2,7 @@
 template: artist
 fullname: Mia Nonna
 date: 2020-05-09T05:53:16.102Z
-slug: /mia-nonna
+slug: mia-nonna
 description: The grandma of the founder
 portrait: /assets/placeholder.png
 ---

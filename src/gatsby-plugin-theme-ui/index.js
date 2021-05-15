@@ -1,23 +1,21 @@
 import defaultColors from "../util/default-colors.json"
-import { lightness } from "@theme-ui/color"
+import { lightness, transparentize, darken } from "@theme-ui/color"
 const theme = {
   colors: {
     ...defaultColors,
-    text: "#222",
-    background: "#fff",
-    primary: "#5C2941",
-    accent: "#fff",
-    muted: "rgba(0, 0, 0, 0.7)",
-    cardBg: "#fff",
-    borderColor: "#540229",
-    labelText: "#777",
-    inputBorder: "#aaa",
-    inputBackground: "#fff",
+    text: defaultColors.text,
+    background: defaultColors.background,
+    primary: defaultColors.siteColor,
+    muted: transparentize(defaultColors.text, 0.7),
+    cardBg: defaultColors.background,
+    borderColor: lightness(defaultColors.background, 0.5),
+    inputBorder: lightness(defaultColors.background, 0.5),
+    inputBackground: defaultColors.background,
     socialIcons: lightness("siteColor", 0.4),
     socialIconsHover: lightness("siteColor", 0.3),
-    buttonColor: lightness("siteColor", 0.9),
+    buttonColor: lightness("siteColor", 0.7),
     buttonHoverBg: lightness("siteColor", 0.4),
-    buttonHoverColor: lightness("siteColor", 0.8),
+    buttonHoverColor: lightness("siteColor", 0.6),
   },
   links: {
     postLink: {

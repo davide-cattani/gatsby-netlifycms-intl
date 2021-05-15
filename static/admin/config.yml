@@ -9,7 +9,7 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 # Uncomment local_backend when you need to develop in your local
-local_backend: true # run npx netlify-cms-proxy-server for local testing
+#local_backend: true # run npx netlify-cms-proxy-server for local testing
 
 media_folder: "static/assets"
 public_folder: "/assets"
@@ -25,42 +25,14 @@ collections:
     summary: "{{title}} — {{year}}/{{month}}/{{day}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - {
-          label: "Template",
-          name: "template",
-          widget: "hidden",
-          default: "blog-post",
-        }
+      - { label: "Template", name: "template", widget: "hidden", default: "blog-post" }
       - { label: "Title", name: "title", widget: "string", tagname: "h1" }
-      - {
-          label: "Slug",
-          name: "slug",
-          widget: "string",
-          hint: "Start slug with /. Use only alphanumeric characters, - and _. Avoid spaces in any cases.",
-        }
-      - {
-          label: "Publish Date",
-          name: "date",
-          widget: "datetime",
-          dateFormat: "YYYY-MM-DD",
-          timeFormat: "HH:mm",
-          format: "YYYY-MM-DD HH:mm",
-        }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Only alphanumeric characters, - and _." }
+      - { label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm", format: "YYYY-MM-DD HH:mm" }
       - { label: "SEO Description", name: "description", widget: "text" }
-      - {
-          label: "Featured Image",
-          name: "featuredImage",
-          widget: "image",
-          required: false,
-          tagname: "",
-        }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
 
-      - {
-          label: "Body",
-          name: "body",
-          widget: "markdown",
-          hint: "Main content goes here.",
-        }
+      - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
   - name: "artists" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Artists" # Used in the UI
     label_singular: "Artist" # Used in the UI, ie: "New Post"
@@ -71,42 +43,38 @@ collections:
     summary: "{{fullname}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - {
-          label: "Template",
-          name: "template",
-          widget: "hidden",
-          default: "artist",
-        }
+      - { label: "Template", name: "template", widget: "hidden", default: "artist" }
       - { label: "Full Name", name: "fullname", widget: "string", tagname: "h1" }
-      - {
-          label: "Join Date",
-          name: "date",
-          widget: "datetime",
-          dateFormat: "YYYY-MM-DD",
-          timeFormat: "HH:mm",
-          format: "YYYY-MM-DD HH:mm",
-        }
-      - {
-          label: "Slug",
-          name: "slug",
-          widget: "string",
-          hint: "Start slug with /. Use only alphanumeric characters, - and _. Avoid spaces in any cases.",
-        }
+      - { label: "Join Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
       - { label: "SEO Description", name: "description", widget: "text" }
-      - {
-          label: "Portrait Photo",
-          name: "portrait",
-          widget: "image",
-          required: true,
-          tagname: "",
-        }
+      - { label: "Portrait Photo", name: "portrait", widget: "image", required: true, tagname: "" }
+      - label: "Latest Works"
+        name: "latestWorks"
+        widget: "object"
+        collapsed: true
+        summary: "Gli ultimi lavori dell'artista"
+        fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
+            allow_multiple: "true"
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            tagname: "h3"
+          - label: "Date"
+            name: "date"
+            type: "string"
+          - label: "Comment"
+            name: "comment"
+            type: "text"
 
-      - {
-          label: "Body",
-          name: "body",
-          widget: "markdown",
-          hint: "Main artist description.",
-        }
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Main artist description."
+
   - label: "Pages"
     name: "pages"
     files:
@@ -114,17 +82,13 @@ collections:
         name: "home"
         file: "src/content/pages/index.md"
         fields:
-          - {
-              label: "Template",
-              name: "template",
-              widget: "hidden",
-              default: "index-page",
-            }
-          - { label: "Slug", name: "slug", widget: "hidden", default: "/" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Template", name: "template", widget: "hidden", default: "index-page" }
+          - { name: "type", widget: "hidden", default: "page" }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "" }
+          - { label: "Main Heading", name: "title", widget: "string" }
+          - { label: "Main Subtitle", name: "tagline", widget: "string" }
           - { label: "Featured Image", name: "featuredImage", widget: "image" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Main Description", name: "body", widget: "markdown" }
           - label: "CTA"
             name: "cta"
             widget: "object"
@@ -135,36 +99,52 @@ collections:
               - name: "ctaLink"
                 label: "CTA Link"
                 widget: "string"
+          - label: "Sections"
+            name: "sections"
+            widget: "object"
+            summary: '{{fields.title}}'
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                allow_multiple: "false"
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                tagname: "h2"
+              - label: "Body"
+                name: "body"
+                type: "markdown"
+              - label: "Button"
+                name: "button"
+                widget: "object"
+                fields:
+                  - name: "buttonText"
+                    label: "Button text"
+                    widget: "string"
+                  - name: "buttonLink"
+                    label: "Button Link"
+                    widget: "string"
+          
       - label: "About"
         name: "about"
         file: "src/content/pages/about.md"
         fields:
-          - {
-              label: "Template",
-              name: "template",
-              widget: "hidden",
-              default: "about-page",
-            }
-          - { label: "Slug", name: "slug", widget: "hidden", default: "/about" }
+          - { label: "Template", name: "template", widget: "hidden", default: "about-page" }
+          - { name: "type", widget: "hidden", default: "page" }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "about" }
           - { label: "Title", name: "title", widget: "string" }
+
           - { label: "Body", name: "body", widget: "markdown" }
       - label: "Contact"
         name: "contact"
         file: "src/content/pages/contact.md"
         fields:
-          - {
-              label: "Template",
-              name: "template",
-              widget: "hidden",
-              default: "contact-page",
-            }
-          - {
-              label: "Slug",
-              name: "slug",
-              widget: "hidden",
-              default: "/contact",
-            }
+          - { label: "Template", name: "template", widget: "hidden", default: "contact-page" }
+          - { name: "type", widget: "hidden", default: "page" }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "contact" }
           - { label: "Title", name: "title", widget: "string" }
+          
           - { label: "Body", name: "body", widget: "markdown" }
   - name: settings
     label: Settings
@@ -211,39 +191,21 @@ collections:
             name: ga
             widget: string
             hint: "Add you tracking ID, for example UA-XXXXXXXXX-X"
-      - label: Social Icons
-        name: socialIcons
+      - label: Social Links
+        name: socialLinks
         file: "src/util/socialmedia.json"
         fields:
-          - label: Social Icons
-            name: socialIcons
+          - label: Social Links
+            name: socialLinks
             widget: list
             collapsed: true
-            hint: "Here you can add social icons, Click on 'Add social icons'"
+            hint: "Here you can add social links, Click on 'Add social links'"
             fields:
-              - label: "Icons"
-                name: "icon"
+              - label: "Social"
+                name: "social"
                 widget: "select"
-                options:
-                  [
-                    "facebook",
-                    "twitter",
-                    "linkedin",
-                    "youtube",
-                    "instagram",
-                    "rss",
-                    "github",
-                    "telegram",
-                    "pinterest",
-                    "snapchat",
-                    "skype",
-                    "wordpress",
-                    "dribbble",
-                    "medium",
-                    "behance",
-                    "vk",
-                  ]
-                hint: "Select the Icon"
+                options: ["facebook", "twitter", "linkedin", "youtube", "instagram", "rss", "github", "telegram", "pinterest", "snapchat", "skype", "wordpress", "dribbble", "medium", "behance", "vk"]
+                hint: "Select the Social"
               - widget: string
                 name: url
                 label: url
@@ -261,6 +223,15 @@ collections:
           - label: "Primary Color"
             name: "siteColor"
             widget: "color"
-            enableAlpha: true
+            enableAlpha: false
             allowInput: true
-      
+          - label: "Background Color"
+            name: "background"
+            widget: "color"
+            enableAlpha: false
+            allowInput: true
+          - label: "Text Color"
+            name: "text"
+            widget: "color"
+            enableAlpha: false
+            allowInput: true

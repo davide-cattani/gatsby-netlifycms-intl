@@ -1,6 +1,7 @@
 ---
+type: page
 template: about-page
-slug: /about
+slug: about
 title: Lo Studio
 ---
 

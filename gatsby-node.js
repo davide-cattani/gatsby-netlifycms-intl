@@ -4,14 +4,13 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  // const blogList = path.resolve(`./src/templates/blog-list.js`)
   const artistList = path.resolve(`./src/templates/artist-list.js`)
 
-  const result = await graphql(`
+  const allPages = await graphql(`
     {
-      allMarkdownRemark(
+      artists: allMarkdownRemark(
         sort: {order: DESC, fields: [frontmatter___date]}
-        filter: {frontmatter: {template: {ne: "blog-post"}}}
+        filter: {frontmatter: {template: {eq: "artist"}}}
       ) {
         edges {
           node {
@@ -25,27 +24,40 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+      pages: allMarkdownRemark(
+        filter: {frontmatter: {type: {eq: "page"}}}
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              slug
+              template
+              type
+            }
+          }
+        }
+      }
     }
   `)
 
   // Handle errors
-  if (result.errors) {
+  if (allPages.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
 
   // Create markdown pages
-  const posts = result.data.allMarkdownRemark.edges
-  let blogPostsCount = 0
+  const artists = allPages.data.artists.edges
   let artistCount = 0
 
-  posts.forEach((post, index) => {
+  artists.forEach((post, index) => {
     const id = post.node.id
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+    const previous = index === artists.length - 1 ? null : artists[index + 1].node
+    const next = index === 0 ? null : artists[index - 1].node
 
     createPage({
-      path: post.node.frontmatter.slug,
+      path: '/artists/' + post.node.frontmatter.slug,
       component: path.resolve(
         `src/templates/${String(post.node.frontmatter.template)}.js`
       ),
@@ -56,11 +68,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         next,
       },
     })
-
-    // Count blog posts.
-    if (post.node.frontmatter.template === "blog-post") {
-      blogPostsCount++
-    }
     // Count artists.
     if (post.node.frontmatter.template === "artist") {
       artistCount++
@@ -68,24 +75,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   })
 
-  // Create blog-list pages
-  // const postsPerPage = 9
-  // const numPages = Math.ceil(blogPostsCount / postsPerPage)
-
-  // Array.from({ length: numPages }).forEach((_, i) => {
-  //   createPage({
-  //     path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
-  //     component: blogList,
-  //     context: {
-  //       limit: postsPerPage,
-  //       skip: i * postsPerPage,
-  //       numPages,
-  //       currentPage: i + 1,
-  //     },
-  //   })
-  // })
-
-  // Create artist pages
+  // Create artist index pages
   const artistsPerPage = 12
   const numPages = Math.ceil(artistCount / artistsPerPage)
 
@@ -101,6 +91,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     })
   })
+
+  // Create index pages
+  const pages = allPages.data.pages.edges
+  pages.forEach((page, index) => {
+    const id = page.node.id
+    createPage({
+      path: '/' + page.node.frontmatter.slug,
+      component: path.resolve(
+        `src/templates/${String(page.node.frontmatter.template)}.js`
+      ),
+      context: {
+        id,
+      },
+    })
+  })
+
 
 }
 

@@ -1,6 +1,7 @@
 ---
+type: page
 template: contact-page
-slug: /contact
+slug: contact
 title: Scrivici!
 ---
 Hai una domanda sullo studio? Vuoi chiedere informazioni sul co-working? Curiosità?

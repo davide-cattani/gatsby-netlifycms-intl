@@ -1,11 +1,11 @@
 {
-  "socialIcons": [
+  "socialLinks": [
     {
-      "icon": "facebook",
+      "social": "facebook",
       "url": "https://www.facebook.com/"
     },
     {
-      "icon": "instagram",
+      "social": "instagram",
       "url": "https://www.instagram.com/sketchstudios_carpi/"
     }
   ]
