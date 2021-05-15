@@ -85,23 +85,30 @@ collections:
           - { label: "Template", name: "template", widget: "hidden", default: "index-page" }
           - { name: "type", widget: "hidden", default: "page" }
           - { label: "Slug", name: "slug", widget: "hidden", default: "" }
-          - { label: "Main Heading", name: "title", widget: "string" }
-          - { label: "Main Subtitle", name: "tagline", widget: "string" }
-          - { label: "Featured Image", name: "featuredImage", widget: "image" }
-          - { label: "Main Description", name: "body", widget: "markdown" }
-          - label: "CTA"
-            name: "cta"
+          - label: "Main Section"
+            name: "mainSection"
             widget: "object"
             fields:
-              - name: "ctaText"
-                label: "CTA text"
-                widget: "string"
-              - name: "ctaLink"
-                label: "CTA Link"
-                widget: "string"
+              - { label: "Main Heading", name: "title", widget: "string" }
+              - { label: "Main Subtitle", name: "tagline", widget: "string" }
+              - { label: "Featured Image", name: "featuredImage", widget: "image" }
+              - { label: "Main Description", name: "body", widget: "markdown" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - name: "ctaText"
+                    label: "CTA text"
+                    widget: "string"
+                  - name: "ctaLink"
+                    label: "CTA Link"
+                    widget: "string"
           - label: "Sections"
+            label_singular: "Section"
+            max: 5
             name: "sections"
-            widget: "object"
+            allow_add: true
+            widget: "list"
             summary: '{{fields.title}}'
             fields:
               - label: "Image"

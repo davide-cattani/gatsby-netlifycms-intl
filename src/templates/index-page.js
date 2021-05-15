@@ -32,37 +32,17 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        title
-        tagline
-        featuredImage {
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, width: 585, height: 439)
-          }
-        }
-        cta {
-          ctaText
-          ctaLink
-        }
-      }
-    }
-    posts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { template: { eq: "blog-post" } } }
-      limit: 6
-    ) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            slug
-            title
-            featuredImage {
-              childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 345, height: 260)
-              }
+        mainSection {
+          title
+          tagline
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(layout: CONSTRAINED, width: 585, height: 439)
             }
+          }
+          cta {
+            ctaText
+            ctaLink
           }
         }
       }
@@ -73,8 +53,8 @@ export const pageQuery = graphql`
 const HomePage = ({ data }) => {
   const { markdownRemark, posts } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
-  const Image = frontmatter.featuredImage
-    ? frontmatter.featuredImage.childImageSharp.gatsbyImageData
+  const Image = frontmatter.mainSection.featuredImage
+    ? frontmatter.mainSection.featuredImage.childImageSharp.gatsbyImageData
     : ""
   const social = Icons.socialLinks.map((social, index) => {
     return (
@@ -199,27 +179,27 @@ const HomePage = ({ data }) => {
       <Seo />
       <div className="home-banner grids col-1 sm-2">
         <div>
-          <h1 className="title">{frontmatter.title}</h1>
+          <h1 className="title">{frontmatter.mainSection.title}</h1>
           <p
             className="tagline"
             sx={{
               color: "muted",
             }}
           >
-            {frontmatter.tagline}
+            {frontmatter.mainSection.tagline}
           </p>
           <div
             className="description"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <Link
-            to={frontmatter.cta.ctaLink}
+            to={frontmatter.mainSection.cta.ctaLink}
             className="button"
             sx={{
               variant: "variants.button",
             }}
           >
-            {frontmatter.cta.ctaText}
+            {frontmatter.mainSection.cta.ctaText}
             <span className="icon -right">
               <RiArrowRightSLine />
             </span>
@@ -237,7 +217,7 @@ const HomePage = ({ data }) => {
           {Image ? (
             <GatsbyImage
               image={Image}
-              alt={frontmatter.title + " - Featured image"}
+              alt={frontmatter.mainSection.title + " - Featured image"}
               className="featured-image"
             />
           ) : (
