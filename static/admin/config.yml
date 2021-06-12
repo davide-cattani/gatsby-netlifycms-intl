@@ -34,130 +34,129 @@ collections:
 
       - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
   - name: "artists" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Artists" # Used in the UI
-    label_singular: "Artist" # Used in the UI, ie: "New Post"
+    label: "Artisti" # Used in the UI
+    label_singular: "Artista" # Used in the UI, ie: "New Post"
     description: >
-      The awesome artists working in the studio.
+      I fantastici artisti che lavorano nello studio.
     folder: "src/content/artists"
     slug: "{{slug}}"
     summary: "{{fullname}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - { label: "Template", name: "template", widget: "hidden", default: "artist" }
-      - { label: "Full Name", name: "fullname", widget: "string", tagname: "h1" }
-      - { label: "Join Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
+      - { name: "template", widget: "hidden", default: "artist" }
+      - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
+      - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
       - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
-      - { label: "SEO Description", name: "description", widget: "text" }
-      - { label: "Portrait Photo", name: "portrait", widget: "image", required: true, tagname: "" }
-      - label: "Latest Works"
+      - { label: "Ruolo/skills", name: "role", widget: "text" }
+      - { label: "Descrizione breve", name: "description", widget: "text", hint: "Visualizzata in homepage" }
+      - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
+      - label: "Ultimi lavori"
         name: "latestWorks"
         widget: "object"
         collapsed: true
         summary: "Gli ultimi lavori dell'artista"
         fields:
-          - label: "Image"
+          - label: "Immagine"
             name: "image"
             widget: "image"
             allow_multiple: true
-          - label: "Title"
+          - label: "Titolo"
             name: "title"
             widget: "string"
             tagname: "h3"
-          - label: "Date"
+          - label: "Data"
             name: "date"
             type: "string"
-          - label: "Comment"
+          - label: "Commento"
             name: "comment"
             type: "text"
 
-      - label: "Body"
+      - label: "Descrizione completa"
         name: "body"
         widget: "markdown"
-        hint: "Main artist description."
 
-  - label: "Pages"
+  - label: "Pagine del sito"
     name: "pages"
     files:
       - label: "Home"
         name: "home"
         file: "src/content/pages/index.md"
         fields:
-          - { label: "Template", name: "template", widget: "hidden", default: "index-page" }
+          - { name: "template", widget: "hidden", default: "index-page" }
           - { name: "type", widget: "hidden", default: "page" }
-          - { label: "Slug", name: "slug", widget: "hidden", default: "" }
-          - label: "Main Section"
+          - { name: "slug", widget: "hidden", default: "" }
+          - label: "Sezione landing"
             name: "mainSection"
             widget: "object"
             fields:
-              - { label: "Main Heading", name: "title", widget: "string" }
-              - { label: "Main Subtitle", name: "tagline", widget: "string" }
-              - { label: "Featured Image", name: "featuredImage", widget: "image" }
-              - { label: "Main Description", name: "body", widget: "markdown" }
-              - label: "CTA"
+              - { label: "Titolone", name: "title", widget: "string" }
+              - { label: "Sottotitolo", name: "tagline", widget: "string" }
+              - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
+              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
+              - { label: "Testo", name: "body", widget: "markdown" }
+              - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
                 fields:
                   - name: "ctaText"
-                    label: "CTA text"
+                    label: "Testo pulsante"
                     widget: "string"
-                  - name: "ctaLink"
+                  - name: "link"
                     label: "CTA Link"
                     widget: "string"
-          - label: "Sections"
-            label_singular: "Section"
-            max: 5
-            name: "sections"
-            allow_add: true
-            widget: "list"
-            summary: '{{fields.title}}'
+          - label: "Ci hanno scelto"
+            name: "sponsorSection"
+            widget: "object"
             fields:
-              - label: "Image"
-                name: "image"
-                widget: "image"
-                allow_multiple: false
-              - label: "Title"
-                name: "title"
-                widget: "string"
-                tagname: "h2"
-              - label: "Body"
-                name: "body"
-                type: "markdown"
-              - label: "Button"
-                name: "button"
+              - label: "Sponsors"
+                name: "sponsors"
                 widget: "object"
                 fields:
-                  - name: "buttonText"
-                    label: "Button text"
-                    widget: "string"
-                  - name: "buttonLink"
-                    label: "Button Link"
-                    widget: "string"
+                  - { label: "Nome", name: "name", widget: "string" }
+                  - { label: "Logo", name: "image", widget: "image" }
           
-      - label: "About"
+      - label: "Lo Studio"
         name: "about"
         file: "src/content/pages/about.md"
         fields:
-          - { label: "Template", name: "template", widget: "hidden", default: "about-page" }
+          - { name: "template", widget: "hidden", default: "about-page" }
           - { name: "type", widget: "hidden", default: "page" }
-          - { label: "Slug", name: "slug", widget: "hidden", default: "about" }
-          - { label: "Title", name: "title", widget: "string" }
-
-          - { label: "Body", name: "body", widget: "markdown" }
-      - label: "Contact"
+          - { name: "slug", widget: "hidden", default: "about" }
+          - { label: "Titolo", name: "title", widget: "string" }
+          - { label: "Descrizione Co-working", name: "coworkingDescription", widget: "text" }
+          - { label: "Descrizione completa studio", name: "body", widget: "markdown" }
+          - label: "Pulsante call to action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - name: "ctaText"
+                label: "Testo pulsante"
+                widget: "string"
+              - name: "link"
+                label: "CTA Link"
+                widget: "string"
+          - label: "Immagini studio"
+            name: "images"
+            widget: "object"
+            fields:
+              - name: "image"
+                label: "Immagine"
+                widget: "image"
+      - label: "Contatti"
         name: "contact"
         file: "src/content/pages/contact.md"
         fields:
-          - { label: "Template", name: "template", widget: "hidden", default: "contact-page" }
+          - { name: "template", widget: "hidden", default: "contact-page" }
           - { name: "type", widget: "hidden", default: "page" }
-          - { label: "Slug", name: "slug", widget: "hidden", default: "contact" }
-          - { label: "Title", name: "title", widget: "string" }
+          - { name: "slug", widget: "hidden", default: "contact" }
+          - { label: "Titolo", name: "title", widget: "string" }
           
-          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Testo", name: "body", widget: "markdown" }
   - name: settings
-    label: Settings
+    label: Impostazioni
     files:
       - name: general
-        label: General
+        label: Generali
         file: "src/util/site.json"
         fields:
           - label: meta
@@ -166,25 +165,25 @@ collections:
             fields:
               - widget: string
                 name: title
-                label: Site Title
+                label: Nome del sito
                 required: true
               - widget: string
                 name: titleTemplate
-                label: Title Template
+                label: Template nome sito
                 default: "%s"
                 required: true
               - widget: string
                 name: siteUrl
-                label: Website URL
+                label: URL sito
                 required: true
               - widget: text
                 name: description
-                label: Description
+                label: Descrizione SEO sito
                 default: ""
                 required: false
               - widget: image
                 name: image
-                label: image
+                label: Immagine
                 default: "/assets/stackrole.png"
               - widget: image
                 name: iconimage
@@ -219,25 +218,25 @@ collections:
                 required: true
                 hint: "Paste the 'URL' of your Social media"
 
-  - label: "Appearance"
+  - label: "Tema"
     name: "appearance"
     identifier_field: "name"
     files:
-      - label: "Default Theme"
+      - label: "Tema default"
         name: "themescolors"
         file: "src/util/default-colors.json"
         fields:
-          - label: "Primary Color"
+          - label: "Colore primario"
             name: "siteColor"
             widget: "color"
             enableAlpha: false
             allowInput: true
-          - label: "Background Color"
+          - label: "Colore sfondo"
             name: "background"
             widget: "color"
             enableAlpha: false
             allowInput: true
-          - label: "Text Color"
+          - label: "Colore testo"
             name: "text"
             widget: "color"
             enableAlpha: false

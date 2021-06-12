@@ -23,9 +23,11 @@ const AboutPage = ({ data }) => {
   return (
     <Layout className="page">
       <Seo title={frontmatter.title} description={excerpt} />
-      <div className="wrapper">
-        <h1>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="container">
+        <div className="section">
+          <h1 className="title is-size-2">{frontmatter.title}</h1>
+          <article dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </div>
     </Layout>
   )

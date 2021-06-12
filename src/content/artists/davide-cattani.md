@@ -1,10 +1,10 @@
 ---
 template: artist
-fullname: Mia Nonna
-date: 2020-05-09T05:53:16.102Z
-slug: mia-nonna
-role: Illustratrice/Friggitrice
-description: The grandma of the founder
+fullname: Davide Cattani
+date: 2020-06-09T05:53:16.102Z
+slug: davide-cattani
+role: Capìs Ninta
+description: Ciao
 portrait: /assets/placeholder.png
 ---
 

@@ -1,10 +1,10 @@
 ---
 template: artist
-fullname: Mia Nonna
-date: 2020-05-09T05:53:16.102Z
-slug: mia-nonna
-role: Illustratrice/Friggitrice
-description: The grandma of the founder
+fullname: Giulio Faggiani
+date: 2020-06-09T05:53:16.102Z
+slug: giulio-faggiani
+role: Scoreggione
+description: Tempo fa si faceva le canne con mio fratello
 portrait: /assets/placeholder.png
 ---
 

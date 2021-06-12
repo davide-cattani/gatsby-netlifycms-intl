@@ -3,6 +3,7 @@ template: artist
 fullname: Marcello Buganza
 date: 2020-05-09T05:53:16.102Z
 slug: marcello-buganza
+role: Fumettista/Rompicazzo
 description: The founder
 portrait: /assets/placeholder.png
 ---

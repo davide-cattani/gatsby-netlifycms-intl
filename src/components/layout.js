@@ -33,7 +33,6 @@ const Layout = ({ children, className, props }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="primary-container">
         <Header>
           <Logo
             title={siteTitle}
@@ -50,9 +49,8 @@ const Layout = ({ children, className, props }) => {
             {/* <Theme /> */}
           </div>
         </Header>
-        <main className={"container " + className}>{children}</main>
+        <main>{children}</main>
         <Footer />
-      </div>
     </ThemeProvider>
   )
 }

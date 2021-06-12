@@ -1,10 +1,10 @@
 ---
 template: artist
-fullname: Mia Nonna
-date: 2020-05-09T05:53:16.102Z
-slug: mia-nonna
-role: Illustratrice/Friggitrice
-description: The grandma of the founder
+fullname: Mirco Tincani
+date: 2020-06-09T05:53:16.102Z
+slug: mirco-tincani
+role: Personal Trainer/Attore/Musicista/Vegano
+description: Ma chi lò
 portrait: /assets/placeholder.png
 ---
 
