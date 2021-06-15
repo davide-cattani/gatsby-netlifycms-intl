@@ -21,9 +21,9 @@ const query = graphql`
         siteTitle: title
       }
     }
-    siteSearchIndex {
-      index
-    }
+    # siteSearchIndex {
+    #   index
+    # }
   }
 `
 

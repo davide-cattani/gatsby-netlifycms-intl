@@ -46,7 +46,7 @@ module.exports = {
               loading: "lazy",
             },
           },
-          {
+          /* {
             resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
             options: {
               // Fields to index
@@ -63,7 +63,7 @@ module.exports = {
               // Optional filter to limit indexed nodes
               filter: (node, getNode) => node.frontmatter.tags !== "exempt",
             },
-          },
+          }, */
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,
@@ -82,6 +82,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-transformer-remark-frontmatter`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-theme-ui",

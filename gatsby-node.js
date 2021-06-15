@@ -1,6 +1,39 @@
 const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createFieldExtension({
+    name: "md",
+    args: {
+      from: {
+        type: "String!",
+        defaultValue: true,
+      },
+    },
+
+    extend() {
+      return {
+        args: {
+          from: "String!",
+        },
+        resolve(source, args) {
+          const fieldValue = source[args.from]
+          return convertToHTML(fieldValue)
+        },
+      }
+    },
+  })
+  const typeDefs = `
+    type MarkdownRemark implements Node @infer {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+      coworkingDescription: String! @md
+    }
+  `
+  actions.createTypes(typeDefs)
+}
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
@@ -8,10 +41,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const allPages = await graphql(`
     {
-      artists: allMarkdownRemark(
-        sort: {order: DESC, fields: [frontmatter___date]}
-        filter: {frontmatter: {template: {eq: "artist"}}}
-      ) {
+      artists: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "artist" } } }) {
         edges {
           node {
             id
@@ -24,9 +54,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      pages: allMarkdownRemark(
-        filter: {frontmatter: {type: {eq: "page"}}}
-      ) {
+      pages: allMarkdownRemark(filter: { frontmatter: { type: { eq: "page" } } }) {
         edges {
           node {
             id
@@ -57,10 +85,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const next = index === 0 ? null : artists[index - 1].node
 
     createPage({
-      path: '/artists/' + post.node.frontmatter.slug,
-      component: path.resolve(
-        `src/templates/${String(post.node.frontmatter.template)}.js`
-      ),
+      path: "/artists/" + post.node.frontmatter.slug,
+      component: path.resolve(`src/templates/${String(post.node.frontmatter.template)}.js`),
       // additional data can be passed via context
       context: {
         id,
@@ -72,7 +98,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     if (post.node.frontmatter.template === "artist") {
       artistCount++
     }
-
   })
 
   // Create artist index pages
@@ -97,17 +122,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   pages.forEach((page, index) => {
     const id = page.node.id
     createPage({
-      path: '/' + page.node.frontmatter.slug,
-      component: path.resolve(
-        `src/templates/${String(page.node.frontmatter.template)}.js`
-      ),
+      path: "/" + page.node.frontmatter.slug,
+      component: path.resolve(`src/templates/${String(page.node.frontmatter.template)}.js`),
       context: {
         id,
       },
     })
   })
-
-
 }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
