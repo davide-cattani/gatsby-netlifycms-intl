@@ -12,7 +12,7 @@
     "url": "https://github.com/davide-cattani/sketch-studios.git/issues"
   },
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "run-p start:**",
@@ -25,6 +25,7 @@
     "@theme-ui/color": "^0.6.0",
     "axios": "^0.21.1",
     "bulma": "^0.9.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "gatsby": "3.5",
     "gatsby-background-image": "^1.5.3",
