@@ -15,24 +15,24 @@ media_folder: "static/assets"
 public_folder: "/assets"
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    label_singular: "Post"
-    description: >
-      Create awesome content here.
-    folder: "src/content/posts"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} — {{year}}/{{month}}/{{day}}"
-    create: true
-    fields:
-      - { label: "Template", name: "template", widget: "hidden", default: "blog-post" }
-      - { label: "Title", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Only alphanumeric characters, - and _." }
-      - { label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm", format: "YYYY-MM-DD HH:mm" }
-      - { label: "SEO Description", name: "description", widget: "text" }
-      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
+  # - name: "posts"
+  #   label: "Posts"
+  #   label_singular: "Post"
+  #   description: >
+  #     Create awesome content here.
+  #   folder: "src/content/posts"
+  #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+  #   summary: "{{title}} — {{year}}/{{month}}/{{day}}"
+  #   create: true
+  #   fields:
+  #     - { label: "Template", name: "template", widget: "hidden", default: "blog-post" }
+  #     - { label: "Title", name: "title", widget: "string", tagname: "h1" }
+  #     - { label: "Slug", name: "slug", widget: "string", hint: "Only alphanumeric characters, - and _." }
+  #     - { label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm", format: "YYYY-MM-DD HH:mm" }
+  #     - { label: "SEO Description", name: "description", widget: "text" }
+  #     - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
 
-      - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
+  #     - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
   - name: "artists"
     label: "Artisti"
     label_singular: "Artista"
@@ -101,16 +101,21 @@ collections:
                   - name: "ctaText"
                     label: "Testo pulsante"
                     widget: "string"
-                  - name: "link"
-                    label: "CTA Link"
+                  - name: "ctaLink"
+                    label: "Link"
                     widget: "string"
+                    hint: "inserire il sotto-url a cui rimandare es. /contact"
           - label: "Ci hanno scelto"
             name: "sponsorSection"
             widget: "object"
             fields:
               - label: "Sponsors"
                 name: "sponsors"
-                widget: "object"
+                allow_add: true
+                collapsed: true
+                add_to_top: true
+                summary: '{{fields.name}}'
+                widget: "list"
                 fields:
                   - { label: "Nome", name: "name", widget: "string" }
                   - { label: "Logo", name: "image", widget: "image" }
@@ -132,12 +137,17 @@ collections:
               - name: "ctaText"
                 label: "Testo pulsante"
                 widget: "string"
-              - name: "link"
-                label: "CTA Link"
+              - name: "ctaLink"
+                label: "Link"
                 widget: "string"
+                hint: "inserire il sotto-url a cui rimandare es. /contact"
           - label: "Immagini studio"
             name: "images"
-            widget: "object"
+            widget: "list"
+            allow_add: true
+            collapsed: true
+            add_to_top: true
+            summary: '{{fields.image}}'
             fields:
               - name: "image"
                 label: "Immagine"

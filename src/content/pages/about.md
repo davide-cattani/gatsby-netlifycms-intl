@@ -11,9 +11,6 @@ coworkingDescription: >-
 cta:
   ctaText: Guarda cosa abbiamo realizzato
   ctaLink: /projects
-  link: /projects
-images:
-  image: /assets/placeholder.png
 ---
 ### Descrizione completa studio.
 
