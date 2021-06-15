@@ -15,16 +15,16 @@ media_folder: "static/assets"
 public_folder: "/assets"
 
 collections:
-  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Posts" # Used in the UI
-    label_singular: "Post" # Used in the UI, ie: "New Post"
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
     description: >
       Create awesome content here.
     folder: "src/content/posts"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title}} — {{year}}/{{month}}/{{day}}"
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
+    create: true
+    fields:
       - { label: "Template", name: "template", widget: "hidden", default: "blog-post" }
       - { label: "Title", name: "title", widget: "string", tagname: "h1" }
       - { label: "Slug", name: "slug", widget: "string", hint: "Only alphanumeric characters, - and _." }
@@ -33,16 +33,16 @@ collections:
       - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
 
       - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
-  - name: "artists" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Artisti" # Used in the UI
-    label_singular: "Artista" # Used in the UI, ie: "New Post"
+  - name: "artists"
+    label: "Artisti"
+    label_singular: "Artista"
     description: >
       I fantastici artisti che lavorano nello studio.
     folder: "src/content/artists"
     slug: "{{slug}}"
     summary: "{{fullname}}"
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
+    create: true
+    fields:
       - { name: "template", widget: "hidden", default: "artist" }
       - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
       - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
@@ -123,7 +123,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "about" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Descrizione Co-working", name: "coworkingDescription", widget: "text" }
+          - { label: "Descrizione Co-working", name: "coworkingDescription", widget: "markdown" }
           - { label: "Descrizione completa studio", name: "body", widget: "markdown" }
           - label: "Pulsante call to action"
             name: "cta"
