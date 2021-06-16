@@ -162,6 +162,45 @@ collections:
           - { label: "Titolo", name: "title", widget: "string" }
           
           - { label: "Testo", name: "body", widget: "markdown" }
+      - label: "Progetti realizzati"
+        name: "projects"
+        file: "src/content/pages/projects.md"
+        fields:
+          - { name: "template", widget: "hidden", default: "projects-page" }
+          - { name: "type", widget: "hidden", default: "page" }
+          - { name: "slug", widget: "hidden", default: "projects" }
+          - { label: "Titolo", name: "title", widget: "string" }
+          - label: "Progetti"
+            name: "projects"
+            allow_add: true
+            collapsed: true
+            add_to_top: true
+            summary: '{{fields.title}}'
+            widget: "list"
+            fields:
+              - { label: "Titolo", name: "title", widget: "string" }
+              - { label: "Descrizione", name: "description", widget: "text" }
+              - { label: "Immagine", name: "image", widget: "image" }
+      - label: "Eventi in programma"
+        name: "events"
+        file: "src/content/pages/events.md"
+        fields:
+          - { name: "template", widget: "hidden", default: "events-page" }
+          - { name: "type", widget: "hidden", default: "page" }
+          - { name: "slug", widget: "hidden", default: "events" }
+          - { label: "Titolo", name: "title", widget: "string" }
+          - label: "Eventi"
+            name: "events"
+            allow_add: true
+            collapsed: true
+            add_to_top: true
+            summary: '{{fields.date}} - {{fields.name}}'
+            widget: "list"
+            fields:
+              - { label: "Nome evento", name: "name", widget: "string" }
+              - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: "HH:mm" }
+              - { label: "Descrizione", name: "description", widget: "text" }
+              - { label: "Immagine", name: "image", widget: "image" }
   - name: settings
     label: Impostazioni
     files:

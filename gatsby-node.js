@@ -37,7 +37,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const artistList = path.resolve(`./src/templates/artist-list.js`)
+  const artistList = path.resolve(`./src/templates/artist-list-page.js`)
 
   const allPages = await graphql(`
     {

@@ -6,7 +6,7 @@ import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 
 import Layout from "../components/layout"
-import ArtistListHome from "../components/artist-list-home"
+import ArtistCardList from "../components/artist-card-list"
 import Seo from "../components/seo"
 import Icons from "../util/socialmedia.json"
 
@@ -87,7 +87,7 @@ const HomePage = ({ data }) => {
       </div>
       <div className="container">
         <div className="section">
-          <ArtistListHome data={artists} />
+          <ArtistCardList data={artists} isHome={true} />
         </div>
       </div>
       {/* <BlogListHome data={posts} /> */}
