@@ -7,59 +7,32 @@ import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const styles = {
-  "article blockquote": {
-    "background-color": "cardBg",
-  },
-  pagination: {
-    a: {
-      color: "muted",
-      "&.is-active": {
-        color: "text",
-      },
-      "&:hover": {
-        color: "text",
-      },
-    },
-  },
-}
-
 const Pagination = props => (
-  <div className="pagination -post" sx={styles.pagination}>
+  <div>
     <ul>
-      {props.previous && props.previous.frontmatter.template === "blog-post" && (
+      {props.previous && props.previous.frontmatter.template === "artist" && (
         <li>
           <Link to={props.previous.frontmatter.slug} rel="prev">
-            <p
-              sx={{
-                color: "muted",
-              }}
-            >
+            <p>
               <span className="icon -left">
                 <RiArrowLeftLine />
               </span>{" "}
               Previous
             </p>
-            <span className="page-title">
-              {props.previous.frontmatter.title}
-            </span>
+            <span>{props.previous.frontmatter.title}</span>
           </Link>
         </li>
       )}
-      {props.next && props.next.frontmatter.template === "blog-post" && (
+      {props.next && props.next.frontmatter.template === "artist" && (
         <li>
           <Link to={props.next.frontmatter.slug} rel="next">
-            <p
-              sx={{
-                color: "muted",
-              }}
-            >
+            <p>
               Next{" "}
               <span className="icon -right">
                 <RiArrowRightLine />
               </span>
             </p>
-            <span className="page-title">{props.next.frontmatter.title}</span>
+            <span>{props.next.frontmatter.title}</span>
           </Link>
         </li>
       )}
@@ -71,9 +44,7 @@ const Artist = ({ data, pageContext }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
-  const Image = frontmatter.portrait
-    ? frontmatter.portrait.childImageSharp.gatsbyImageData
-    : ""
+  const Image = frontmatter.portrait ? frontmatter.portrait.childImageSharp.gatsbyImageData : ""
   const { previous, next } = pageContext
 
   let props = {
@@ -83,35 +54,14 @@ const Artist = ({ data, pageContext }) => {
 
   return (
     <Layout className="page">
-      <Seo
-        title={frontmatter.fullname}
-        description={
-          frontmatter.description ? frontmatter.description : excerpt
-        }
-        image={Image}
-        article={true}
-      />
-      <article className="blog-post">
-        <header className="featured-banner">
-          <section className="article-header">
-            <h1>{frontmatter.fullname}</h1>
-          </section>
-          {Image ? (
-            <GatsbyImage
-              image={Image}
-              alt={frontmatter.fullname + " - Portrait"}
-              className="featured-image"
-            />
-          ) : (
-            ""
-          )}
-        </header>
-
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </article>
+      <Seo title={frontmatter.fullname} description={frontmatter.description ? frontmatter.description : excerpt} article={true} />
+      <div className="container">
+        <div className="section">
+          <h1 className="title is-size-2 has-text-centered">{frontmatter.fullname}</h1>
+        </div>
+        {Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </div>
       {(previous || next) && <Pagination {...props} />}
     </Layout>
   )

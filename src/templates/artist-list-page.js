@@ -6,6 +6,7 @@ import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 import Layout from "../components/layout"
 import ArtistCard from "../components/artist-card"
 import Seo from "../components/seo"
+import ArtistCardList from "../components/artist-card-list"
 
 const styles = {
   pagination: {
@@ -23,25 +24,20 @@ const styles = {
 
 export const artistListQuery = graphql`
   query artistListQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { template: { eq: "artist" } } }
-      limit: $limit
-      skip: $skip
-    ) {
+    artists: allMarkdownRemark(filter: { frontmatter: { template: { eq: "artist" } } }, limit: $limit, skip: $skip) {
       edges {
         node {
           id
-          excerpt(pruneLength: 250)
           frontmatter {
-            date
-            slug
-            fullname
             portrait {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 345, height: 260)
+                gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400, placeholder: TRACED_SVG)
               }
             }
+            fullname
+            role
+            description
+            slug
           }
         }
       }
@@ -63,10 +59,7 @@ const Pagination = props => (
       )}
       {Array.from({ length: props.numPages }, (_, i) => (
         <li key={`pagination-number${i + 1}`}>
-          <Link
-            to={`${props.artistSlug}${i === 0 ? "" : i + 1}`}
-            className={props.currentPage === i + 1 ? "is-active num" : "num"}
-          >
+          <Link to={`${props.artistSlug}${i === 0 ? "" : i + 1}`} className={props.currentPage === i + 1 ? "is-active num" : "num"}>
             {i + 1}
           </Link>
         </li>
@@ -91,13 +84,11 @@ class ArtistIndex extends React.Component {
     const artistSlug = "/artists/"
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage =
-      currentPage - 1 === 1 ? artistSlug : artistSlug + (currentPage - 1).toString()
+    const prevPage = currentPage - 1 === 1 ? artistSlug : artistSlug + (currentPage - 1).toString()
     const nextPage = artistSlug + (currentPage + 1).toString()
 
-    const artists = data.allMarkdownRemark.edges
-      .filter(edge => !!edge.node.frontmatter.date)
-      .map(edge => <ArtistCard key={edge.node.id} data={edge.node} />)
+    const artists = data.artists
+
     let props = {
       isFirst,
       prevPage,
@@ -109,10 +100,14 @@ class ArtistIndex extends React.Component {
     }
 
     return (
-      <Layout className="blog-page">
+      <Layout>
         <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
-        <h1>Gli Artisti</h1>
-        <div className="grids col-1 sm-2 lg-3">{artists}</div>
+        <div className="container">
+          <div className="section">
+            <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
+            <ArtistCardList data={artists} />
+          </div>
+        </div>
         <Pagination {...props} />
       </Layout>
     )

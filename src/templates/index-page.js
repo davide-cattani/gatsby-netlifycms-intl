@@ -49,6 +49,7 @@ export const pageQuery = graphql`
             fullname
             role
             description
+            slug
           }
         }
       }
