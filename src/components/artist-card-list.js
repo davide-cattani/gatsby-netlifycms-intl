@@ -21,7 +21,7 @@ export default function ArtistCardList({ data, isHome }) {
 
 const ArtistInfo = ({ data, isHome }) => (
   <div className="card">
-    <Link to={data.slug}>
+    <Link to={`/artists/${data.slug}`}>
       <div className="card-image">
         <GatsbyImage image={data.portrait.childImageSharp.gatsbyImageData} alt={data.fullname} />
       </div>

@@ -56,15 +56,41 @@ const Artist = ({ data, pageContext }) => {
     <Layout className="page">
       <Seo title={frontmatter.fullname} description={frontmatter.description ? frontmatter.description : excerpt} article={true} />
       <div className="container">
-        <div className="section">
+        <section className="section">
           <h1 className="title is-size-2 has-text-centered">{frontmatter.fullname}</h1>
-        </div>
-        {Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+          <h4 className="subtitle is-size-4 has-text-centered">{frontmatter.role}</h4>
+          <div className="columns is-vcentered">
+            <div className="column">{Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}</div>
+            <div className="column">
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+            </div>
+          </div>
+        </section>
+        {frontmatter.latestWorks && (
+          <section className="section">
+            <h2 className="title is-size-3 has-text-centered">Ultimi lavori</h2>
+            <ArtistWorks works={frontmatter.latestWorks} />
+          </section>
+        )}
       </div>
-      {(previous || next) && <Pagination {...props} />}
+      {/* {(previous || next) && <Pagination {...props} />} */}
     </Layout>
   )
+}
+
+const ArtistWorks = ({ works }) => {
+  return works.map((work, i) => (
+    <section className="section" key={i}>
+      <div className="container is-max-desktop">
+        <GatsbyImage image={work.workImage.childImageSharp.gatsbyImageData} alt={work.title} />
+        <div className="content has-text-centered p-4">
+          <h6 className="subtitle is-size-5 has-text-weight-semibold">{work.title}</h6>
+          <p className="is-italic">{work.date}</p>
+          <p>{work.comment}</p>
+        </div>
+      </div>
+    </section>
+  ))
 }
 
 export default Artist
@@ -78,10 +104,21 @@ export const pageQuery = graphql`
       frontmatter {
         slug
         fullname
+        role
         description
         portrait {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+        latestWorks {
+          title
+          date(formatString: "DD/MM/YYYY")
+          comment
+          workImage {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
           }
         }
       }

@@ -52,14 +52,15 @@ collections:
       - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
       - label: "Ultimi lavori"
         name: "latestWorks"
-        widget: "object"
+        allow_add: true
         collapsed: true
-        summary: "Gli ultimi lavori dell'artista"
+        add_to_top: true
+        summary: '{{fields.title}}'
+        widget: "list"
         fields:
           - label: "Immagine"
-            name: "image"
+            name: "workImage"
             widget: "image"
-            allow_multiple: true
           - label: "Titolo"
             name: "title"
             widget: "string"
