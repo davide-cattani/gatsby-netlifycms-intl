@@ -1,6 +1,6 @@
 ---
-type: page
 template: events-page
+type: page
 slug: events
 title: Eventi
 events:
@@ -13,3 +13,6 @@ events:
     description: Descrizione dell'eventino
     image: /assets/placeholder.png
 ---
+Descrizione degli eventi in programma bla bla bla
+
+Anche su due righe eh
