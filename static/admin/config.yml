@@ -48,8 +48,12 @@ collections:
       - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
       - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
       - { label: "Ruolo/skills", name: "role", widget: "text" }
-      - { label: "Descrizione breve", name: "description", widget: "text", hint: "Visualizzata in homepage" }
+      - { label: "Mail", name: "mail", widget: "string" }
+      - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage" }
       - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
+      - label: "BIO completa"
+        name: "body"
+        widget: "markdown"
       - label: "Ultimi lavori"
         name: "latestWorks"
         allow_add: true
@@ -71,10 +75,33 @@ collections:
           - label: "Commento"
             name: "comment"
             type: "text"
-
-      - label: "Descrizione completa"
-        name: "body"
-        widget: "markdown"
+      - label: "Social Networks"
+        name: "socialNetworks"
+        collapsed: true
+        summary: '{{fields.name}}'
+        widget: "object"
+        fields:
+          - label: "Facebook"
+            name: "facebook"
+            widget: "string"
+          - label: "Twitter"
+            name: "twitter"
+            widget: "string"
+          - label: "Instagram"
+            name: "instagram"
+            widget: "string"
+          - label: "Youtube"
+            name: "youtube"
+            widget: "string"
+          - label: "Twitch"
+            name: "twitch"
+            widget: "string"
+          - label: "Behance"
+            name: "behance"
+            widget: "string"
+          - label: "Personal Website"
+            name: "website"
+            widget: "string"
 
   - label: "Pagine del sito"
     name: "pages"
