@@ -171,6 +171,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "projects" }
           - { label: "Titolo", name: "title", widget: "string" }
+          - { label: "Testo", name: "body", widget: "markdown" }
           - label: "Progetti"
             name: "projects"
             allow_add: true
@@ -190,6 +191,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "events" }
           - { label: "Titolo", name: "title", widget: "string" }
+          - { label: "Testo", name: "body", widget: "markdown" }
           - label: "Eventi"
             name: "events"
             allow_add: true

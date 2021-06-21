@@ -11,14 +11,10 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
-        coworkingDescription {
-          html
-        }
-        cta {
-          ctaLink
-          ctaText
-        }
-        images {
+        events {
+          name
+          date(formatString: "DD/MM/YYYY")
+          description
           image {
             childImageSharp {
               gatsbyImageData(layout: CONSTRAINED, width: 600, height: 600)
@@ -31,10 +27,10 @@ export const pageQuery = graphql`
     }
   }
 `
-const AboutPage = ({ data }) => {
+const EventsPage = ({ data }) => {
   const { markdownRemark } = data
   const { frontmatter, html, excerpt } = markdownRemark
-  const images = frontmatter.images
+  const events = frontmatter.events
 
   return (
     <Layout className="page">
@@ -43,28 +39,26 @@ const AboutPage = ({ data }) => {
         <div className="section">
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: html }} />
-          <div className="buttons is-centered">
-            <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6">
-              {frontmatter.cta.ctaText}
-            </Link>
-          </div>
         </div>
-        <div className="section">
-          <h2 className="title is-size-2">Lo spazio di co-working</h2>
-          <article dangerouslySetInnerHTML={{ __html: frontmatter.coworkingDescription.html }} />
-        </div>
-        <div className="section">
-          <div className="columns is-multiline is-centered">
-            {images.map((img, i) => (
-              <div className="column is-4 p-4" key={i}>
-                <GatsbyImage image={img.image.childImageSharp.gatsbyImageData} alt={`img-${i}`} />
+        {events.map((evt, i) => (
+          <div className="section" key={i}>
+            <div className="columns is-vcentered">
+              <div className="column">
+                <div className="content">
+                  <h3 className="title is-size-4">{evt.name}</h3>
+                  <p className="subtitle is-size-5 is-italic">{evt.date}</p>
+                  <p className="">{evt.description}</p>
+                </div>
               </div>
-            ))}
+              <div className="column">
+                <GatsbyImage image={evt.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </Layout>
   )
 }
 
-export default AboutPage
+export default EventsPage

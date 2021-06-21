@@ -15,8 +15,16 @@ const MenuItems = [
     title: "Lo Studio",
   },
   {
+    path: "/events",
+    title: "Eventi",
+  },
+  {
     path: "/artists",
     title: "Gli Artisti",
+  },
+  {
+    path: "/projects",
+    title: "Progetti Realizzati",
   },
   {
     path: "/contact",

@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 import { graphql } from "gatsby"
 import { navigate } from "gatsby"
 import { RiSendPlane2Line } from "react-icons/ri"
@@ -30,86 +29,53 @@ const Contact = ({ data }) => {
   const { frontmatter, html } = markdownRemark
 
   return (
-    <Layout className="contact-page" sx={contactStyles.contactPage}>
-      <Seo
-        title={frontmatter.title}
-        description={frontmatter.title + " " + site.siteMetadata.title}
-      />
-      <div className="wrapper">
-        <h1>{frontmatter.title}</h1>
-        <div
-          className="description"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <form
-          className="contact-form"
-          name="contact"
-          action="/thanks"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="contact" />
+    <Layout>
+      <Seo title={frontmatter.title} description={frontmatter.title + " " + site.siteMetadata.title} />
+      <div className="section">
+        <div className="container is-max-desktop">
+          <h1 className="title is-size-2">{frontmatter.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <form className="mt-6" name="contact" action="/thanks" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
 
-          <div>
-            <label>
-              Nome
-              <input type="text" name="name" required />
-            </label>
-          </div>
-          <div>
-            <label>
-              Email
-              <input type="email" name="email" required />
-            </label>
-          </div>
-          <div>
-            <label>
-              Oggetto
-              <input type="text" name="subject" required />
-            </label>
-          </div>
-          <div>
-            <label>
-              Messaggio<textarea name="message" required></textarea>
-            </label>
-          </div>
+            <div className="field">
+              <label className="label">Nome</label>
+              <div className="control">
+                <input className="input" type="text" name="name" required />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input className="input" type="email" name="email" required />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Oggetto</label>
+              <div className="control">
+                <input className="input" type="text" name="subject" required />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Messaggio</label>
+              <div className="control">
+                <textarea className="textarea" rows="5" name="message" required></textarea>
+              </div>
+            </div>
 
-          <p className="text-align-right">
-            <button
-              className="button"
-              sx={{
-                variant: "variants.button",
-              }}
-              type="submit"
-            >
-              Invia Messaggio{" "}
-              <span className="icon -right">
-                <RiSendPlane2Line />
-              </span>
-            </button>
-          </p>
-        </form>
+            <div className="buttons is-centered mt-5">
+              <button className="button is-primary is-primary" type="submit">
+                <span>Invia Messaggio </span>
+                <span className="ml-1">
+                  <RiSendPlane2Line />
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </Layout>
   )
 }
 
 export default Contact
-
-const contactStyles = {
-  contactPage: {
-    input: {
-      border: "1px solid",
-      borderColor: "inputBorder",
-      bg: "inputBackground",
-      outline: "none",
-    },
-    textarea: {
-      border: "1px solid",
-      borderColor: "inputBorder",
-      bg: "inputBackground",
-      outline: "none",
-    },
-  },
-}
