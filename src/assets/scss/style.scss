@@ -2,13 +2,17 @@
   font-family: "komika-display";
   src: url('../font/komika_display.woff2');
 }
+@font-face {
+  font-family: "comic-book";
+  src: url('../font/comic_book.woff2');
+}
 
 @import "theme-variables";
 @import "defaults";
 @import "lib/css-grid-utility";
 
 
-$family-sans-serif: "komika-display", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 
 
