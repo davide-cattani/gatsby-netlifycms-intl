@@ -93,6 +93,10 @@ const ArtistWorks = ({ works }) => {
   ))
 }
 
+const ArtistSocials = ({socials}) => {
+  
+}
+
 export default Artist
 
 export const pageQuery = graphql`
@@ -120,6 +124,9 @@ export const pageQuery = graphql`
               gatsbyImageData(layout: FULL_WIDTH)
             }
           }
+        }
+        socialNetworks {
+          facebook
         }
       }
     }
