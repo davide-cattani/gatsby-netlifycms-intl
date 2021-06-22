@@ -82,10 +82,10 @@ const ArtistWorks = ({ works }) => {
   return works.map((work, i) => (
     <section className="section" key={i}>
       <div className="container is-max-desktop">
-        <GatsbyImage image={work.workImage.childImageSharp.gatsbyImageData} alt={work.title} />
+        {work.workImage && <GatsbyImage image={work.workImage.childImageSharp.gatsbyImageData} alt={work.title} />}
         <div className="content has-text-centered p-4">
-          <h6 className="subtitle is-size-5 has-text-weight-semibold">{work.title}</h6>
-          <p className="is-italic">{work.date}</p>
+          <h6 className="subtitle is-size-4 has-text-weight-semibold">{work.title}</h6>
+          <p className="is-italic has-text-grey">{work.date}</p>
           <p>{work.comment}</p>
         </div>
       </div>
