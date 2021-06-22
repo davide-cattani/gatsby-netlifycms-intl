@@ -45,7 +45,7 @@ const Navigation = ({ site }) => {
   ))
 
   return (
-    <nav className="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation" sx={{ bg: "primaryColor" }}>
+    <nav className="navbar is-spaced" role="navigation" aria-label="main navigation" sx={{ bg: "primaryColor" }}>
       <div className="navbar-brand">
         <Logo title={site.siteTitle} logo={"/static/assets/sketch-studios-logo.png"} />
 
