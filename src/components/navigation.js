@@ -1,15 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { Link } from "gatsby"
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
-import Theme from "../components/theme"
+
+import Logo from "./logo"
 
 const MenuItems = [
-  {
-    path: "/",
-    title: "Home",
-  },
+  // {
+  //   path: "/",
+  //   title: "Home",
+  // },
   {
     path: "/about",
     title: "Lo Studio",
@@ -33,70 +32,35 @@ const MenuItems = [
 ]
 
 const ListLink = props => (
-  <li>
-    <Link to={props.to}>{props.children}</Link>
-  </li>
+  <Link to={props.to} className="navbar-item" activeClassName="is-active">
+    {props.children}
+  </Link>
 )
 
-class Navigation extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { showMenu: false }
-    this.handleToggleClick = this.handleToggleClick.bind(this)
-  }
+const Navigation = ({ site }) => {
+  const listMenuItems = MenuItems.map((menuItem, index) => (
+    <ListLink key={index} to={menuItem.path}>
+      {menuItem.title}
+    </ListLink>
+  ))
 
-  handleToggleClick() {
-    this.setState(state => ({
-      showMenu: !state.showMenu,
-    }))
-  }
+  return (
+    <nav className="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation" sx={{ bg: "primaryColor" }}>
+      <div className="navbar-brand">
+        <Logo title={site.siteTitle} logo={"/static/assets/sketch-studios-logo.png"} />
 
-  render() {
-    const listMenuItems = MenuItems.map((menuItem, index) => (
-      <ListLink key={index} to={menuItem.path}>
-        {menuItem.title}
-      </ListLink>
-    ))
-    return (
-      <nav className="site-navigation" sx={navStyle.menu}>
-        <button
-          onClick={this.handleToggleClick}
-          className={"menu-trigger" + (this.state.showMenu ? " is-active" : "")}
-        >
-          <div className="icon-menu-line">
-            <RiMenu3Line />
-          </div>
-          <div className="icon-menu-close">
-            <RiCloseLine />
-          </div>
-        </button>
-        <ul>
-          {listMenuItems}
-          {/* <div sx={navStyle.border}></div> */}
-          {/* <div sx={navStyle.theme}> */}
-            {/* <Theme /> */}
-          {/* </div> */}
-        </ul>
-      </nav>
-    )
-  }
+        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="menu" className="navbar-menu">
+        <div className="navbar-start">{listMenuItems}</div>
+      </div>
+    </nav>
+  )
 }
 
 export default Navigation
-
-const navStyle = {
-  menu: {
-    ul: {
-      bg: "siteColor",
-    },
-  },
-  theme: {
-    display: ["block", "block", "block", "none"],
-    p: " 25px 20px 20px",
-  },
-  border: {
-    bg: "borderColor",
-    borderTop: "1px solid transparent",
-    display: ["block", "block", "block", "none"],
-  },
-}

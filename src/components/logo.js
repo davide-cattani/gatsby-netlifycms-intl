@@ -4,8 +4,8 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const Logo = props => {
   return (
-    <div className="site-logo">
-      <Link to="/">
+
+      <Link to="/" className="navbar-item">
         <StaticImage
           src={"../../static/assets/sketch-studios-logo.png"}
           alt={props.title}
@@ -14,7 +14,7 @@ const Logo = props => {
           height={42}
         />
       </Link>
-    </div>
+
   )
 }
 

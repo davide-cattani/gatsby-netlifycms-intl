@@ -49,7 +49,7 @@ collections:
       - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
       - { label: "Ruolo/skills", name: "role", widget: "text" }
       - { label: "Mail", name: "mail", widget: "string" }
-      - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage" }
+      - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage", required: false }
       - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
       - label: "BIO completa"
         name: "body"
@@ -84,24 +84,39 @@ collections:
           - label: "Facebook"
             name: "facebook"
             widget: "string"
+            required: false
           - label: "Twitter"
             name: "twitter"
             widget: "string"
+            required: false
           - label: "Instagram"
             name: "instagram"
             widget: "string"
+            required: false
           - label: "Youtube"
             name: "youtube"
             widget: "string"
+            required: false
           - label: "Twitch"
             name: "twitch"
             widget: "string"
+            required: false
           - label: "Behance"
             name: "behance"
             widget: "string"
+            required: false
+          - label: "Skype"
+            name: "skype"
+            widget: "string"
+            required: false
+          - label: "Linkedin"
+            name: "linkedin"
+            widget: "string"
+            required: false
           - label: "Personal Website"
             name: "website"
             widget: "string"
+            required: false
 
   - label: "Pagine del sito"
     name: "pages"
@@ -306,7 +321,7 @@ collections:
         file: "src/util/default-colors.json"
         fields:
           - label: "Colore primario"
-            name: "siteColor"
+            name: "primaryColor"
             widget: "color"
             enableAlpha: false
             allowInput: true

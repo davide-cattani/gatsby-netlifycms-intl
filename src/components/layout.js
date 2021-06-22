@@ -1,18 +1,11 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
-import { ThemeProvider } from "theme-ui"
-import theme from "../gatsby-plugin-theme-ui/index.js"
+import React from "react"
 
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import Logo from "./logo"
 import Navigation from "./navigation"
 
 import "../assets/scss/style.scss"
 import Footer from "./footer"
-import Theme from "../components/theme"
-import Search from "../components/search"
 
 const query = graphql`
   query LayoutQuery {
@@ -29,43 +22,14 @@ const query = graphql`
 
 const Layout = ({ children, className, props }) => {
   const { site, siteSearchIndex } = useStaticQuery(query)
-  const { siteTitle, image } = site.siteMetadata
 
   return (
-    <ThemeProvider theme={theme}>
-        <Header>
-          <Logo
-            title={siteTitle}
-            logo={"/static/assets/sketch-studios-logo.png"}
-          />
-          <div sx={layoutStyle.nav}>
-            <div sx={{ display: ["flex", "flex", "flex", "none"] }}>
-              {/* <Search searchIndex={siteSearchIndex.index} /> */}
-            </div>
-            <Navigation />
-          </div>
-          <div sx={layoutStyle.appearance}>
-            {/* <Search searchIndex={siteSearchIndex.index} /> */}
-            {/* <Theme /> */}
-          </div>
-        </Header>
-        <main>{children}</main>
-        <Footer />
-    </ThemeProvider>
+    <>
+      <Navigation site={site.siteMetadata} />
+      <main>{children}</main>
+      <Footer />
+    </>
   )
 }
 
 export default Layout
-
-const layoutStyle = {
-  appearance: {
-    display: ["none", "none", "none", "flex"],
-    alignItems: "center",
-    gap: 4,
-  },
-  nav: {
-    display: "flex",
-    alignItems: "center",
-    gap: 4,
-  },
-}

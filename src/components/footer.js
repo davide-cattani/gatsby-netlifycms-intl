@@ -6,14 +6,12 @@ import { RiHeart2Line } from "react-icons/ri"
 const Footer = () => (
   <footer
     className="footer"
-    sx={{
-      bg: "siteColor",
-    }}
+    sx={{ bg: "primaryColor", }}
   >
     <div className="content has-text-centered">
       <p>
         Fatto con il{" "}
-        <span className="icon -love">
+        <span style={{color: 'red'}}>
           <RiHeart2Line />
         </span>{" "}
         da <a href="https://www.davidecattani.dev">catta</a>

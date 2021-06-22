@@ -7,143 +7,21 @@
   src: url('../font/comic_book.woff2');
 }
 
-@import "theme-variables";
-@import "defaults";
-@import "lib/css-grid-utility";
-
 
 $family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
-
-
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  padding: 30px 20px;
-}
-.site-navigation {
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  ul li {
-    display: inline-block;
-    margin-left: 20px;
-  }
-  a {
-    color: rgba(2, 2, 2, 0.6);
-    text-decoration: none;
-    &:hover {
-      color: rgba(2,2,2, 0.8);
-    }
-  }
-  a[aria-current="page"] {
-    color: rgba(2,2,2, 1);
-  }
-  .menu-trigger {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #222;
-    padding: 0;
-    cursor: pointer;
-  }
-  @media (max-width: $breakpoint-lg) {
-    .menu-trigger,
-    .icon-menu-line {
-      display: flex;
-    }
-
-    .icon-menu-close {
-      display: none;
-    }
-    .menu-trigger.is-active {
-      .icon-menu-line {
-        display: none;
-      }
-      .icon-menu-close {
-        display: flex;
-      }
-    }
-    .menu-trigger.is-active + ul {
-      display: block;
-    }
-    ul {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      z-index: 1;
-      width: 100%;
-      border-radius: 0 0 16px 16px;
-      overflow: hidden;
-    }
-    ul li {
-      display: block;
-      margin-left: 0;
-    }
-    a {
-      display: block;
-      padding: 20px;
-    }
-  }
-}
-
-.site-logo {
-  font-weight: bold;
-  a {
-    color: #fff;
-    text-decoration: none;
-    &:hover {
-      color: #fff;
-    }
-  }
-  @media (max-width: $breakpoint-lg) {
-    font-size: 20px;
-  }
-}
-.home-banner {
-  padding: 60px 0;
-  align-items: center;
-  .title {
-    font-size: 48px;
-    line-height: 48px;
-    margin: 0 0 5px;
-    font-weight: 900;
-  }
-  .description {
-    font-size: 20px;
-    line-height: 1.4;
-    margin-bottom: 30px;
-  }
-  .featured-image {
-    border-radius: 12px;
-  }
-  @media (max-width: $breakpoint-sm) {
-    padding: 30px 0;
-    .title {
-      font-size: 38px;
-    }
-    .tagline {
-      margin-top: 3px;
-    }
-  }
-}
-#background-image {
-  width: 100%;
-  height: 100%;
-}
-
-
-
+$navbar-item-color: rgba(0,0,0,0.6);
+$navbar-item-active-color: rgba(0,0,0,0.9);
+$navbar-item-hover-color: unset;
+$navbar-item-hover-background-color: rgba(255,255,255,0.2);
 
 @import "~bulma/bulma.sass";
 
-
 a p {
   color: $dark;
+}
+
+#background-image {
+  width: 100%;
+  height: 100%;
 }
