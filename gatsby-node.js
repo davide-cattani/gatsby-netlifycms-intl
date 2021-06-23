@@ -28,7 +28,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
     type Frontmatter {
-      coworkingDescription: String! @md
+      coworkingDescription: String @md
     }
   `
   actions.createTypes(typeDefs)

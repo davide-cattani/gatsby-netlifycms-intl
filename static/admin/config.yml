@@ -79,44 +79,19 @@ collections:
         name: "socialNetworks"
         collapsed: true
         summary: '{{fields.name}}'
-        widget: "object"
+        widget: "list"
         fields:
-          - label: "Facebook"
-            name: "facebook"
-            widget: "string"
-            required: false
-          - label: "Twitter"
-            name: "twitter"
-            widget: "string"
-            required: false
-          - label: "Instagram"
-            name: "instagram"
-            widget: "string"
-            required: false
-          - label: "Youtube"
-            name: "youtube"
-            widget: "string"
-            required: false
-          - label: "Twitch"
-            name: "twitch"
-            widget: "string"
-            required: false
-          - label: "Behance"
-            name: "behance"
-            widget: "string"
-            required: false
-          - label: "Skype"
-            name: "skype"
-            widget: "string"
-            required: false
-          - label: "Linkedin"
-            name: "linkedin"
-            widget: "string"
-            required: false
-          - label: "Personal Website"
-            name: "website"
-            widget: "string"
-            required: false
+          - label: Social
+            name: social
+            widget: object
+            fields:
+              - label: Social
+                name: nomeSocial
+                widget: select
+                options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch"]
+              - label: URL Social
+                name: urlSocial
+                widget: string
 
   - label: "Pagine del sito"
     name: "pages"

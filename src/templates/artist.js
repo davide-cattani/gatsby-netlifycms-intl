@@ -4,6 +4,9 @@ import { Link, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTwitch, FaBehance, FaSkype, FaLinkedin } from "react-icons/fa"
+import { CgWebsite } from "react-icons/cg"
+
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -57,14 +60,21 @@ const Artist = ({ data, pageContext }) => {
       <Seo title={frontmatter.fullname} description={frontmatter.description ? frontmatter.description : excerpt} article={true} />
       <div className="container">
         <section className="section">
-          <h1 className="title is-size-2 has-text-centered">{frontmatter.fullname}</h1>
-          <h4 className="subtitle is-size-4 has-text-centered">{frontmatter.role}</h4>
+          <div className="hero mb-5">
+            <div className="hero-body">
+              <h1 className="title is-size-2 has-text-centered">{frontmatter.fullname}</h1>
+              <h4 className="subtitle is-size-4 has-text-centered">{frontmatter.role}</h4>
+            </div>
+          </div>
           <div className="columns is-vcentered">
             <div className="column">{Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}</div>
             <div className="column">
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
           </div>
+
+          {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} />}
+          
         </section>
         {frontmatter.latestWorks && (
           <section className="section">
@@ -93,8 +103,15 @@ const ArtistWorks = ({ works }) => {
   ))
 }
 
-const ArtistSocials = ({socials}) => {
-  
+const ArtistSocials = ({ socials }) => {
+  console.log(socials)
+  return (
+    <nav className="level">
+
+          <div className="level-item has-text-centered">{socials.facebook}</div>
+        
+    </nav>
+  )
 }
 
 export default Artist
@@ -126,7 +143,10 @@ export const pageQuery = graphql`
           }
         }
         socialNetworks {
-          facebook
+          social {
+            nomeSocial
+            urlSocial
+          }
         }
       }
     }
