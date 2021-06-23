@@ -83,15 +83,12 @@ collections:
         fields:
           - label: Social
             name: social
-            widget: object
-            fields:
-              - label: Social
-                name: nomeSocial
-                widget: select
-                options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch"]
-              - label: URL Social
-                name: urlSocial
-                widget: string
+            widget: select
+            options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch"]
+          - label: URL
+            name: url
+            widget: string
+            hint: "Senza http:// iniziale! Deve iniziare con www."
 
   - label: "Pagine del sito"
     name: "pages"

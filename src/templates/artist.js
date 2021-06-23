@@ -6,6 +6,7 @@ import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTwitch, FaBehance, FaSkype, FaLinkedin } from "react-icons/fa"
 import { CgWebsite } from "react-icons/cg"
+import { GoMail } from "react-icons/go"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -73,8 +74,7 @@ const Artist = ({ data, pageContext }) => {
             </div>
           </div>
 
-          {/* {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} />} */}
-          
+          {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} mail={frontmatter.mail} />}
         </section>
         {frontmatter.latestWorks && (
           <section className="section">
@@ -103,13 +103,30 @@ const ArtistWorks = ({ works }) => {
   ))
 }
 
-const ArtistSocials = ({ socials }) => {
-  console.log(socials)
-  return (
-    <nav className="level">
+const socialIconDimension = "2em"
 
-          <div className="level-item has-text-centered">{socials.facebook}</div>
-        
+const ArtistSocials = ({ socials, mail }) => {
+  return (
+    <nav className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center mt-6">
+
+      <div className="mx-5">
+        <a href={"mailto:" + mail}>
+          <GoMail size={socialIconDimension} />
+        </a>
+      </div>
+
+      {socials.map((social, i) => (
+        <div className="mx-5" key={i}>
+          <a href={"https://" + social.url}>
+            {social.social == "facebook" && <FaFacebook size={socialIconDimension} />}
+            {social.social == "twitter" && <FaTwitter size={socialIconDimension} />}
+            {social.social == "instagram" && <FaInstagram size={socialIconDimension} />}
+            {social.social == "linkedin" && <FaLinkedin size={socialIconDimension} />}
+            {social.social == "sito web" && <CgWebsite size={socialIconDimension} />}
+            {social.social == "twitch" && <FaTwitch size={socialIconDimension} />}
+          </a>
+        </div>
+      ))}
     </nav>
   )
 }
@@ -127,6 +144,7 @@ export const pageQuery = graphql`
         fullname
         role
         description
+        mail
         portrait {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
@@ -141,6 +159,10 @@ export const pageQuery = graphql`
               gatsbyImageData(layout: FULL_WIDTH)
             }
           }
+        }
+        socialNetworks {
+          social
+          url
         }
       }
     }
