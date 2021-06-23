@@ -10,7 +10,7 @@ export default function ArtistCardList({ data, isHome }) {
 
       <div className="columns is-multiline is-centered">
         {data.edges.map((edge, i) => (
-          <div className="column is-4 p-4" key={i}>
+          <div className="column is-4 p-4 is-flex is-justify-content-center" key={i}>
             <ArtistInfo key={edge.node.id} data={edge.node.frontmatter} isHome={isHome} />
           </div>
         ))}
@@ -20,7 +20,7 @@ export default function ArtistCardList({ data, isHome }) {
 }
 
 const ArtistInfo = ({ data, isHome }) => (
-  <div className="card">
+  <div className="card" style={{maxWidth: "400px"}}>
     <Link to={`/artists/${data.slug}`}>
       <div className="card-image">
         <GatsbyImage image={data.portrait.childImageSharp.gatsbyImageData} alt={data.fullname} />

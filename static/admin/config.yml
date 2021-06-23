@@ -225,18 +225,13 @@ collections:
         label: Generali
         file: "src/util/site.json"
         fields:
-          - label: meta
+          - label: Impostazioni del sito
             name: meta
             widget: object
             fields:
               - widget: string
                 name: title
                 label: Nome del sito
-                required: true
-              - widget: string
-                name: titleTemplate
-                label: Template nome sito
-                default: "%s"
                 required: true
               - widget: string
                 name: siteUrl
@@ -248,12 +243,9 @@ collections:
                 default: ""
                 required: false
               - widget: image
-                name: image
-                label: Immagine
-                default: "/assets/stackrole.png"
-              - widget: image
-                name: iconimage
-                label: favicon
+                name: logo
+                label: Logo
+                hint: "Dimensione 1024x1024"
               - widget: string
                 name: twitterUsername
                 label: Twitter

@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react"
 import { jsx } from "theme-ui"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -57,7 +58,7 @@ const Artist = ({ data, pageContext }) => {
   }
 
   return (
-    <Layout className="page">
+    <>
       <Seo title={frontmatter.fullname} description={frontmatter.description ? frontmatter.description : excerpt} article={true} />
       <div className="container">
         <section className="section">
@@ -84,7 +85,7 @@ const Artist = ({ data, pageContext }) => {
         )}
       </div>
       {/* {(previous || next) && <Pagination {...props} />} */}
-    </Layout>
+    </>
   )
 }
 

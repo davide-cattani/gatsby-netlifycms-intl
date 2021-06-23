@@ -1,14 +1,12 @@
 /** @jsx jsx */
+import React from "react"
 import { jsx } from "theme-ui"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
 
-import Layout from "../components/layout"
 import ArtistCardList from "../components/artist-card-list"
 import Seo from "../components/seo"
-import Icons from "../util/socialmedia.json"
 
 export const pageQuery = graphql`
   query HomeQuery($id: String!) {
@@ -64,11 +62,12 @@ const HomePage = ({ data }) => {
   const BackgroundImage = getImage(frontmatter.mainSection.backgroundImage.childImageSharp.gatsbyImageData)
 
   return (
-    <Layout>
+    <>
       <Seo />
 
       <div className="hero is-medium">
-        <BgImage id="background-image" image={BackgroundImage}>
+        <GatsbyImage className="index-background-image" image={BackgroundImage} alt="" />
+        {/* <BgImage id="background-image" image={BackgroundImage}> */}
           <div className="hero-body">
             <div className="columns">
               <div className="column">
@@ -84,7 +83,7 @@ const HomePage = ({ data }) => {
               <div className="column has-text-centered">{Image ? <GatsbyImage image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
             </div>
           </div>
-        </BgImage>
+        {/* </BgImage> */}
       </div>
       <div className="container">
         <div className="section">
@@ -92,7 +91,7 @@ const HomePage = ({ data }) => {
         </div>
       </div>
       {/* <BlogListHome data={posts} /> */}
-    </Layout>
+    </>
   )
 }
 

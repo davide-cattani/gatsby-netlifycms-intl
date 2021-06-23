@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 const Thanks = () => (
-  <Layout className="thanks-page">
+  <>
     <Seo title="Grazie!" />
     <div
       className="wrapper"
@@ -27,7 +27,7 @@ const Thanks = () => (
         Nel frattempo, torna alla home
       </Link>
     </div>
-  </Layout>
+  </>
 )
 
 export default Thanks

@@ -37,7 +37,7 @@ const AboutPage = ({ data }) => {
   const images = frontmatter.images
 
   return (
-    <Layout className="page">
+    <>
       <Seo title={frontmatter.title} description={excerpt} />
       <div className="container">
         <section className="section">
@@ -63,7 +63,7 @@ const AboutPage = ({ data }) => {
           </div>
         </section>
       </div>
-    </Layout>
+    </>
   )
 }
 

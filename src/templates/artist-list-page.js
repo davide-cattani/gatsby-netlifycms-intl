@@ -3,8 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
-import Layout from "../components/layout"
-import ArtistCard from "../components/artist-card"
 import Seo from "../components/seo"
 import ArtistCardList from "../components/artist-card-list"
 
@@ -45,7 +43,7 @@ export const artistListQuery = graphql`
   }
 `
 const Pagination = props => (
-  <div className="pagination" sx={styles.pagination}>
+  <div className="pagination mb-6" sx={styles.pagination}>
     <ul>
       {!props.isFirst && (
         <li>
@@ -100,7 +98,7 @@ class ArtistIndex extends React.Component {
     }
 
     return (
-      <Layout>
+      <>
         <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
         <div className="container">
           <section className="section">
@@ -109,7 +107,7 @@ class ArtistIndex extends React.Component {
           </section>
         </div>
         <Pagination {...props} />
-      </Layout>
+      </>
     )
   }
 }

@@ -32,7 +32,7 @@ const ProjectsPage = ({ data }) => {
   const projects = frontmatter.projects
 
   return (
-    <Layout className="page">
+    <>
       <Seo title={frontmatter.title} description={excerpt} />
       <div className="container">
         <section className="section">
@@ -55,7 +55,7 @@ const ProjectsPage = ({ data }) => {
           </section>
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

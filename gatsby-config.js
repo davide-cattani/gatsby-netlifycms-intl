@@ -14,6 +14,12 @@ module.exports = {
   siteMetadata: settings.meta,
   plugins: [
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.js`),
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/assets/`,
@@ -44,6 +50,7 @@ module.exports = {
               linkImagesToOriginal: false,
               tracedSVG: true,
               loading: "lazy",
+              withWebp: true
             },
           },
           /* {
@@ -100,10 +107,10 @@ module.exports = {
         name: `Sketch Studios`,
         short_name: `sketch-studios`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
+        background_color: `#fff`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: "static" + settings.meta.iconimage,
+        icon: "static" + settings.meta.logo,
       },
     },
     //"gatsby-plugin-offline",

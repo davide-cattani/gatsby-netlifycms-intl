@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 const NotFound = () => (
-  <Layout className="not-found-page">
+  <>
     <Seo title="Page not found" />
     <div
       className="wrapper"
@@ -35,7 +35,7 @@ const NotFound = () => (
         Report this <RiBugLine className="icon -right" />
       </Link>
     </div>
-  </Layout>
+  </>
 )
 
 export default NotFound

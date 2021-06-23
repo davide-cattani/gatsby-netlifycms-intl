@@ -33,7 +33,7 @@ const EventsPage = ({ data }) => {
   const events = frontmatter.events
 
   return (
-    <Layout className="page">
+    <>
       <Seo title={frontmatter.title} description={excerpt} />
       <div className="container">
         <section className="section">
@@ -57,7 +57,7 @@ const EventsPage = ({ data }) => {
           </section>
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

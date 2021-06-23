@@ -10,6 +10,7 @@
 
 $family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
+$navbar-height: 4rem;
 $navbar-item-color: rgba(0,0,0,0.6);
 $navbar-item-active-color: rgba(0,0,0,0.9);
 $navbar-item-hover-color: unset;
@@ -21,7 +22,21 @@ a p {
   color: $dark;
 }
 
-#background-image {
+.navbar-item img {
+  max-height: $navbar-height;
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active {
+      display: block;
+      position: absolute;
+      width: 100%;
+  }
+}
+
+.index-background-image {
+  position: absolute !important;
+  z-index: -100;
   width: 100%;
   height: 100%;
 }

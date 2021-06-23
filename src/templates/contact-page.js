@@ -29,7 +29,7 @@ const Contact = ({ data }) => {
   const { frontmatter, html } = markdownRemark
 
   return (
-    <Layout>
+    <>
       <Seo title={frontmatter.title} description={frontmatter.title + " " + site.siteMetadata.title} />
       <section className="section">
         <div className="container is-max-desktop">
@@ -74,7 +74,7 @@ const Contact = ({ data }) => {
           </form>
         </div>
       </section>
-    </Layout>
+    </>
   )
 }
 
