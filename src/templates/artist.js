@@ -73,7 +73,7 @@ const Artist = ({ data, pageContext }) => {
             </div>
           </div>
 
-          {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} />}
+          {/* {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} />} */}
           
         </section>
         {frontmatter.latestWorks && (
@@ -140,12 +140,6 @@ export const pageQuery = graphql`
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH)
             }
-          }
-        }
-        socialNetworks {
-          social {
-            nomeSocial
-            urlSocial
           }
         }
       }
