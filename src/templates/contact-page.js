@@ -31,7 +31,7 @@ const Contact = ({ data }) => {
   return (
     <Layout>
       <Seo title={frontmatter.title} description={frontmatter.title + " " + site.siteMetadata.title} />
-      <div className="section">
+      <section className="section">
         <div className="container is-max-desktop">
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -73,7 +73,7 @@ const Contact = ({ data }) => {
             </div>
           </form>
         </div>
-      </div>
+      </section>
     </Layout>
   )
 }

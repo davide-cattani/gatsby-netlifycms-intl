@@ -103,10 +103,10 @@ class ArtistIndex extends React.Component {
       <Layout>
         <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
         <div className="container">
-          <div className="section">
+          <section className="section">
             <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
             <ArtistCardList data={artists} />
-          </div>
+          </section>
         </div>
         <Pagination {...props} />
       </Layout>

@@ -36,12 +36,12 @@ const EventsPage = ({ data }) => {
     <Layout className="page">
       <Seo title={frontmatter.title} description={excerpt} />
       <div className="container">
-        <div className="section">
+        <section className="section">
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
+        </section>
         {events.map((evt, i) => (
-          <div className="section" key={i}>
+          <section className="section" key={i}>
             <div className="columns is-vcentered">
               <div className="column">
                 <div className="content">
@@ -54,7 +54,7 @@ const EventsPage = ({ data }) => {
                 <GatsbyImage image={evt.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
               </div>
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </Layout>

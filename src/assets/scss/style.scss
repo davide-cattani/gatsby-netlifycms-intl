@@ -25,3 +25,7 @@ a p {
   width: 100%;
   height: 100%;
 }
+
+section:nth-child(even) {
+  background: rgba(248,248,248);
+}
