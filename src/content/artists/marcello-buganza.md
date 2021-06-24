@@ -10,7 +10,7 @@ portrait: /assets/placeholder.png
 latestWorks:
   - title: Lol
     workImage: /assets/placeholder.png
-    date: 2021-01-01
+    date: 2020-06-09T05:53:16.102Z
     comment: Lollino commentino
 socialNetworks:
   - social: facebook

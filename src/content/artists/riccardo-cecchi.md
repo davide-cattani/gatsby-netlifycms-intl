@@ -9,7 +9,7 @@ portrait: /assets/placeholder.png
 latestWorks:
   - workImage: /assets/placeholder.png
     title: Titolo
-    date: 14/08/1991
+    date: 2020-06-09T05:53:16.102Z
     comment: lol
 socialNetworks:
   - social: linkedin
