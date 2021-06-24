@@ -64,29 +64,29 @@ const HomePage = ({ data }) => {
   return (
     <>
       <Seo />
-      <section>
-        <div className="hero is-medium">
-          <GatsbyImage className="index-background-image" image={BackgroundImage} alt="" />
-          {/* <BgImage id="background-image" image={BackgroundImage}> */}
-          <div className="hero-body">
-            <div id="index-page-header-columns" className="columns is-vcentered">
-              <div className="column">
-                <h1 className="title is-size-1">{frontmatter.mainSection.title}</h1>
-                <h2 className="subtitle is-size-4">{frontmatter.mainSection.tagline}</h2>
-                <div className="mb-6" dangerouslySetInnerHTML={{ __html: html }} />
-                <div className="buttons is-centered">
-                  <Link to={frontmatter.mainSection.cta.ctaLink} className="button is-primary is-large">
-                    {frontmatter.mainSection.cta.ctaText}
-                  </Link>
-                </div>
+
+      <div className="hero is-medium">
+        <GatsbyImage className="index-background-image" image={BackgroundImage} objectFit="cover"  alt="" />
+        {/* <BgImage id="background-image" image={BackgroundImage}> */}
+        <div className="hero-body">
+          <div id="index-page-header-columns" className="columns is-vcentered">
+            <div className="column">
+              <h1 className="title is-size-1">{frontmatter.mainSection.title}</h1>
+              <h2 className="subtitle is-size-4">{frontmatter.mainSection.tagline}</h2>
+              <div className="mb-6" dangerouslySetInnerHTML={{ __html: html }} />
+              <div className="buttons is-centered">
+                <Link to={frontmatter.mainSection.cta.ctaLink} className="button is-primary is-large">
+                  {frontmatter.mainSection.cta.ctaText}
+                </Link>
               </div>
-              <div className="column has-text-centered">{Image ? <GatsbyImage id="header-logo" image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
             </div>
+            <div className="column has-text-centered">{Image ? <GatsbyImage id="header-logo" image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
           </div>
-          {/* </BgImage> */}
         </div>
-      </section>
-      <section className="section">
+        {/* </BgImage> */}
+      </div>
+
+      <section className="section is-medium no-background">
         <div className="container">
           <ArtistCardList data={artists} isHome={true} />
         </div>

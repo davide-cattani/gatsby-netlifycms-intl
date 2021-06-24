@@ -101,7 +101,7 @@ class ArtistIndex extends React.Component {
       <>
         <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
         <div className="container">
-          <section className="section">
+          <section className="section mb-6">
             <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
             <ArtistCardList data={artists} />
           </section>

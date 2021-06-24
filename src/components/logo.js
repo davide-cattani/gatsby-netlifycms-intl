@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 const Logo = props => {
   return (
 
-      <Link to="/" className="navbar-item">
+      <Link to="/" className="navbar-item" onClick={props.onClick}>
         <StaticImage
           src={"../../static/assets/sketch-studios-logo.png"}
           alt={props.title}
