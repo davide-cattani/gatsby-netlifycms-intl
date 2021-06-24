@@ -98,6 +98,7 @@ collections:
 
   - label: "Pagine del sito"
     name: "pages"
+    publish: false
     files:
       - label: "Home"
         name: "home"
