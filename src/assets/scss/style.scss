@@ -29,6 +29,8 @@ $navbar-item-active-color: rgba(0, 0, 0, 0.9);
 $navbar-item-hover-color: unset;
 $navbar-item-hover-background-color: rgba(255, 255, 255, 0.2);
 
+$footer-padding: 8rem 1.5rem 8rem;
+
 @import "~bulma/sass/utilities/derived-variables";
 
 $shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02);
