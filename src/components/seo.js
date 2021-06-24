@@ -33,7 +33,7 @@ const SEO = ({ title, description, image, article }) => {
       <meta name="image" content={seo.image} />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
+        content="width=device-width"
       />
       {seo.url && <meta property="og:url" content={seo.url} />}
 

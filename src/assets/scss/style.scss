@@ -1,10 +1,12 @@
-@font-face {
-  font-family: "komika-display";
-  src: url('../font/komika_display.woff2');
-}
+// @font-face {
+//   font-family: "komika-display";
+//   src: url('../font/komika_display.woff2');
+//   font-display: swap;
+// }
 @font-face {
   font-family: "comic-book";
   src: url('../font/comic_book.woff2');
+  font-display: swap;
 }
 
 // 1. Import the initial variables

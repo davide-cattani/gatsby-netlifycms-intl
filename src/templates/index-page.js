@@ -64,10 +64,10 @@ const HomePage = ({ data }) => {
   return (
     <>
       <Seo />
-
-      <div className="hero is-medium">
-        <GatsbyImage className="index-background-image" image={BackgroundImage} alt="" />
-        {/* <BgImage id="background-image" image={BackgroundImage}> */}
+      <section>
+        <div className="hero is-medium">
+          <GatsbyImage className="index-background-image" image={BackgroundImage} alt="" />
+          {/* <BgImage id="background-image" image={BackgroundImage}> */}
           <div className="hero-body">
             <div className="columns">
               <div className="column">
@@ -80,16 +80,18 @@ const HomePage = ({ data }) => {
                   </Link>
                 </div>
               </div>
-              <div className="column has-text-centered">{Image ? <GatsbyImage image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
+              <div className="column has-text-centered p-6">{Image ? <GatsbyImage image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
             </div>
           </div>
-        {/* </BgImage> */}
-      </div>
-      <div className="container">
-        <div className="section">
+          {/* </BgImage> */}
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
           <ArtistCardList data={artists} isHome={true} />
         </div>
-      </div>
+      </section>
+
       {/* <BlogListHome data={posts} /> */}
     </>
   )
