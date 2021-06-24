@@ -68,7 +68,7 @@ const Artist = ({ data, pageContext }) => {
             </div>
           </div>
           <div className="columns is-vcentered">
-            <div className="column">{Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}</div>
+            <div className="column p-6">{Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}</div>
             <div className="column">
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
