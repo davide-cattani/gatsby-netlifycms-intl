@@ -60,7 +60,7 @@ const Navigation = ({ site }) => {
           title={site.siteTitle}
           logo={"/static/assets/sketch-studios-logo.png"}
           onClick={() => {
-            setisActive(!isActive)
+            setisActive(false)
           }}
         />
 

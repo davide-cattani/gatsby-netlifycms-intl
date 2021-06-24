@@ -44,7 +44,7 @@ const AboutPage = ({ data }) => {
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: html }} />
           <div className="buttons is-centered">
-            <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6">
+            <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6 py-3" style={{ whiteSpace: "normal", height: "unset" }}> 
               {frontmatter.cta.ctaText}
             </Link>
           </div>
