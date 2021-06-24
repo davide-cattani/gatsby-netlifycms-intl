@@ -122,6 +122,7 @@ const ArtistSocials = ({ socials, mail }) => {
             {social.social == "linkedin" && <FaLinkedin />}
             {social.social == "sito web" && <CgWebsite />}
             {social.social == "twitch" && <FaTwitch />}
+            {social.social == "skype" && <FaSkype />}
           </a>
         </div>
       ))}

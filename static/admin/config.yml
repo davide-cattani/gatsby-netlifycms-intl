@@ -71,10 +71,13 @@ collections:
             tagname: "h3"
           - label: "Data"
             name: "date"
-            type: "string"
+            widget: "datetime"
+            date_format: "DD/MM/YYYY"
           - label: "Commento"
             name: "comment"
             type: "text"
+            required: false
+            hint: "Commento/Descrizione del lavoro"
       - label: "Social Networks"
         name: "socialNetworks"
         collapsed: true
@@ -84,7 +87,7 @@ collections:
           - label: Social
             name: social
             widget: select
-            options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch"]
+            options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch", "skype"]
           - label: URL
             name: url
             widget: string
