@@ -78,7 +78,7 @@ collections:
       - label: "Social Networks"
         name: "socialNetworks"
         collapsed: true
-        summary: '{{fields.name}}'
+        summary: '{{fields.social}} - {{fields.url}}'
         widget: "list"
         fields:
           - label: Social

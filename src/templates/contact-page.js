@@ -32,7 +32,7 @@ const Contact = ({ data }) => {
     <>
       <Seo title={frontmatter.title} description={frontmatter.title + " " + site.siteMetadata.title} />
       <section className="section">
-        <div className="container is-max-desktop">
+        <div className="container" style={{maxWidth: "512px"}}>
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: html }} />
           <form className="mt-6" name="contact" action="/thanks" method="post" data-netlify="true" data-netlify-honeypot="bot-field">

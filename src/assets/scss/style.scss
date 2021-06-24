@@ -7,14 +7,28 @@
   src: url('../font/comic_book.woff2');
 }
 
+// 1. Import the initial variables
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+$primary: #558ce6;
 
 $family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+$size-2: 3.02rem;
+
+$transition-time: 0.2s;
 
 $navbar-height: 4rem;
 $navbar-item-color: rgba(0,0,0,0.6);
 $navbar-item-active-color: rgba(0,0,0,0.9);
 $navbar-item-hover-color: unset;
 $navbar-item-hover-background-color: rgba(255,255,255,0.2);
+
+@import "~bulma/sass/utilities/derived-variables";
+
+$shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02);
+$shadow-hover: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.3), 0 0px 0 1px rgba($scheme-invert, 0.04);
 
 @import "~bulma/bulma.sass";
 
@@ -42,5 +56,62 @@ a p {
 }
 
 section:nth-child(even) {
-  background: rgba(248,248,248);
+  background-color: rgb(248,248,248);
+}
+
+.social-icon {
+  border-radius: 50%;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding-top: 1px;
+  padding-left: 1px;
+
+  margin-left: 1em;
+  margin-right: 1em;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(248,248,248);
+  border: 1px solid rgb(252,252,252);
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+
+  &:hover {
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.25);
+  }
+
+  a {
+    line-height: 1;
+    font-size: 27px;
+  }
+}
+
+a.navbar-item.is-active {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+a.navbar-item:not(.is-active):hover {
+  color: $primary;
+}
+
+.card.artist-card {
+  transition: box-shadow $transition-time ease-in, transform $transition-time ease-in;
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: translate(1px,1px);
+  }
+}
+
+h1.title {
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: $light;
+  //-webkit-text-stroke: 2px $dark;
+  text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }

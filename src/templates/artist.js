@@ -103,27 +103,25 @@ const ArtistWorks = ({ works }) => {
   ))
 }
 
-const socialIconDimension = "2em"
-
 const ArtistSocials = ({ socials, mail }) => {
   return (
     <nav className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center mt-6">
 
-      <div className="mx-5">
+      <div className="social-icon">
         <a href={"mailto:" + mail}>
-          <GoMail size={socialIconDimension} />
+          <GoMail />
         </a>
       </div>
 
       {socials.map((social, i) => (
-        <div className="mx-5" key={i}>
+        <div className="social-icon" key={i}>
           <a href={"https://" + social.url}>
-            {social.social == "facebook" && <FaFacebook size={socialIconDimension} />}
-            {social.social == "twitter" && <FaTwitter size={socialIconDimension} />}
-            {social.social == "instagram" && <FaInstagram size={socialIconDimension} />}
-            {social.social == "linkedin" && <FaLinkedin size={socialIconDimension} />}
-            {social.social == "sito web" && <CgWebsite size={socialIconDimension} />}
-            {social.social == "twitch" && <FaTwitch size={socialIconDimension} />}
+            {social.social == "facebook" && <FaFacebook />}
+            {social.social == "twitter" && <FaTwitter />}
+            {social.social == "instagram" && <FaInstagram />}
+            {social.social == "linkedin" && <FaLinkedin />}
+            {social.social == "sito web" && <CgWebsite />}
+            {social.social == "twitch" && <FaTwitch />}
           </a>
         </div>
       ))}
