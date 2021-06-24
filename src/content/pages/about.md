@@ -12,8 +12,11 @@ cta:
   ctaText: Guarda cosa abbiamo realizzato
   ctaLink: /projects
 images:
-  - image: /assets/placeholder.png
-  - image: /assets/placeholder.png
+  - image: /assets/foto-studio-5.jpg
+  - image: /assets/foto-studio-4.jpg
+  - image: /assets/foto-studio-3.jpg
+  - image: /assets/foto-studio-1.jpg
+  - image: /assets/foto-studio-2.jpg
 ---
 ### Descrizione completa studio.
 
