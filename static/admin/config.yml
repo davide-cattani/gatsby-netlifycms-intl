@@ -11,7 +11,7 @@ backend:
 # Uncomment local_backend when you need to develop in your local
 #local_backend: true # run npx netlify-cms-proxy-server for local testing
 
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 media_folder: "static/assets"
 public_folder: "/assets"
@@ -98,7 +98,6 @@ collections:
 
   - label: "Pagine del sito"
     name: "pages"
-    publish: false
     files:
       - label: "Home"
         name: "home"
@@ -115,7 +114,6 @@ collections:
               - { label: "Sottotitolo", name: "tagline", widget: "string" }
               - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
               - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
-              - { label: "Testo", name: "body", widget: "markdown" }
               - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
@@ -141,6 +139,7 @@ collections:
                 fields:
                   - { label: "Nome", name: "name", widget: "string" }
                   - { label: "Logo", name: "image", widget: "image" }
+          - { label: "Testo", name: "body", widget: "markdown" }
           
       - label: "Lo Studio"
         name: "about"
@@ -192,7 +191,6 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "projects" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
           - label: "Progetti"
             name: "projects"
             allow_add: true
@@ -204,6 +202,7 @@ collections:
               - { label: "Titolo", name: "title", widget: "string" }
               - { label: "Descrizione", name: "description", widget: "text" }
               - { label: "Immagine", name: "image", widget: "image" }
+          - { label: "Testo", name: "body", widget: "markdown" }
       - label: "Eventi in programma"
         name: "events"
         file: "src/content/pages/events.md"
@@ -212,7 +211,6 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "events" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
           - label: "Eventi"
             name: "events"
             allow_add: true
@@ -225,6 +223,7 @@ collections:
               - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: "HH:mm" }
               - { label: "Descrizione", name: "description", widget: "text" }
               - { label: "Immagine", name: "image", widget: "image" }
+          - { label: "Testo", name: "body", widget: "markdown" }
   - name: settings
     label: Impostazioni
     files:

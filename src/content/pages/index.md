@@ -10,7 +10,5 @@ mainSection:
   cta:
     ctaText: Scrivici
     ctaLink: /contact
-  body: Cos'è questo testo?
 ---
-
 Testo descrittivo in prima pagina, quindi molto importante! Descriviamo bene cosa facciamo dai, così magari la gente è invogliata ad esplorare un pò il sito e contattarci.
