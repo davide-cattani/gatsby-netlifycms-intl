@@ -13,6 +13,7 @@ module.exports = {
 
   siteMetadata: settings.meta,
   plugins: [
+    `gatsby-plugin-preact`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {

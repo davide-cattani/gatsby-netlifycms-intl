@@ -21,7 +21,7 @@ const query = graphql`
 `
 
 const Layout = ({ children, className, props }) => {
-  const { site, siteSearchIndex } = useStaticQuery(query)
+  const { site } = useStaticQuery(query)
 
   return (
     <>

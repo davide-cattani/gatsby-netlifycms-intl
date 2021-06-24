@@ -1,5 +1,5 @@
 import defaultColors from "../util/default-colors.json"
-import { lightness, transparentize, darken } from "@theme-ui/color"
+//import { lightness, transparentize, darken } from "@theme-ui/color"
 const theme = {
   colors: {
     ...defaultColors,

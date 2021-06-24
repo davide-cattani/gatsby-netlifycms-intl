@@ -9,7 +9,6 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTwitch, FaBehance, FaS
 import { CgWebsite } from "react-icons/cg"
 import { GoMail } from "react-icons/go"
 
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const Pagination = props => (
