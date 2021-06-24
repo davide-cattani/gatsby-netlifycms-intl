@@ -9,6 +9,7 @@ const Logo = props => {
         <StaticImage
           src={"../../static/assets/sketch-studios-logo.png"}
           alt={props.title}
+          placeholder="tracedSVG"
           width={42}
           height={42}
         />

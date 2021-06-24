@@ -21,7 +21,7 @@ $family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI",
 
 $size-2: 3.02rem;
 
-$transition-time: 0.2s;
+$transition-time: 0.1s;
 
 $navbar-height: 4rem;
 $navbar-item-color: rgba(0, 0, 0, 0.6);
@@ -132,4 +132,9 @@ h1.title {
 
 .button {
   box-shadow: $shadow;
+  transition: box-shadow $transition-time ease-in, transform $transition-time ease-in;
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: scale(1.02);
+  }
 }

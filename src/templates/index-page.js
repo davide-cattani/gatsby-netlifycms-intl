@@ -19,12 +19,12 @@ export const pageQuery = graphql`
           tagline
           featuredImage {
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 475, height: 475)
+              gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG, width: 475, height: 475)
             }
           }
           backgroundImage {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR, transformOptions: { fit: COVER })
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, transformOptions: { fit: COVER })
             }
           }
           cta {
@@ -80,7 +80,7 @@ const HomePage = ({ data }) => {
                 </Link>
               </div>
             </div>
-            <div className="column has-text-centered">{Image ? <GatsbyImage id="header-logo" image={Image} alt={frontmatter.mainSection.title + " - Featured image"} className="featured-image" /> : ""}</div>
+            <div className="column has-text-centered">{Image ? <GatsbyImage id="header-logo" image={Image} alt={frontmatter.mainSection.title + " - Featured image"} loading="eager" className="featured-image" /> : ""}</div>
           </div>
         </div>
         {/* </BgImage> */}
