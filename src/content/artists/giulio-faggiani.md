@@ -1,11 +1,22 @@
 ---
 template: artist
 fullname: Giulio Faggiani
-date: 2020-06-09T05:53:16.102Z
+date: 2021-01-01
 slug: giulio-faggiani
 role: Scoreggione
+mail: sfageoff@hotmail.com
 description: Tempo fa si faceva le canne con mio fratello
 portrait: /assets/placeholder.png
+latestWorks:
+  - date: 2021-01-01T08:21:38.152Z
+    workImage: /assets/gandalf.jpg
+    title: Gandalf
+  - date: 2021-01-01T08:21:18.812Z
+    workImage: /assets/comic-page-01.jpg
+    title: Comic Page
+  - date: 2021-01-01T08:18:00.427Z
+    workImage: /assets/charcoal-selfportrait.jpg
+    title: Charcoal Selfportrait
 ---
 
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
