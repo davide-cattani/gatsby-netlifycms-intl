@@ -13,11 +13,12 @@ export const pageQuery = graphql`
         title
         events {
           name
-          date(formatString: "DD/MM/YYYY")
+          date_start(formatString: "DD/MM/YYYY")
+          date_end(formatString: "DD/MM/YYYY")
           description
           image {
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600, height: 600)
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
@@ -49,7 +50,7 @@ const EventsPage = ({ data }) => {
               <div className="column">
                 <div className="content">
                   <h3 className="title is-size-4">{evt.name}</h3>
-                  <p className="subtitle is-size-5 is-italic">{evt.date}</p>
+                  <p className="subtitle is-size-5 is-italic">{evt.date_start} - {evt.date_end}</p>
                   <p className="">{evt.description}</p>
                 </div>
               </div>

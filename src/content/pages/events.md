@@ -4,7 +4,8 @@ type: page
 slug: events
 title: Eventi
 events:
-  - date: 2021-08-27T08:00:00.000Z
+  - date_start: 2021-08-27T08:00:00.000Z
+    date_end: 2021-08-27T08:00:00.000Z
     image: /assets/whatsapp-image-2021-06-25-at-08.50.19.jpeg
     name: San Marino Comics
     description: >-
@@ -26,7 +27,8 @@ events:
 
       Restate sintonizzati sui nostri canali per avere tutti gli aggiornamenti di questo attesissimo evento! Vi Aspettiamo!
   - name: Modena NERD
-    date: 2021-07-03T08:00:00.000Z
+    date_start: 2021-07-03T08:00:00.000Z
+    date_end: 2021-07-03T08:00:00.000Z
     description: >-
       MODENA NERD SCALDA I MOTORI PER SORPRENDERE UN’ALTRA VOLTA I GIOVANI DI
       TUTTE LE ETÀ.
@@ -36,7 +38,8 @@ events:
       UNA MANIFESTAZIONE CHE SI RINNOVA ULTERIORMENTE E CHE ASSICURA IL DIVERTIMENTO CHE L’HA SEMPRE CARATTERIZZATA, IN TOTALE SICUREZZA E NEL RISPETTO DELLE ATTUALI NORMATIVE SANITARIE.
     image: /assets/whatsapp-image-2021-06-25-at-08.50.21.jpeg
   - name: ColtivAzioni Market
-    date: 2021-06-27T18:00:00.000Z
+    date_start: 2021-06-27T18:00:00.000Z
+    date_end: 2021-06-27T18:00:00.000Z
     description: >-
       🌱ColtivAzioni🌱
 

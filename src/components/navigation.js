@@ -33,7 +33,7 @@ const MenuItems = [
 ]
 
 const ListLink = props => (
-  <Link to={props.to} className="navbar-item" activeClassName="is-active" onClick={props.onClick}>
+  <Link to={props.to} className="navbar-item mx-1" activeClassName="is-active" onClick={props.onClick}>
     {props.children}
   </Link>
 )

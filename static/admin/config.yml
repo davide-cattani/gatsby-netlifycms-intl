@@ -217,11 +217,12 @@ collections:
             allow_add: true
             collapsed: true
             add_to_top: true
-            summary: '{{fields.date}} - {{fields.name}}'
+            summary: '{{fields.date_start | date('DD/MM/YYYY')}} - {{fields.name}}'
             widget: "list"
             fields:
               - { label: "Nome evento", name: "name", widget: "string" }
-              - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: "HH:mm" }
+              - { label: "Data", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY" }
+              - { label: "Data", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY" }
               - { label: "Descrizione", name: "description", widget: "text" }
               - { label: "Immagine", name: "image", widget: "image" }
           - { label: "Testo", name: "body", widget: "markdown" }
