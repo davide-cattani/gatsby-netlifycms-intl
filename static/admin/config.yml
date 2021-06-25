@@ -50,7 +50,7 @@ collections:
       - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
       - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
       - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
-      - { label: "Ruolo/skills", name: "role", widget: "text" }
+      - { label: "Ruolo/skills", name: "role", widget: "string" }
       - { label: "Mail", name: "mail", widget: "string" }
       - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage", required: false }
       - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
@@ -76,6 +76,7 @@ collections:
             name: "date"
             widget: "datetime"
             date_format: "DD/MM/YYYY"
+            hint: "Viene visualizzata come mese/anno, quindi giorno non importante"
           - label: "Commento"
             name: "comment"
             type: "text"

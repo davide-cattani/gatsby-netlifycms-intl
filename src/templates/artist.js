@@ -146,16 +146,16 @@ export const pageQuery = graphql`
         mail
         portrait {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400)
           }
         }
         latestWorks {
           title
-          date(formatString: "DD/MM/YYYY")
+          date(formatString: "MM/YYYY")
           comment
           workImage {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(layout: CONSTRAINED, width: 1000, height: 1000)
             }
           }
         }
