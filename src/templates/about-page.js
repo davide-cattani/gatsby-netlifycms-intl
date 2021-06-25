@@ -39,21 +39,26 @@ const AboutPage = ({ data }) => {
   return (
     <>
       <Seo title={frontmatter.title} description={excerpt} />
-      <div className="container">
-        <section className="section">
+
+      <section className="section">
+        <div className="container">
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: html }} />
           <div className="buttons is-centered">
-            <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6 py-3" style={{ whiteSpace: "normal", height: "unset" }}> 
+            <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6 py-3" style={{ whiteSpace: "normal", height: "unset" }}>
               {frontmatter.cta.ctaText}
             </Link>
           </div>
-        </section>
-        <section className="section">
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
           <h2 className="title is-size-2">Lo spazio di co-working</h2>
           <article dangerouslySetInnerHTML={{ __html: frontmatter.coworkingDescription.html }} />
-        </section>
-        <section className="section">
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
           <div className="columns is-multiline is-centered">
             {images.map((img, i) => (
               <div className="column is-4 p-4" key={i}>
@@ -61,8 +66,8 @@ const AboutPage = ({ data }) => {
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   )
 }

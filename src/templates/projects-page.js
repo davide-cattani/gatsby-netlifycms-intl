@@ -34,13 +34,16 @@ const ProjectsPage = ({ data }) => {
   return (
     <>
       <Seo title={frontmatter.title} description={excerpt} />
-      <div className="container">
-        <section className="section">
+
+      <section className="section">
+        <div className="container">
           <h1 className="title is-size-2">{frontmatter.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: html }} />
-        </section>
-        {projects.map((prj, i) => (
-          <section className="section" key={i}>
+        </div>
+      </section>
+      {projects.map((prj, i) => (
+        <section className="section" key={i}>
+          <div className="container">
             <div className="columns is-vcentered">
               <div className="column">
                 <div className="content">
@@ -52,9 +55,9 @@ const ProjectsPage = ({ data }) => {
                 <GatsbyImage image={prj.image.childImageSharp.gatsbyImageData} alt={`project-${i}`} />
               </div>
             </div>
-          </section>
-        ))}
-      </div>
+          </div>
+        </section>
+      ))}
     </>
   )
 }

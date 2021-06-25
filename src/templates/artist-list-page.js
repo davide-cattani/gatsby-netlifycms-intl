@@ -22,7 +22,11 @@ const styles = {
 
 export const artistListQuery = graphql`
   query artistListQuery($skip: Int!, $limit: Int!) {
-    artists: allMarkdownRemark(filter: { frontmatter: { template: { eq: "artist" } } }, limit: $limit, skip: $skip) {
+    artists: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "artist" } } }
+      sort: {fields: frontmatter___date, order: ASC}
+      limit: $limit
+      skip: $skip) {
       edges {
         node {
           id

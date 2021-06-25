@@ -26,7 +26,7 @@ const Layout = ({ children, className, props }) => {
   return (
     <>
       <Navigation site={site.siteMetadata} />
-      <main>{children}</main>
+      <main className="mb-6">{children}</main>
       <Footer />
     </>
   )

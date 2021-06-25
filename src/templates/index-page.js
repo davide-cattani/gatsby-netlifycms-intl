@@ -34,7 +34,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    artists: allMarkdownRemark(filter: { frontmatter: { template: { eq: "artist" } } }) {
+    artists: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "artist" } } }
+      sort: {fields: frontmatter___date, order: ASC}
+      ) {
       edges {
         node {
           id
@@ -86,7 +89,7 @@ const HomePage = ({ data }) => {
         {/* </BgImage> */}
       </div>
 
-      <section className="section is-medium no-background">
+      <section className="section is-medium">
         <div className="container">
           <ArtistCardList data={artists} isHome={true} />
         </div>
