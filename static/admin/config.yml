@@ -97,6 +97,25 @@ collections:
             widget: string
             hint: "Senza http:// iniziale! Deve iniziare con www."
 
+  - name: "events"
+    label: "Eventi"
+    label_singular: "Evento"
+    identifier_field: title
+    description: >
+      I fantastici eventi che facciamo.
+    folder: "src/content/events"
+    slug: "{{fields.slug}}"
+    summary: "{{title}}"
+    create: true
+    fields:
+      - { name: "template", widget: "hidden", default: "event" }
+      - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
+      - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: "Sotto-URL dell'evento. es: nome-del-evento. USARE SOLO ALFANUMERICI E -" }
+      - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY" }
+      - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY" }
+      - { label: "Immagine", name: "image", widget: "image" }
+      - { label: "Descrizione", name: "body", widget: "markdown" }
+
   - label: "Pagine del sito"
     name: "pages"
     files:
