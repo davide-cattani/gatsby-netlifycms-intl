@@ -1,12 +1,12 @@
 ---
+slug: giulio-faggiani
 template: artist
 fullname: Giulio Faggiani
 date: 2021-01-01
-slug: giulio-faggiani
 role: Scoreggione
 mail: sfageoff@hotmail.com
 description: Tempo fa si faceva le canne con mio fratello
-portrait: /assets/placeholder.png
+portrait: /assets/giulio.jpg
 latestWorks:
   - date: 2021-01-01T08:21:38.152Z
     workImage: /assets/gandalf.jpg
