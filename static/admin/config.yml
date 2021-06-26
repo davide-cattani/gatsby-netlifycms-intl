@@ -49,7 +49,7 @@ collections:
       - { name: "template", widget: "hidden", default: "artist" }
       - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
       - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome. USARE SOLO ALFANUMERICI E -" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'] }
       - { label: "Ruolo/skills", name: "role", widget: "string" }
       - { label: "Mail", name: "mail", widget: "string" }
       - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage", required: false }
@@ -110,7 +110,7 @@ collections:
     fields:
       - { name: "template", widget: "hidden", default: "event" }
       - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','A slug can have no spaces or special characters'], hint: "Sotto-URL dell'evento. es: nome-del-evento. USARE SOLO ALFANUMERICI E -" }
+      - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL dell'evento. es: nome-del-evento" }
       - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY" }
       - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY" }
       - { label: "Immagine", name: "image", widget: "image" }
@@ -228,7 +228,7 @@ collections:
         file: "src/content/pages/events.md"
         fields:
           - { name: "template", widget: "hidden", default: "events-page" }
-          - { name: "type", widget: "hidden", default: "page" }
+          - { name: "type", widget: "hidden", default: "list-page" }
           - { name: "slug", widget: "hidden", default: "events" }
           - { label: "Titolo", name: "title", widget: "string" }
           - label: "Eventi"

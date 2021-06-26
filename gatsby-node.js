@@ -38,6 +38,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
   const artistList = path.resolve(`./src/templates/artist-list-page.js`)
+  const eventList = path.resolve(`./src/templates/event-list-page.js`)
 
   const allPages = await graphql(`
     {
@@ -48,8 +49,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               slug
               template
-              title
               fullname
+            }
+          }
+        }
+      }
+      events: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "event" } } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              slug
+              template
+              title
             }
           }
         }
@@ -112,6 +124,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         limit: artistsPerPage,
         skip: i * artistsPerPage,
         numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // Create events index pages
+  const eventsCount = allPages.data.events.edges.length
+  console.log(eventsCount)
+
+  const eventsPerPage = 6
+  const eventNumPages = Math.ceil(eventsCount / eventsPerPage)
+
+  Array.from({ length: eventNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/events` : `/events/${i + 1}`,
+      component: eventList,
+      context: {
+        limit: eventsPerPage,
+        skip: i * eventsPerPage,
+        eventNumPages,
         currentPage: i + 1,
       },
     })
