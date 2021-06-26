@@ -39,6 +39,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const artistList = path.resolve(`./src/templates/artist-list-page.js`)
   const eventList = path.resolve(`./src/templates/event-list-page.js`)
+  const projectList = path.resolve(`./src/templates/project-list-page.js`)
 
   const allPages = await graphql(`
     {
@@ -46,8 +47,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             id
-            frontmatter {
+            fields {
               slug
+            }
+            frontmatter {
               template
               fullname
             }
@@ -58,8 +61,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             id
-            frontmatter {
+            fields {
               slug
+            }
+            frontmatter {
+              template
+              title
+            }
+          }
+        }
+      }
+      projects: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "project" } } }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
               template
               title
             }
@@ -97,7 +116,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const next = index === 0 ? null : artists[index - 1].node
 
     createPage({
-      path: "/artists/" + post.node.frontmatter.slug,
+      path: post.node.fields.slug,
       component: path.resolve(`src/templates/${String(post.node.frontmatter.template)}.js`),
       // additional data can be passed via context
       context: {
@@ -131,7 +150,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   // Create events index pages
   const eventsCount = allPages.data.events.edges.length
-  console.log(eventsCount)
 
   const eventsPerPage = 6
   const eventNumPages = Math.ceil(eventsCount / eventsPerPage)
@@ -144,6 +162,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         limit: eventsPerPage,
         skip: i * eventsPerPage,
         eventNumPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // Create projects index pages
+  const projectsCount = allPages.data.projects.edges.length
+
+  const projectsPerPage = 6
+  const projectNumPages = Math.ceil(projectsCount / projectsPerPage)
+
+  Array.from({ length: projectNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/projects` : `/projects/${i + 1}`,
+      component: projectList,
+      context: {
+        limit: projectsPerPage,
+        skip: i * projectsPerPage,
+        projectNumPages,
         currentPage: i + 1,
       },
     })

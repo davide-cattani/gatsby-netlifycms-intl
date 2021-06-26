@@ -2,34 +2,39 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 export const pageQuery = graphql`
-  query ProjectsQuery($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query ProjectsQuery($skip: Int!, $limit: Int!) {
+    markdownRemark(frontmatter: {template: {eq: "projects-page"}}) {
       id
       frontmatter {
         title
-        projects {
-          title
-          description
-          image {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600, height: 600)
-            }
-          }
-        }
       }
       html
       excerpt(pruneLength: 150)
     }
+    projects: allMarkdownRemark(filter: { frontmatter: { template: { eq: "project" } } }, sort: { fields: frontmatter___date, order: DESC }, limit: $limit, skip: $skip) {
+      edges {
+        node {
+          frontmatter {
+            image {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              }
+            }
+            title
+            date(formatString: "MM/YYYY")
+          }
+          html
+        }
+      }
+    }
   }
 `
 const ProjectsPage = ({ data }) => {
-  const { markdownRemark } = data
-  const { frontmatter, html, excerpt } = markdownRemark
-  const projects = frontmatter.projects
+  const { frontmatter, html, excerpt } = data.markdownRemark
+  const projects = data.projects.edges
 
   return (
     <>
@@ -47,12 +52,12 @@ const ProjectsPage = ({ data }) => {
             <div className="columns is-vcentered">
               <div className="column">
                 <div className="content">
-                  <h3 className="title is-size-4">{prj.title}</h3>
-                  <p className="">{prj.description}</p>
+                  <h3 className="title is-size-4">{prj.node.frontmatter.title}</h3>
+                  <article dangerouslySetInnerHTML={{ __html: prj.node.html }} />
                 </div>
               </div>
               <div className="column">
-                <GatsbyImage image={prj.image.childImageSharp.gatsbyImageData} alt={`project-${i}`} />
+                <GatsbyImage image={prj.node.frontmatter.image.childImageSharp.gatsbyImageData} alt={`project-${i}`} />
               </div>
             </div>
           </div>

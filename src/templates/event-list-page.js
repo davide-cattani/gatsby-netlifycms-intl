@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 
 export const eventListQuery = graphql`
   query EventsQuery($skip: Int!, $limit: Int!) {
-    markdownRemark {
+    markdownRemark(frontmatter: {template: {eq: "events-page"}}) {
       id
       frontmatter {
         title
@@ -47,29 +47,26 @@ const EventsPage = ({ data }) => {
           <article dangerouslySetInnerHTML={{ __html: html }} />
         </div>
       </section>
-      {events.map((evt, i) => {
-        console.log(evt)
-        return (
-          <section className="section" key={i}>
-            <div className="container">
-              <div className="columns is-vcentered">
-                <div className="column">
-                  <div className="content">
-                    <h3 className="title is-size-4">{evt.node.frontmatter.title}</h3>
-                    <p className="subtitle is-size-5 is-italic">
-                      {evt.node.frontmatter.date_start} - {evt.node.frontmatter.date_end}
-                    </p>
-                    <article dangerouslySetInnerHTML={{ __html: evt.node.html }} />
-                  </div>
-                </div>
-                <div className="column">
-                  <GatsbyImage image={evt.node.frontmatter.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
+      {events.map((evt, i) => (
+        <section className="section" key={i}>
+          <div className="container">
+            <div className="columns is-vcentered">
+              <div className="column is-7">
+                <div className="content">
+                  <h3 className="title is-size-4">{evt.node.frontmatter.title}</h3>
+                  <p className="subtitle is-size-5 is-italic">
+                    {evt.node.frontmatter.date_start} - {evt.node.frontmatter.date_end}
+                  </p>
+                  <article dangerouslySetInnerHTML={{ __html: evt.node.html }} />
                 </div>
               </div>
+              <div className="column">
+                <GatsbyImage image={evt.node.frontmatter.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
+              </div>
             </div>
-          </section>
-        )
-      })}
+          </div>
+        </section>
+      ))}
     </>
   )
 }

@@ -49,7 +49,7 @@ collections:
       - { name: "template", widget: "hidden", default: "artist" }
       - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
       - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'] }
+      # - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'] }
       - { label: "Ruolo/skills", name: "role", widget: "string" }
       - { label: "Mail", name: "mail", widget: "string" }
       - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage", required: false }
@@ -110,9 +110,27 @@ collections:
     fields:
       - { name: "template", widget: "hidden", default: "event" }
       - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL dell'evento. es: nome-del-evento" }
+      # - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL dell'evento. es: nome-del-evento" }
       - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY" }
       - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY" }
+      - { label: "Immagine", name: "image", widget: "image" }
+      - { label: "Descrizione", name: "body", widget: "markdown" }
+  
+  - name: "projects"
+    label: "Progetti Realizzati"
+    label_singular: "Progetto"
+    identifier_field: title
+    description: >
+      I fantastici progetti che abbiamo realizzato.
+    folder: "src/content/projects"
+    slug: "{{fields.slug}}"
+    summary: "{{title}}"
+    create: true
+    fields:
+      - { name: "template", widget: "hidden", default: "project" }
+      - { label: "Titolo", name: "title", widget: "string" }
+      # - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL del progetto. es: nome-del-progetto" }
+      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY" }
       - { label: "Immagine", name: "image", widget: "image" }
       - { label: "Descrizione", name: "body", widget: "markdown" }
 
@@ -208,20 +226,9 @@ collections:
         file: "src/content/pages/projects.md"
         fields:
           - { name: "template", widget: "hidden", default: "projects-page" }
-          - { name: "type", widget: "hidden", default: "page" }
+          - { name: "type", widget: "hidden", default: "list-page" }
           - { name: "slug", widget: "hidden", default: "projects" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - label: "Progetti"
-            name: "projects"
-            allow_add: true
-            collapsed: true
-            add_to_top: true
-            summary: '{{fields.title}}'
-            widget: "list"
-            fields:
-              - { label: "Titolo", name: "title", widget: "string" }
-              - { label: "Descrizione", name: "description", widget: "text" }
-              - { label: "Immagine", name: "image", widget: "image" }
           - { label: "Testo", name: "body", widget: "markdown" }
       - label: "Eventi in programma"
         name: "events"
