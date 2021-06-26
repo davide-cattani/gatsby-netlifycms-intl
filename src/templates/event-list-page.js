@@ -57,13 +57,13 @@ const EventsPage = ({ data }) => {
             <div className="columns is-vcentered">
               <div className="column">
                 <div className="content">
-                  <h3 className="title is-size-4">{evt.title}</h3>
-                  <p className="subtitle is-size-5 is-italic">{evt.date_start} - {evt.date_end}</p>
+                  <h3 className="title is-size-4">{evt.frontmatter.title}</h3>
+                  <p className="subtitle is-size-5 is-italic">{evt.frontmatter.date_start} - {evt.frontmatter.date_end}</p>
                   <article dangerouslySetInnerHTML={{ __html: evt.html }} />
                 </div>
               </div>
               <div className="column">
-                <GatsbyImage image={evt.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
+                <GatsbyImage image={evt.frontmatter.image.childImageSharp.gatsbyImageData} alt={`event-${i}`} />
               </div>
             </div>
           </div>
