@@ -12,11 +12,13 @@ cta:
   ctaText: Guarda cosa abbiamo realizzato
   ctaLink: /projects
 images:
-  - image: /assets/foto-studio-5.jpg
-  - image: /assets/foto-studio-4.jpg
-  - image: /assets/foto-studio-3.jpg
-  - image: /assets/foto-studio-1.jpg
-  - image: /assets/foto-studio-2.jpg
+  - image: /assets/foto-17-06-21-17-54-06-5-.jpg
+  - image: /assets/foto-17-06-21-17-54-06-3-.jpg
+  - image: /assets/foto-17-06-21-17-54-05-6-.jpg
+  - image: /assets/foto-17-06-21-17-54-05-4-.jpg
+  - image: /assets/foto-17-06-21-17-54-05-3-.jpg
+  - image: /assets/foto-17-06-21-17-54-05-1-.jpg
+  - image: /assets/foto-17-06-21-17-54-06-1-.jpg
 ---
 ### Descrizione completa studio.
 
