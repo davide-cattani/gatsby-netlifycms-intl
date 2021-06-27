@@ -118,7 +118,7 @@ a.navbar-item:not(.is-active):hover {
   transition: box-shadow $transition-time ease-in, transform $transition-time ease-in;
   &:hover {
     box-shadow: $shadow-hover;
-    transform: translate(1px, 1px);
+    transform: scale(1.02);
   }
 }
 

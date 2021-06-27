@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 
 export const pageQuery = graphql`
   query ProjectsQuery($skip: Int!, $limit: Int!) {
-    markdownRemark(frontmatter: {template: {eq: "projects-page"}}) {
+    markdownRemark(frontmatter: { template: { eq: "projects-page" } }) {
       id
       frontmatter {
         title
@@ -53,6 +53,7 @@ const ProjectsPage = ({ data }) => {
               <div className="column">
                 <div className="content">
                   <h3 className="title is-size-4">{prj.node.frontmatter.title}</h3>
+                  <p className="subtitle is-size-5 is-italic">{prj.node.frontmatter.date}</p>
                   <article dangerouslySetInnerHTML={{ __html: prj.node.html }} />
                 </div>
               </div>

@@ -11,23 +11,23 @@ const MenuItems = [
   //   title: "Home",
   // },
   {
-    path: "/about/",
+    path: "/about",
     title: "Lo Studio",
   },
   {
-    path: "/events/",
+    path: "/events",
     title: "Eventi",
   },
   {
-    path: "/artists/",
+    path: "/artists",
     title: "Gli Artisti",
   },
   {
-    path: "/projects/",
+    path: "/projects",
     title: "Progetti Realizzati",
   },
   {
-    path: "/contact/",
+    path: "/contact",
     title: "Contatti",
   },
 ]
