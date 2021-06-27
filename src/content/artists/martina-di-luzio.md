@@ -5,7 +5,7 @@ date: 2021-01-01
 slug: martina-di-luzio
 role: Fumettista / Illustratrice
 mail: martinaausilia@gmail.com
-portrait: /assets/placeholder.png
+portrait: /assets/martina.jpg
 ---
 Nasce a San Severo il 24 Maggio ‘94 e risiede a Reggio Emilia.  
 
