@@ -8,10 +8,19 @@ mail: marcyb92@gmail.com
 description: The founder
 portrait: /assets/marcello.jpg
 latestWorks:
-  - title: Lol
-    workImage: /assets/placeholder.png
-    date: 2020-06-09T05:53:16.102Z
-    comment: Lollino commentino
+  - date: 2021-06-27T06:37:37.751Z
+    workImage: /assets/sincity3.jpg
+    title: Sin City
+  - date: 2021-06-27T06:37:25.728Z
+    workImage: /assets/foto-23-06-20-23-38-34.jpg
+    title: "Dylan Dog #2"
+  - date: 2021-06-27T06:37:07.331Z
+    workImage: /assets/foto-23-06-20-23-38-31.jpg
+    title: "Dylan Dog #1"
+  - title: Star Wars
+    workImage: /assets/afterlightimage-3.jpg
+    date: 2021-06-27T06:36:45.594Z
+    comment: ""
 socialNetworks:
   - social: facebook
     url: www.facebook.com
