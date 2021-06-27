@@ -1,12 +1,12 @@
 ---
+slug: marcello-buganza
 template: artist
 fullname: Marcello Buganza
 date: 2020-05-09T05:53:16.102Z
-slug: marcello-buganza
 role: Fumettista/Rompicazzo
 mail: marcyb92@gmail.com
 description: The founder
-portrait: /assets/placeholder.png
+portrait: /assets/marcello.jpg
 latestWorks:
   - title: Lol
     workImage: /assets/placeholder.png
