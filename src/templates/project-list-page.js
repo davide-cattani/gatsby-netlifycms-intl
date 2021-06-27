@@ -41,9 +41,11 @@ const ProjectsPage = ({ data }) => {
       <Seo title={frontmatter.title} description={excerpt} />
 
       <section className="section">
-        <div className="container">
-          <h1 className="title is-size-2">{frontmatter.title}</h1>
-          <article dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="container is-max-desktop">
+          <div className="content has-text-centered">
+            <h1 className="title is-size-2">{frontmatter.title}</h1>
+            <article dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
         </div>
       </section>
       {projects.map((prj, i) => (

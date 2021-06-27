@@ -89,7 +89,7 @@ const HomePage = ({ data }) => {
         {/* </BgImage> */}
       </div>
 
-      <section className="section is-medium">
+      <section className="section">
         <div className="container">
           <ArtistCardList data={artists} isHome={true} />
         </div>

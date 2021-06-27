@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 
 export const eventListQuery = graphql`
   query EventsQuery($skip: Int!, $limit: Int!) {
-    markdownRemark(frontmatter: {template: {eq: "events-page"}}) {
+    markdownRemark(frontmatter: { template: { eq: "events-page" } }) {
       id
       frontmatter {
         title
@@ -42,9 +42,11 @@ const EventsPage = ({ data }) => {
       <Seo title={frontmatter.title} description={excerpt} />
 
       <section className="section">
-        <div className="container">
-          <h1 className="title is-size-2">{frontmatter.title}</h1>
-          <article dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="container is-max-desktop">
+          <div className="content has-text-centered">
+            <h1 className="title is-size-2">{frontmatter.title}</h1>
+            <article dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
         </div>
       </section>
       {events.map((evt, i) => (
