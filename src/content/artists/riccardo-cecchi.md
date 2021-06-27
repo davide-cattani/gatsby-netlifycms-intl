@@ -7,10 +7,21 @@ role: Illustratore / Storyboard Artist
 mail: riccardo.cecchi2@gmail.com
 portrait: /assets/riccardo.jpg
 latestWorks:
-  - workImage: /assets/placeholder.png
-    title: Titolo
-    date: 2020-06-09T05:53:16.102Z
-    comment: lol
+  - date: 2021-06-27T06:40:39.077Z
+    workImage: /assets/foto-28-04-21-15-04-39-2-.jpg
+    title: Hellboy
+  - date: 2021-06-27T06:40:13.903Z
+    workImage: /assets/foto-28-04-21-15-04-39-1-.jpg
+    title: Batman & Catwoman
+  - date: 2021-06-27T06:40:02.990Z
+    workImage: /assets/foto-28-04-21-15-04-39.jpg
+    title: Dylan Dog
+  - date: 2021-06-27T06:39:46.940Z
+    workImage: /assets/foto-14-06-20-21-48-10.png
+    title: Ken Shiro
+  - date: 2021-06-27T06:39:43.654Z
+    workImage: /assets/foto-05-02-21-19-23-56.jpg
+    title: CTRL+Z
 socialNetworks:
   - social: linkedin
     url: linkedin.com/in/riccardo-cecchi
