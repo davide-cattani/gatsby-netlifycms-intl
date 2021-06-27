@@ -6,7 +6,7 @@ mainSection:
   title: Sketch Studios Carpi
   tagline: Sottotitolo importante
   featuredImage: /assets/sketch-studios-logo.png
-  backgroundImage: /assets/placeholder.png
+  backgroundImage: /assets/background-sito.jpg
   cta:
     ctaText: Scrivici
     ctaLink: /contact
