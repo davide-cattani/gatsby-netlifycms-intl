@@ -1,11 +1,11 @@
 ---
+slug: riccardo-cecchi
 template: artist
 fullname: Riccardo Cecchi
 date: 2021-01-01
-slug: riccardo-cecchi
 role: Illustratore / Storyboard Artist
 mail: riccardo.cecchi2@gmail.com
-portrait: /assets/placeholder.png
+portrait: /assets/riccardo.jpg
 latestWorks:
   - workImage: /assets/placeholder.png
     title: Titolo
