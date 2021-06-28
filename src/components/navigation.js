@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { useState } from "react"
 
+import Headroom from "react-headroom"
+
 import Logo from "./logo"
 
 const MenuItems = [
@@ -54,36 +56,38 @@ const Navigation = ({ site }) => {
   ))
 
   return (
-    <nav className="navbar is-spaced" role="navigation" aria-label="main navigation" sx={{ bg: "primaryColor" }}>
-      <div className="navbar-brand">
-        <Logo
-          title={site.siteTitle}
-          logo={"/static/assets/sketch-studios-logo.png"}
-          onClick={() => {
-            setisActive(false)
-          }}
-        />
+    <Headroom>
+      <nav className="navbar is-spaced" role="navigation" aria-label="main navigation" sx={{ bg: "primaryColor" }}>
+        <div className="navbar-brand">
+          <Logo
+            title={site.siteTitle}
+            logo={"/static/assets/sketch-studios-logo.png"}
+            onClick={() => {
+              setisActive(false)
+            }}
+          />
 
-        <a
-          onClick={() => {
-            setisActive(!isActive)
-          }}
-          role="button"
-          className={`navbar-burger ${isActive ? "is-active" : ""}`}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
+          <a
+            onClick={() => {
+              setisActive(!isActive)
+            }}
+            role="button"
+            className={`navbar-burger ${isActive ? "is-active" : ""}`}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
 
-      <div id="menu" className={`navbar-menu ${isActive ? "is-active" : ""}`} sx={{ bg: "primaryColor" }}>
-        <div className="navbar-start">{listMenuItems}</div>
-      </div>
-    </nav>
+        <div id="menu" className={`navbar-menu ${isActive ? "is-active" : ""}`} sx={{ bg: "primaryColor" }}>
+          <div className="navbar-start">{listMenuItems}</div>
+        </div>
+      </nav>
+    </Headroom>
   )
 }
 

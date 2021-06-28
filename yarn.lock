@@ -12826,7 +12826,7 @@ quickselect@^1.0.1:
   resolved "https://registry.yarnpkg.com/quickselect/-/quickselect-1.1.1.tgz#852e412ce418f237ad5b660d70cffac647ae94c2"
   integrity sha512-qN0Gqdw4c4KGPsBOQafj6yj/PA6c/L63f6CaZ/DCF/xF4Esu3jVmKLUDYxghFx8Kb/O7y9tI7x2RjTSXwdK1iQ==
 
-raf@^3.4.0:
+raf@^3.3.0, raf@^3.4.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
@@ -13006,6 +13006,15 @@ react-frame-component@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-5.0.0.tgz#8a7e60e7fe7e2b52bfc0854325d63c01d0788510"
   integrity sha512-JyoPSU6H96sd4l76EUvzB/cNkvhW74OK43A1m7kmgc14QztodV39l9g7DwVgkVeKpSqnpMYhrKcvehHZzfXBGA==
+
+react-headroom@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-headroom/-/react-headroom-3.1.1.tgz#573a7bd87ce0eda70bcf0588e86e0d461280fe95"
+  integrity sha512-mmZA8o1pItF1py4XlYPQD4QpyrTzIuafYjrB/RrJKGPiWEz8IyUcfxoZiiw6qz3oOylLs5SWesCJINA4uThQYw==
+  dependencies:
+    prop-types "^15.5.8"
+    raf "^3.3.0"
+    shallowequal "^1.1.0"
 
 react-helmet@^6.0.0:
   version "6.1.0"

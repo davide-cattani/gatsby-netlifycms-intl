@@ -306,18 +306,18 @@ collections:
         name: "themescolors"
         file: "src/util/default-colors.json"
         fields:
-          - label: "Colore primario"
+          - label: "Colore menu + fondo pagina"
             name: "primaryColor"
             widget: "color"
             enableAlpha: false
             allowInput: true
-          - label: "Colore sfondo"
-            name: "background"
-            widget: "color"
-            enableAlpha: false
-            allowInput: true
-          - label: "Colore testo"
-            name: "text"
-            widget: "color"
-            enableAlpha: false
-            allowInput: true
+          # - label: "Colore sfondo"
+          #   name: "background"
+          #   widget: "color"
+          #   enableAlpha: false
+          #   allowInput: true
+          # - label: "Colore testo"
+          #   name: "text"
+          #   widget: "color"
+          #   enableAlpha: false
+          #   allowInput: true
