@@ -28,7 +28,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
     type Frontmatter {
-      coworkingDescription: String @md
+      short_bio: String @md
     }
   `
   actions.createTypes(typeDefs)
@@ -37,27 +37,12 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const artistList = path.resolve(`./src/templates/artist-list-page.js`)
+  const paintingList = path.resolve(`./src/templates/painting-list-page.js`)
   const eventList = path.resolve(`./src/templates/event-list-page.js`)
-  const projectList = path.resolve(`./src/templates/project-list-page.js`)
 
   const allPages = await graphql(`
     {
-      artists: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "artist" } } }) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              template
-              fullname
-            }
-          }
-        }
-      }
-      events: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "event" } } }) {
+      paintings: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "painting" } } }) {
         edges {
           node {
             id
@@ -71,7 +56,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      projects: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "project" } } }) {
+      events: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "event" } } }) {
         edges {
           node {
             id
@@ -107,13 +92,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   // Create markdown pages
-  const artists = allPages.data.artists.edges
-  let artistCount = 0
+  const paintings = allPages.data.paintings.edges
+  let paintingCount = 0
 
-  artists.forEach((post, index) => {
+  paintings.forEach((post, index) => {
     const id = post.node.id
-    const previous = index === artists.length - 1 ? null : artists[index + 1].node
-    const next = index === 0 ? null : artists[index - 1].node
+    const previous = index === paintings.length - 1 ? null : paintings[index + 1].node
+    const next = index === 0 ? null : paintings[index - 1].node
 
     createPage({
       path: post.node.fields.slug,
@@ -126,22 +111,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     })
     // Count artists.
-    if (post.node.frontmatter.template === "artist") {
-      artistCount++
+    if (post.node.frontmatter.template === "painting") {
+      paintingCount++
     }
   })
 
-  // Create artist index pages
-  const artistsPerPage = 12
-  const numPages = Math.ceil(artistCount / artistsPerPage)
+  // Create painting index pages
+  const paintingsPerPage = 12
+  const numPages = Math.ceil(paintingCount / paintingsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/artists` : `/artists/${i + 1}`,
-      component: artistList,
+      path: i === 0 ? `/paintings` : `/paintings/${i + 1}`,
+      component: paintingList,
       context: {
-        limit: artistsPerPage,
-        skip: i * artistsPerPage,
+        limit: paintingsPerPage,
+        skip: i * paintingsPerPage,
         numPages,
         currentPage: i + 1,
       },
@@ -162,25 +147,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         limit: eventsPerPage,
         skip: i * eventsPerPage,
         eventNumPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  // Create projects index pages
-  const projectsCount = allPages.data.projects.edges.length
-
-  const projectsPerPage = 6
-  const projectNumPages = Math.ceil(projectsCount / projectsPerPage)
-
-  Array.from({ length: projectNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/projects` : `/projects/${i + 1}`,
-      component: projectList,
-      context: {
-        limit: projectsPerPage,
-        skip: i * projectsPerPage,
-        projectNumPages,
         currentPage: i + 1,
       },
     })

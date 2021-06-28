@@ -20,22 +20,24 @@ const styles = {
   },
 }
 
-export const artistListQuery = graphql`
-  query artistListQuery($skip: Int!, $limit: Int!) {
-    artists: allMarkdownRemark(filter: { frontmatter: { template: { eq: "artist" } } }, sort: { fields: frontmatter___date, order: ASC }, limit: $limit, skip: $skip) {
+export const paintingListQuery = graphql`
+  query paintingListQuery($skip: Int!, $limit: Int!) {
+    paintings: allMarkdownRemark(filter: { frontmatter: { template: { eq: "painting" } } }, sort: { fields: frontmatter___date, order: ASC }, limit: $limit, skip: $skip) {
       edges {
         node {
           id
+          html
+          excerpt(pruneLength: 150)
           frontmatter {
-            portrait {
+            image {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400, placeholder: TRACED_SVG)
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
-            fullname
-            role
-            description
-            slug
+            title
+            date
+            technique
+            dimensions
           }
         }
       }
@@ -75,23 +77,23 @@ const Pagination = props => (
     </ul>
   </div>
 )
-class ArtistIndex extends React.Component {
+class PaintingIndex extends React.Component {
   render() {
     const { data } = this.props
     const { currentPage, numPages } = this.props.pageContext
-    const artistSlug = "/artists/"
+    const paintingSlug = "/paintings/"
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? artistSlug : artistSlug + (currentPage - 1).toString()
-    const nextPage = artistSlug + (currentPage + 1).toString()
+    const prevPage = currentPage - 1 === 1 ? paintingSlug : paintingSlug + (currentPage - 1).toString()
+    const nextPage = paintingSlug + (currentPage + 1).toString()
 
-    const artists = data.artists
+    const paintings = data.paintings
 
     let props = {
       isFirst,
       prevPage,
       numPages,
-      artistSlug,
+      paintingSlug: paintingSlug,
       currentPage,
       isLast,
       nextPage,
@@ -99,13 +101,13 @@ class ArtistIndex extends React.Component {
 
     return (
       <>
-        <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
+        <Seo title={"Galleria"} description={""} />
         <div className="container">
           <section className="section mb-6">
             <div className="content mb-6">
-              <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
+              <h1 className="title is-size-2 has-text-centered">Galleria</h1>
             </div>
-            <ArtistCardList data={artists} />
+            {/* <ArtistCardList data={paintings} /> */}
           </section>
         </div>
         <Pagination {...props} />
@@ -114,4 +116,4 @@ class ArtistIndex extends React.Component {
   }
 }
 
-export default ArtistIndex
+export default PaintingIndex

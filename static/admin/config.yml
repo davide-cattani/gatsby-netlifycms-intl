@@ -35,75 +35,27 @@ collections:
   #     - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
 
   #     - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
-  - name: "artists"
-    label: "Artisti"
-    label_singular: "Artista"
-    identifier_field: fullname
-    description: >
-      I fantastici artisti che lavorano nello studio.
-    folder: "src/content/artists"
-    slug: "{{fields.fullname}}"
-    summary: "{{fullname}}"
+  - name: "paintings"
+    label: "Dipinti"
+    label_singular: "Dipinto"
+    identifier_field: title
+    folder: "src/content/paintings"
+    slug: "{{fields.title}}"
+    summary: "{{title}}"
     create: true
     fields:
-      - { name: "template", widget: "hidden", default: "artist" }
-      - { label: "Nome Cognome", name: "fullname", widget: "string", tagname: "h1" }
-      - { label: "Data di inizio", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", format: "YYYY-MM-DD" }
-      # - { label: "Slug", name: "slug", widget: "string", hint: "Sotto-URL dell'artista. es: nome-cognome", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'] }
-      - { label: "Ruolo/skills", name: "role", widget: "string" }
-      - { label: "Mail", name: "mail", widget: "string" }
-      - { label: "BIO breve", name: "description", widget: "text", hint: "Visualizzata in homepage", required: false }
-      - { label: "Foto ritratto", name: "portrait", widget: "image", required: true, tagname: "" }
-      - label: "BIO completa"
-        name: "body"
-        widget: "markdown"
-      - label: "Ultimi lavori"
-        name: "latestWorks"
-        allow_add: true
-        collapsed: true
-        add_to_top: true
-        summary: '{{fields.title}}'
-        widget: "list"
-        fields:
-          - label: "Immagine"
-            name: "workImage"
-            widget: "image"
-          - label: "Titolo"
-            name: "title"
-            widget: "string"
-            tagname: "h3"
-          - label: "Data"
-            name: "date"
-            widget: "datetime"
-            date_format: "DD/MM/YYYY"
-            time_format: false
-            hint: "Viene visualizzata come mese/anno, quindi giorno non importante"
-          - label: "Commento"
-            name: "comment"
-            type: "text"
-            required: false
-            hint: "Commento/Descrizione del lavoro"
-      - label: "Social Networks"
-        name: "socialNetworks"
-        collapsed: true
-        summary: '{{fields.social}} - {{fields.url}}'
-        widget: "list"
-        fields:
-          - label: Social
-            name: social
-            widget: select
-            options: ["facebook", "twitter", "instagram", "linkedin", "sito web", "twitch", "skype"]
-          - label: URL
-            name: url
-            widget: string
-            hint: "Senza http:// iniziale! Deve iniziare con www."
+      - { name: "template", widget: "hidden", default: "painting" }
+      - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
+      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Tecnica", name: "technique", widget: "string" }
+      - { label: "Dimensioni", name: "dimensions", widget: "string" }
+      - { label: "Immagine", name: "image", widget: "image" }
+      - { label: "Commento", name: "body", widget: "markdown" }
 
   - name: "events"
     label: "Eventi"
     label_singular: "Evento"
     identifier_field: title
-    description: >
-      I fantastici eventi che facciamo.
     folder: "src/content/events"
     slug: "{{fields.title}}-{{fields.date_start}}"
     summary: "{{title}}"
@@ -111,27 +63,8 @@ collections:
     fields:
       - { name: "template", widget: "hidden", default: "event" }
       - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
-      # - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL dell'evento. es: nome-del-evento" }
       - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Immagine", name: "image", widget: "image" }
-      - { label: "Descrizione", name: "body", widget: "markdown" }
-  
-  - name: "projects"
-    label: "Progetti Realizzati"
-    label_singular: "Progetto"
-    identifier_field: title
-    description: >
-      I fantastici progetti che abbiamo realizzato.
-    folder: "src/content/projects"
-    slug: "{{fields.title}}-{{fields.date}}"
-    summary: "{{title}}"
-    create: true
-    fields:
-      - { name: "template", widget: "hidden", default: "project" }
-      - { label: "Titolo", name: "title", widget: "string" }
-      # - { label: "Slug", name: "slug", widget: "string",pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','Può contenere solo lettere,numeri o -'], hint: "Sotto-URL del progetto. es: nome-del-progetto" }
-      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY" }
       - { label: "Immagine", name: "image", widget: "image" }
       - { label: "Descrizione", name: "body", widget: "markdown" }
 
@@ -149,7 +82,7 @@ collections:
             name: "mainSection"
             widget: "object"
             fields:
-              - { label: "Titolone", name: "title", widget: "string" }
+              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1" }
               - { label: "Sottotitolo", name: "tagline", widget: "string" }
               - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
               - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
@@ -164,23 +97,9 @@ collections:
                     label: "Link"
                     widget: "string"
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - label: "Ci hanno scelto"
-            name: "sponsorSection"
-            widget: "object"
-            fields:
-              - label: "Sponsors"
-                name: "sponsors"
-                allow_add: true
-                collapsed: true
-                add_to_top: true
-                summary: '{{fields.name}}'
-                widget: "list"
-                fields:
-                  - { label: "Nome", name: "name", widget: "string" }
-                  - { label: "Logo", name: "image", widget: "image" }
-          - { label: "Testo", name: "body", widget: "markdown" }
+          - { label: "Testo in primo piano", name: "body", widget: "markdown" }
           
-      - label: "Lo Studio"
+      - label: "About"
         name: "about"
         file: "src/content/pages/about.md"
         fields:
@@ -188,8 +107,8 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "about" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Descrizione Co-working", name: "coworkingDescription", widget: "markdown" }
-          - { label: "Descrizione completa studio", name: "body", widget: "markdown" }
+          - { label: "Foto profilo", name: "featuredImage", widget: "image" }
+          - { label: "Biografia ridotta", name: "short_bio", widget: "markdown", hint: "Visualizzata in sezione della pagina home" }
           - label: "Pulsante call to action"
             name: "cta"
             widget: "object"
@@ -201,17 +120,8 @@ collections:
                 label: "Link"
                 widget: "string"
                 hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - label: "Immagini studio"
-            name: "images"
-            widget: "list"
-            allow_add: true
-            collapsed: true
-            add_to_top: true
-            summary: '{{fields.image}}'
-            fields:
-              - name: "image"
-                label: "Immagine"
-                widget: "image"
+          - { label: "Biografia completa", name: "body", widget: "markdown" }
+
       - label: "Contatti"
         name: "contact"
         file: "src/content/pages/contact.md"
@@ -220,17 +130,8 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "contact" }
           - { label: "Titolo", name: "title", widget: "string" }
-          
           - { label: "Testo", name: "body", widget: "markdown" }
-      - label: "Progetti realizzati"
-        name: "projects"
-        file: "src/content/pages/projects.md"
-        fields:
-          - { name: "template", widget: "hidden", default: "projects-page" }
-          - { name: "type", widget: "hidden", default: "list-page" }
-          - { name: "slug", widget: "hidden", default: "projects" }
-          - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
+
       - label: "Eventi in programma"
         name: "events"
         file: "src/content/pages/events.md"

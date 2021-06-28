@@ -5,16 +5,12 @@ import { Link, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTwitch, FaBehance, FaSkype, FaLinkedin } from "react-icons/fa"
-import { CgWebsite } from "react-icons/cg"
-import { GoMail } from "react-icons/go"
-
 import Seo from "../components/seo"
 
 const Pagination = props => (
   <div>
     <ul>
-      {props.previous && props.previous.frontmatter.template === "artist" && (
+      {props.previous && props.previous.frontmatter.template === "painting" && (
         <li>
           <Link to={props.previous.frontmatter.slug} rel="prev">
             <p>
@@ -27,7 +23,7 @@ const Pagination = props => (
           </Link>
         </li>
       )}
-      {props.next && props.next.frontmatter.template === "artist" && (
+      {props.next && props.next.frontmatter.template === "painting" && (
         <li>
           <Link to={props.next.frontmatter.slug} rel="next">
             <p>
@@ -48,7 +44,7 @@ const Artist = ({ data, pageContext }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
-  const Image = frontmatter.portrait ? frontmatter.portrait.childImageSharp.gatsbyImageData : ""
+  const Image = frontmatter.image ? frontmatter.image.childImageSharp.gatsbyImageData : ""
   const { previous, next } = pageContext
 
   let props = {
@@ -58,17 +54,16 @@ const Artist = ({ data, pageContext }) => {
 
   return (
     <>
-      <Seo title={frontmatter.fullname} description={frontmatter.description ? frontmatter.description : excerpt} article={true} />
+      <Seo title={frontmatter.title} description={excerpt} article={true} />
       <div className="container">
         <section className="section">
           <div className="hero mb-5">
             <div className="hero-body">
-              <h1 className="title is-size-2 has-text-centered">{frontmatter.fullname}</h1>
-              <h4 className="subtitle is-size-4 has-text-centered">{frontmatter.role}</h4>
+              <h1 className="title is-size-2 has-text-centered">{frontmatter.title}</h1>
             </div>
           </div>
           <div className="columns is-vcentered">
-            <div className="column p-6">{Image ? <GatsbyImage image={Image} alt={frontmatter.fullname + " - Portrait"} /> : ""}</div>
+            <div className="column p-6">{Image ? <GatsbyImage image={Image} alt={frontmatter.title} /> : ""}</div>
             <div className="column">
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
@@ -133,36 +128,21 @@ const ArtistSocials = ({ socials, mail }) => {
 export default Artist
 
 export const pageQuery = graphql`
-  query ArtistQuery($id: String!) {
+  query PaintingQuery($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
-      excerpt(pruneLength: 148)
+      excerpt(pruneLength: 150)
       frontmatter {
-        slug
-        fullname
-        role
-        description
-        mail
-        portrait {
+        image {
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
         }
-        latestWorks {
-          title
-          date(formatString: "MM/YYYY")
-          comment
-          workImage {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
-        }
-        socialNetworks {
-          social
-          url
-        }
+        title
+        date
+        technique
+        dimensions
       }
     }
   }
