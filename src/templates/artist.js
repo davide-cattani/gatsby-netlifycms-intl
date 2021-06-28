@@ -91,7 +91,7 @@ const Artist = ({ data, pageContext }) => {
 const ArtistWorks = ({ works }) => {
   return works.map((work, i) => (
     <section className="section" key={i}>
-      <div className="container is-max-desktop">
+      <div className="container is-max-desktop px-6">
         {work.workImage && <GatsbyImage image={work.workImage.childImageSharp.gatsbyImageData} alt={work.title} />}
         <div className="content has-text-centered p-4">
           <h6 className="subtitle is-size-4 has-text-weight-semibold">{work.title}</h6>
@@ -155,7 +155,7 @@ export const pageQuery = graphql`
           comment
           workImage {
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 1000, height: 1000)
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }

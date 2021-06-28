@@ -22,11 +22,7 @@ const styles = {
 
 export const artistListQuery = graphql`
   query artistListQuery($skip: Int!, $limit: Int!) {
-    artists: allMarkdownRemark(
-      filter: { frontmatter: { template: { eq: "artist" } } }
-      sort: {fields: frontmatter___date, order: ASC}
-      limit: $limit
-      skip: $skip) {
+    artists: allMarkdownRemark(filter: { frontmatter: { template: { eq: "artist" } } }, sort: { fields: frontmatter___date, order: ASC }, limit: $limit, skip: $skip) {
       edges {
         node {
           id
@@ -106,7 +102,9 @@ class ArtistIndex extends React.Component {
         <Seo title={"Gli artisti dello Sketch Studio"} description={""} />
         <div className="container">
           <section className="section mb-6">
-            <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
+            <div className="content mb-6">
+              <h1 className="title is-size-2 has-text-centered">Gli Artisti</h1>
+            </div>
             <ArtistCardList data={artists} />
           </section>
         </div>
