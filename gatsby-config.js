@@ -105,8 +105,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Sketch Studios`,
-        short_name: `sketch-studios`,
+        name: `Simonetta Cattini`,
+        short_name: `simonetta-cattini`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#a2466c`,
