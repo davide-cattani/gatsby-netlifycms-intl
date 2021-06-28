@@ -34,23 +34,25 @@ export const pageQuery = graphql`
         }
       }
     }
-    artists: allMarkdownRemark(
-      filter: { frontmatter: { template: { eq: "artist" } } }
-      sort: {fields: frontmatter___date, order: ASC}
+    paintings: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "painting" } } }
+      sort: {fields: frontmatter___date, order: DESC}
+      limit: 3
       ) {
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
-            portrait {
+            image {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 400, height: 400, placeholder: TRACED_SVG)
+                gatsbyImageData(layout: CONSTRAINED, width: 400, placeholder: DOMINANT_COLOR)
               }
             }
-            fullname
-            role
-            description
-            slug
+            title
+            date(format: MM/YYYY)
           }
         }
       }

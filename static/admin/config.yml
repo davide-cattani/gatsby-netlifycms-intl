@@ -108,7 +108,6 @@ collections:
           - { name: "slug", widget: "hidden", default: "about" }
           - { label: "Titolo", name: "title", widget: "string" }
           - { label: "Foto profilo", name: "featuredImage", widget: "image" }
-          - { label: "Biografia ridotta", name: "short_bio", widget: "markdown", hint: "Visualizzata in sezione della pagina home" }
           - label: "Pulsante call to action"
             name: "cta"
             widget: "object"
