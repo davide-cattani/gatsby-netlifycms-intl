@@ -160,6 +160,7 @@ collections:
           - { label: "Testo", name: "body", widget: "markdown", i18n: true }
   - name: settings
     label: Impostazioni
+    i18n: false
     files:
       - name: general
         label: Generali
