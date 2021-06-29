@@ -4,8 +4,8 @@
 //   font-display: swap;
 // }
 @font-face {
-  font-family: "comic-book";
-  src: url("../font/comic_book.woff2");
+  font-family: "ampersand";
+  src: url("../font/ampersand.woff2");
   font-display: swap;
 }
 
@@ -17,7 +17,7 @@ $primary: #558ce6;
 
 $blue: hsl(220, 65%,  40%);
 
-$family-sans-serif: "comic-book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$family-sans-serif: "ampersand", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 $size-2: 3.02rem;
 
@@ -37,6 +37,10 @@ $shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($schem
 $shadow-hover: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.3), 0 0px 0 1px rgba($scheme-invert, 0.04);
 
 @import "~bulma/bulma.sass";
+
+html {
+  font-size: 18px;
+}
 
 a p {
   color: $dark;
@@ -73,10 +77,10 @@ a p {
   height: 100%;
 }
 
-section.section:nth-child(even) {
-  //background-color: rgb(248, 248, 248);
-  background: url("../memphis-mini.png");
-}
+// section.section:nth-child(even) {
+//   //background-color: rgb(248, 248, 248);
+//   background: url("../memphis-mini.png");
+// }
 
 .social-icon {
   border-radius: 50%;

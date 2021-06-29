@@ -5,7 +5,7 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getImage } from "gatsby-plugin-image"
 
-import ArtistCardList from "../components/artist-card-list"
+import PaintingCardList from "../components/painting-card-list"
 import Seo from "../components/seo"
 
 export const pageQuery = graphql`
@@ -46,7 +46,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            image {
+            featuredImage {
               childImageSharp {
                 gatsbyImageData(layout: CONSTRAINED, width: 400, placeholder: DOMINANT_COLOR)
               }
@@ -61,7 +61,7 @@ export const pageQuery = graphql`
 `
 
 const HomePage = ({ data }) => {
-  const { markdownRemark, artists } = data
+  const { markdownRemark, paintings } = data
   const { frontmatter, html } = markdownRemark
   const Image = frontmatter.mainSection.featuredImage ? frontmatter.mainSection.featuredImage.childImageSharp.gatsbyImageData : ""
   const BackgroundImage = getImage(frontmatter.mainSection.backgroundImage.childImageSharp.gatsbyImageData)
@@ -93,7 +93,7 @@ const HomePage = ({ data }) => {
 
       <section className="section">
         <div className="container">
-          <ArtistCardList data={artists} isHome={true} />
+          <PaintingCardList data={paintings} isHome={true} />
         </div>
       </section>
 

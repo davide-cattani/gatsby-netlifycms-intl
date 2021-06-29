@@ -4,7 +4,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
 import Seo from "../components/seo"
-import ArtistCardList from "../components/artist-card-list"
+import PaintingCardList from "../components/painting-card-list"
 
 const styles = {
   pagination: {
@@ -29,13 +29,13 @@ export const paintingListQuery = graphql`
           html
           excerpt(pruneLength: 150)
           frontmatter {
-            image {
+            featuredImage {
               childImageSharp {
                 gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
             title
-            date
+            date(formatString: "MM/YYYY")
             technique
             dimensions
           }
@@ -107,7 +107,7 @@ class PaintingIndex extends React.Component {
             <div className="content mb-6">
               <h1 className="title is-size-2 has-text-centered">Galleria</h1>
             </div>
-            {/* <ArtistCardList data={paintings} /> */}
+            <PaintingCardList data={paintings} />
           </section>
         </div>
         <Pagination {...props} />

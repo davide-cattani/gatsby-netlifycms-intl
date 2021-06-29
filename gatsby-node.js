@@ -33,8 +33,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       buy_link: String
       number: String
       direct_sale: Boolean
-      image: File
-      featuredImage: File
+      featuredImage: File @fileByRelativePath
     }
   `
   actions.createTypes(typeDefs)

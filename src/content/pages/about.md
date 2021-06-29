@@ -4,8 +4,9 @@ type: page
 slug: about
 title: Su di me
 cta:
-  ctaText: Guarda cosa abbiamo realizzato
-  ctaLink: /projects
+  ctaText: Pubblicazioni
+  ctaLink: /publications
 featuredImage: /assets/placeholder.png
 ---
-### BIO
+### BIOgrafia
+Ecco qui la biografia completa!

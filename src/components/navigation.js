@@ -13,20 +13,20 @@ const MenuItems = [
   //   title: "Home",
   // },
   {
+    path: "/paintings",
+    title: "Galleria",
+  },
+  {
     path: "/about",
-    title: "Lo Studio",
+    title: "Su di me",
   },
   {
     path: "/events",
     title: "Eventi",
   },
   {
-    path: "/artists",
-    title: "Gli Artisti",
-  },
-  {
-    path: "/projects",
-    title: "Progetti Realizzati",
+    path: "/publications",
+    title: "Pubblicazioni",
   },
   {
     path: "/contact",

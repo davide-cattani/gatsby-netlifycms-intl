@@ -38,8 +38,15 @@ const AboutPage = ({ data }) => {
         <div className="container">
           <div className="content">
             <h1 className="title is-size-2">{frontmatter.title}</h1>
-            <article className="my-6" dangerouslySetInnerHTML={{ __html: html }} />
-            <GatsbyImage image={frontmatter.featuredImage.childImageSharp.gatsbyImageData} alt={frontmatter.title} />
+            <div className="columns">
+              <div className="column">
+                <GatsbyImage image={frontmatter.featuredImage.childImageSharp.gatsbyImageData} alt={frontmatter.title} />
+              </div>
+              <div className="column">
+                <article className="my-6" dangerouslySetInnerHTML={{ __html: html }} />
+              </div>
+            </div>
+
             <div className="buttons is-centered">
               <Link to={frontmatter.cta.ctaLink} className="button is-primary is-large mt-6 py-3" style={{ whiteSpace: "normal", height: "unset" }}>
                 {frontmatter.cta.ctaText}

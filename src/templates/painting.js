@@ -40,7 +40,7 @@ const Pagination = props => (
   </div>
 )
 
-const Artist = ({ data, pageContext }) => {
+const Painting = ({ data, pageContext }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
@@ -68,64 +68,14 @@ const Artist = ({ data, pageContext }) => {
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
           </div>
-
-          {frontmatter.socialNetworks && <ArtistSocials socials={frontmatter.socialNetworks} mail={frontmatter.mail} />}
         </section>
-        {frontmatter.latestWorks && (
-          <section className="section">
-            <h2 className="title is-size-3 has-text-centered">Ultimi lavori</h2>
-            <ArtistWorks works={frontmatter.latestWorks} />
-          </section>
-        )}
       </div>
       {/* {(previous || next) && <Pagination {...props} />} */}
     </>
   )
 }
 
-const ArtistWorks = ({ works }) => {
-  return works.map((work, i) => (
-    <section className="section" key={i}>
-      <div className="container is-max-desktop px-6">
-        {work.workImage && <GatsbyImage image={work.workImage.childImageSharp.gatsbyImageData} alt={work.title} />}
-        <div className="content has-text-centered p-4">
-          <h6 className="subtitle is-size-4 has-text-weight-semibold">{work.title}</h6>
-          <p className="is-italic has-text-grey">{work.date}</p>
-          <p>{work.comment}</p>
-        </div>
-      </div>
-    </section>
-  ))
-}
-
-const ArtistSocials = ({ socials, mail }) => {
-  return (
-    <nav className="is-flex is-flex-direction-row is-justify-content-center is-align-items-center mt-6">
-
-      <div className="social-icon">
-        <a href={"mailto:" + mail}>
-          <GoMail />
-        </a>
-      </div>
-
-      {socials.map((social, i) => (
-        <div className="social-icon" key={i}>
-          <a href={"https://" + social.url}>
-            {social.social == "facebook" && <FaFacebook />}
-            {social.social == "twitter" && <FaTwitter />}
-            {social.social == "instagram" && <FaInstagram />}
-            {social.social == "linkedin" && <FaLinkedin />}
-            {social.social == "sito web" && <CgWebsite />}
-            {social.social == "twitch" && <FaTwitch />}
-            {social.social == "skype" && <FaSkype />}
-          </a>
-        </div>
-      ))}
-    </nav>
-  )
-}
-
-export default Artist
+export default Painting
 
 export const pageQuery = graphql`
   query PaintingQuery($id: String!) {
