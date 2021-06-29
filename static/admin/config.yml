@@ -85,7 +85,8 @@ collections:
 
   - label: "Pagine del sito"
     name: "pages"
-    i18n: true
+    i18n:
+      structure: single_file
     files:
       - label: "Home"
         name: "home"
