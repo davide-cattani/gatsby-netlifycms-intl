@@ -3,10 +3,10 @@ template: index-page
 type: page
 slug: ""
 mainSection:
-  title: Sketch Studios Carpi
+  title: Simonetta Cattini
   tagline: Sottotitolo importante
-  featuredImage: /assets/sketch-studios-logo.png
-  backgroundImage: /assets/background-sito.jpg
+  featuredImage: /assets/placeholder.png
+  backgroundImage: /assets/placeholder.png
   cta:
     ctaText: Scrivici
     ctaLink: /contact

@@ -28,7 +28,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
     type Frontmatter {
-      short_bio: String @md
+      technique: String
+      dimensions: String
+      buy_link: String
+      number: String
+      direct_sale: Boolean
+      image: File
+      featuredImage: File
     }
   `
   actions.createTypes(typeDefs)

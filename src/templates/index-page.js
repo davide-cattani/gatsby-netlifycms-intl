@@ -52,7 +52,7 @@ export const pageQuery = graphql`
               }
             }
             title
-            date(format: MM/YYYY)
+            date(formatString: "MM/YYYY")
           }
         }
       }

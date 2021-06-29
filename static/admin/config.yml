@@ -16,41 +16,31 @@ backend:
 media_folder: "static/assets"
 public_folder: "/assets"
 
-collections:
-  # - name: "posts"
-  #   label: "Posts"
-  #   label_singular: "Post"
-  #   description: >
-  #     Create awesome content here.
-  #   folder: "src/content/posts"
-  #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-  #   summary: "{{title}} — {{year}}/{{month}}/{{day}}"
-  #   create: true
-  #   fields:
-  #     - { label: "Template", name: "template", widget: "hidden", default: "blog-post" }
-  #     - { label: "Title", name: "title", widget: "string", tagname: "h1" }
-  #     - { label: "Slug", name: "slug", widget: "string", hint: "Only alphanumeric characters, - and _." }
-  #     - { label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm", format: "YYYY-MM-DD HH:mm" }
-  #     - { label: "SEO Description", name: "description", widget: "text" }
-  #     - { label: "Featured Image", name: "featuredImage", widget: "image", required: false, tagname: "" }
+i18n:
+  structure: multiple_folders
+  locales: [it, en]
 
-  #     - { label: "Body", name: "body", widget: "markdown", hint: "Main content goes here." }
+collections:
   - name: "paintings"
     label: "Dipinti"
     label_singular: "Dipinto"
     identifier_field: title
     folder: "src/content/paintings"
     slug: "{{fields.title}}"
-    summary: "{{title}}"
+    summary: "{{title}} - {{image}}"
     create: true
+    i18n: true
     fields:
       - { name: "template", widget: "hidden", default: "painting" }
       - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
       - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Tecnica", name: "technique", widget: "string" }
+      - { label: "Tecnica", name: "technique", widget: "string", i18n: true }
       - { label: "Dimensioni", name: "dimensions", widget: "string" }
       - { label: "Immagine", name: "image", widget: "image" }
-      - { label: "Commento", name: "body", widget: "markdown" }
+      - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
+      - { label: "Link per acquisto", name: "buy_link", widget: "string", required: false }
+      - { label: "Prezzo", name: "price", widget: "number", required: false }
+      - { label: "Vendita diretta disponibile", name: "direct_sale", widget: "boolean", required: false }
 
   - name: "events"
     label: "Eventi"
@@ -60,16 +50,42 @@ collections:
     slug: "{{fields.title}}-{{fields.date_start}}"
     summary: "{{title}}"
     create: true
+    i18n: true
     fields:
       - { name: "template", widget: "hidden", default: "event" }
       - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
       - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Immagine", name: "image", widget: "image" }
-      - { label: "Descrizione", name: "body", widget: "markdown" }
+      - { label: "Descrizione", name: "body", widget: "markdown", i18n: true }
+
+  - name: "publications"
+    label: "Pubblicazioni"
+    label_singular: "Pubblicazione"
+    identifier_field: title
+    folder: "src/content/publications"
+    slug: "{{fields.title}}"
+    summary: "{{title}}"
+    create: true
+    i18n: true
+    fields:
+      - { name: "template", widget: "hidden", default: "publication" }
+      - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
+      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
+      - { label: "Link", name: "link", widget: "string", required: false }
+      - label: "Immagini"
+        name: "images"
+        widget: "list"
+        allow_add: true
+        collapsed: true
+        add_to_top: true
+        fields:
+          - { label: "Immagine", name: "image", widget: "image" }
 
   - label: "Pagine del sito"
     name: "pages"
+    i18n: true
     files:
       - label: "Home"
         name: "home"
@@ -83,7 +99,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1" }
-              - { label: "Sottotitolo", name: "tagline", widget: "string" }
+              - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
               - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
               - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
               - label: "Pulsante call to action"
@@ -93,11 +109,12 @@ collections:
                   - name: "ctaText"
                     label: "Testo pulsante"
                     widget: "string"
+                    i18n: true
                   - name: "ctaLink"
                     label: "Link"
                     widget: "string"
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Testo in primo piano", name: "body", widget: "markdown" }
+          - { label: "Testo in primo piano", name: "body", widget: "markdown", i18n: true }
           
       - label: "About"
         name: "about"
@@ -115,11 +132,12 @@ collections:
               - name: "ctaText"
                 label: "Testo pulsante"
                 widget: "string"
+                i18n: true
               - name: "ctaLink"
                 label: "Link"
                 widget: "string"
                 hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Biografia completa", name: "body", widget: "markdown" }
+          - { label: "Biografia completa", name: "body", widget: "markdown", i18n: true }
 
       - label: "Contatti"
         name: "contact"
@@ -129,7 +147,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "contact" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
+          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
 
       - label: "Eventi in programma"
         name: "events"
@@ -139,7 +157,7 @@ collections:
           - { name: "type", widget: "hidden", default: "list-page" }
           - { name: "slug", widget: "hidden", default: "events" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
+          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
   - name: settings
     label: Impostazioni
     files:

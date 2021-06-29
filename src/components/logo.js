@@ -7,7 +7,7 @@ const Logo = props => {
 
       <Link to="/" className="navbar-item" onClick={props.onClick}>
         <StaticImage
-          src={"../../static/assets/sketch-studios-logo.png"}
+          src={"../../static/assets/placeholder.png"}
           alt={props.title}
           placeholder="tracedSVG"
           width={42}
