@@ -75,14 +75,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      pages: allMarkdownRemark(filter: { frontmatter: { type: { eq: "page" } } }) {
+      pages: allMarkdownRemark(filter: {frontmatter: {it: {type: {eq: "page"}}}}) {
         edges {
           node {
             id
             frontmatter {
-              slug
-              template
-              type
+              it {
+                slug
+                template
+                type
+              }
             }
           }
         }
@@ -96,77 +98,82 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  // Create markdown pages
-  const paintings = allPages.data.paintings.edges
-  let paintingCount = 0
+  const locales = ["it/", "en/"]
 
-  paintings.forEach((post, index) => {
-    const id = post.node.id
-    const previous = index === paintings.length - 1 ? null : paintings[index + 1].node
-    const next = index === 0 ? null : paintings[index - 1].node
+  locales.forEach(locale => {
 
-    createPage({
-      path: post.node.fields.slug,
-      component: path.resolve(`src/templates/${String(post.node.frontmatter.template)}.js`),
-      // additional data can be passed via context
-      context: {
-        id,
-        previous,
-        next,
-      },
+    // Create markdown pages
+    const paintings = allPages.data.paintings.edges
+    let paintingCount = 0
+
+    paintings.forEach((post, index) => {
+      const id = post.node.id
+      const previous = index === paintings.length - 1 ? null : paintings[index + 1].node
+      const next = index === 0 ? null : paintings[index - 1].node
+
+      createPage({
+        path: locale + post.node.fields.slug,
+        component: path.resolve(`src/templates/${String(post.node.frontmatter.template)}.js`),
+        // additional data can be passed via context
+        context: {
+          id,
+          previous,
+          next,
+        },
+      })
+      // Count artists.
+      if (post.node.frontmatter.template === "painting") {
+        paintingCount++
+      }
     })
-    // Count artists.
-    if (post.node.frontmatter.template === "painting") {
-      paintingCount++
-    }
-  })
 
-  // Create painting index pages
-  const paintingsPerPage = 12
-  const numPages = Math.ceil(paintingCount / paintingsPerPage)
+    // Create painting index pages
+    const paintingsPerPage = 12
+    const numPages = Math.ceil(paintingCount / paintingsPerPage)
 
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/paintings` : `/paintings/${i + 1}`,
-      component: paintingList,
-      context: {
-        limit: paintingsPerPage,
-        skip: i * paintingsPerPage,
-        numPages,
-        currentPage: i + 1,
-      },
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: locale + (i === 0 ? `/paintings` : `/paintings/${i + 1}`),
+        component: paintingList,
+        context: {
+          limit: paintingsPerPage,
+          skip: i * paintingsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
     })
-  })
 
-  // Create events index pages
-  const eventsCount = allPages.data.events.edges.length
+    // Create events index pages
+    const eventsCount = allPages.data.events.edges.length
 
-  const eventsPerPage = 6
-  const eventNumPages = Math.ceil(eventsCount / eventsPerPage)
+    const eventsPerPage = 6
+    const eventNumPages = Math.ceil(eventsCount / eventsPerPage)
 
-  Array.from({ length: eventNumPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/events` : `/events/${i + 1}`,
-      component: eventList,
-      context: {
-        limit: eventsPerPage,
-        skip: i * eventsPerPage,
-        eventNumPages,
-        currentPage: i + 1,
-      },
+    Array.from({ length: eventNumPages }).forEach((_, i) => {
+      createPage({
+        path: locale + (i === 0 ? `/events` : `/events/${i + 1}`),
+        component: eventList,
+        context: {
+          limit: eventsPerPage,
+          skip: i * eventsPerPage,
+          eventNumPages,
+          currentPage: i + 1,
+        },
+      })
     })
-  })
 
-  // Create index pages
-  const pages = allPages.data.pages.edges
-  pages.forEach((page, index) => {
-    const id = page.node.id
-    createPage({
-      path: "/" + page.node.frontmatter.slug,
-      component: path.resolve(`src/templates/${String(page.node.frontmatter.template)}.js`),
-      context: {
-        id,
-      },
+    // Create index pages
+    const pages = allPages.data.pages.edges
+    pages.forEach((page, index) => {
+      const id = page.node.id
+      createPage({
+        path: "/" + locale + page.node.frontmatter.it.slug,
+        component: path.resolve(`src/templates/${String(page.node.frontmatter.it.template)}.js`),
+        context: {
+          id,
+        },
+      })
     })
   })
 }

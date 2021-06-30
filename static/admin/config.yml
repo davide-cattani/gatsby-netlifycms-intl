@@ -27,20 +27,20 @@ collections:
     identifier_field: title
     folder: "src/content/paintings"
     slug: "{{fields.title}}"
-    summary: "{{title}} - {{image}}"
+    summary: "{{title}}"
     create: true
-    i18n: duplicate
+    i18n: true
     fields:
-      - { name: "template", widget: "hidden", default: "painting" }
-      - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { name: "template", widget: "hidden", default: "painting", i18n: duplicate }
+      - { label: "Titolo", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
+      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
       - { label: "Tecnica", name: "technique", widget: "string", i18n: true }
-      - { label: "Dimensioni", name: "dimensions", widget: "string" }
-      - { label: "Immagine", name: "image", widget: "image" }
+      - { label: "Dimensioni", name: "dimensions", widget: "string", i18n: duplicate }
+      - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
       - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
-      - { label: "Link per acquisto", name: "buy_link", widget: "string", required: false }
-      - { label: "Prezzo", name: "price", widget: "number", required: false }
-      - { label: "Vendita diretta disponibile", name: "direct_sale", widget: "boolean", required: false }
+      - { label: "Link per acquisto", name: "buy_link", widget: "string", required: false, i18n: duplicate }
+      - { label: "Prezzo", name: "price", widget: "number", required: false, i18n: duplicate }
+      - { label: "Vendita diretta disponibile", name: "direct_sale", widget: "boolean", required: false, i18n: duplicate }
 
   - name: "events"
     label: "Eventi"
@@ -52,11 +52,11 @@ collections:
     create: true
     i18n: true
     fields:
-      - { name: "template", widget: "hidden", default: "event" }
-      - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Immagine", name: "image", widget: "image" }
+      - { name: "template", widget: "hidden", default: "event", i18n: duplicate }
+      - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
+      - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
+      - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
+      - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
       - { label: "Descrizione", name: "body", widget: "markdown", i18n: true }
 
   - name: "publications"
@@ -69,46 +69,45 @@ collections:
     create: true
     i18n: true
     fields:
-      - { name: "template", widget: "hidden", default: "publication" }
-      - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { name: "template", widget: "hidden", default: "publication", i18n: duplicate }
+      - { label: "Titolo", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
+      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
       - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
-      - { label: "Link", name: "link", widget: "string", required: false }
+      - { label: "Link", name: "link", widget: "string", required: false, i18n: duplicate }
       - label: "Immagini"
         name: "images"
         widget: "list"
         allow_add: true
         collapsed: true
         add_to_top: true
+        i18n: true
         fields:
-          - { label: "Immagine", name: "image", widget: "image" }
+          - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
 
   - label: "Pagine del sito"
     name: "pages"
     i18n:
       structure: single_file
-      locales: [it, en]
     files:
       - label: "Home"
         name: "home"
         file: "src/content/pages/index.md"
         i18n: true
         fields:
-          - { name: "template", widget: "hidden", default: "index-page" }
-          - { name: "type", widget: "hidden", default: "page" }
-          - { name: "slug", widget: "hidden", default: "" }
           - label: "Sezione landing"
             name: "mainSection"
             widget: "object"
             i18n: true
             fields:
-              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1", i18n: true }
+              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
               - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
+              - { label: "Testo in primo piano", name: "body", widget: "markdown", required: false, i18n: true }
               - { label: "Immagine a lato", name: "featuredImage", widget: "image", i18n: duplicate }
               - { label: "Immagine sfondo", name: "backgroundImage", widget: "image", i18n: duplicate }
               - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
+                i18n: true
                 fields:
                   - name: "ctaText"
                     label: "Testo pulsante"
@@ -119,21 +118,24 @@ collections:
                     widget: "string"
                     i18n: duplicate
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Testo in primo piano", name: "body", widget: "markdown", i18n: true }
+          - { name: "template", widget: "hidden", default: "index-page", i18n: duplicate, hint: "Non modificare" }
+          - { name: "type", widget: "hidden", default: "page", i18n: duplicate, hint: "Non modificare" }
+          - { name: "slug", widget: "hidden", default: "", i18n: duplicate, hint: "Non modificare" }
           
       - label: "About"
         name: "about"
         file: "src/content/pages/about.md"
         i18n: true
         fields:
-          - { name: "template", widget: "hidden", default: "about-page" }
-          - { name: "type", widget: "hidden", default: "page" }
-          - { name: "slug", widget: "hidden", default: "about" }
+          - { name: "template", widget: "hidden", default: "about-page", i18n: duplicate }
+          - { name: "type", widget: "hidden", default: "page", i18n: duplicate }
+          - { name: "slug", widget: "hidden", default: "about", i18n: duplicate }
           - { label: "Titolo", name: "title", widget: "string", i18n: true }
-          - { label: "Foto profilo", name: "featuredImage", widget: "image" }
+          - { label: "Foto profilo", name: "featuredImage", widget: "image", i18n: duplicate }
           - label: "Pulsante call to action"
             name: "cta"
             widget: "object"
+            i18n: true
             fields:
               - name: "ctaText"
                 label: "Testo pulsante"
@@ -142,6 +144,7 @@ collections:
               - name: "ctaLink"
                 label: "Link"
                 widget: "string"
+                i18n: duplicate
                 hint: "inserire il sotto-url a cui rimandare es. /contact"
           - { label: "Biografia completa", name: "body", widget: "markdown", i18n: true }
 
@@ -150,20 +153,20 @@ collections:
         file: "src/content/pages/contact.md"
         i18n: true
         fields:
-          - { name: "template", widget: "hidden", default: "contact-page" }
-          - { name: "type", widget: "hidden", default: "page" }
-          - { name: "slug", widget: "hidden", default: "contact" }
+          - { name: "template", widget: "hidden", default: "contact-page", i18n: duplicate }
+          - { name: "type", widget: "hidden", default: "page", i18n: duplicate }
+          - { name: "slug", widget: "hidden", default: "contact", i18n: duplicate }
           - { label: "Titolo", name: "title", widget: "string", i18n: true }
-          - { label: "Testo", name: "body", widget: "markdown", i18n: true}
+          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
 
       - label: "Eventi in programma"
         name: "events"
         file: "src/content/pages/events.md"
         i18n: true
         fields:
-          - { name: "template", widget: "hidden", default: "events-page" }
-          - { name: "type", widget: "hidden", default: "list-page" }
-          - { name: "slug", widget: "hidden", default: "events" }
+          - { name: "template", widget: "hidden", default: "events-page", i18n: duplicate }
+          - { name: "type", widget: "hidden", default: "list-page", i18n: duplicate }
+          - { name: "slug", widget: "hidden", default: "events", i18n: duplicate }
           - { label: "Titolo", name: "title", widget: "string", i18n: true }
           - { label: "Testo", name: "body", widget: "markdown", i18n: true }
   - name: settings
