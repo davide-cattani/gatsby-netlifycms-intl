@@ -9,7 +9,7 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 # Uncomment local_backend when you need to develop in your local
-#local_backend: true # run npx netlify-cms-proxy-server for local testing
+local_backend: true # run npx netlify-cms-proxy-server for local testing
 
 # publish_mode: editorial_workflow
 
@@ -29,7 +29,7 @@ collections:
     slug: "{{fields.title}}"
     summary: "{{title}} - {{image}}"
     create: true
-    i18n: true
+    i18n: duplicate
     fields:
       - { name: "template", widget: "hidden", default: "painting" }
       - { label: "Titolo", name: "title", widget: "string", tagname: "h1" }
@@ -100,11 +100,12 @@ collections:
           - label: "Sezione landing"
             name: "mainSection"
             widget: "object"
+            i18n: true
             fields:
               - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1", i18n: true }
               - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
-              - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
-              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
+              - { label: "Immagine a lato", name: "featuredImage", widget: "image", i18n: duplicate }
+              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image", i18n: duplicate }
               - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
@@ -116,6 +117,7 @@ collections:
                   - name: "ctaLink"
                     label: "Link"
                     widget: "string"
+                    i18n: duplicate
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
           - { label: "Testo in primo piano", name: "body", widget: "markdown", i18n: true }
           
