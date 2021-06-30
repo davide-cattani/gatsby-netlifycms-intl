@@ -100,9 +100,9 @@ collections:
             widget: "object"
             fields:
               - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1" }
-              - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
-              - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
-              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
+              - { label: "Sottotitolo", name: "tagline", widget: "string" }
+              - { label: "Immagine a lato", name: "featuredImage", widget: "image", i18n: false }
+              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image", i18n: false }
               - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
@@ -110,12 +110,12 @@ collections:
                   - name: "ctaText"
                     label: "Testo pulsante"
                     widget: "string"
-                    i18n: true
                   - name: "ctaLink"
                     label: "Link"
                     widget: "string"
+                    i18n: false
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Testo in primo piano", name: "body", widget: "markdown", i18n: true }
+          - { label: "Testo in primo piano", name: "body", widget: "markdown" }
           
       - label: "About"
         name: "about"
@@ -125,7 +125,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "about" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Foto profilo", name: "featuredImage", widget: "image" }
+          - { label: "Foto profilo", name: "featuredImage", widget: "image", i18n: false }
           - label: "Pulsante call to action"
             name: "cta"
             widget: "object"
@@ -137,8 +137,9 @@ collections:
               - name: "ctaLink"
                 label: "Link"
                 widget: "string"
+                i18n: false
                 hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Biografia completa", name: "body", widget: "markdown", i18n: true }
+          - { label: "Biografia completa", name: "body", widget: "markdown" }
 
       - label: "Contatti"
         name: "contact"
@@ -148,7 +149,7 @@ collections:
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "contact" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
+          - { label: "Testo", name: "body", widget: "markdown"}
 
       - label: "Eventi in programma"
         name: "events"
@@ -158,7 +159,7 @@ collections:
           - { name: "type", widget: "hidden", default: "list-page" }
           - { name: "slug", widget: "hidden", default: "events" }
           - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
+          - { label: "Testo", name: "body", widget: "markdown" }
   - name: settings
     label: Impostazioni
     i18n: false
