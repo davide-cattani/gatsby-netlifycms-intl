@@ -87,10 +87,12 @@ collections:
     name: "pages"
     i18n:
       structure: single_file
+      locales: [it, en]
     files:
       - label: "Home"
         name: "home"
         file: "src/content/pages/index.md"
+        i18n: true
         fields:
           - { name: "template", widget: "hidden", default: "index-page" }
           - { name: "type", widget: "hidden", default: "page" }
@@ -99,10 +101,10 @@ collections:
             name: "mainSection"
             widget: "object"
             fields:
-              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1" }
-              - { label: "Sottotitolo", name: "tagline", widget: "string" }
-              - { label: "Immagine a lato", name: "featuredImage", widget: "image", i18n: false }
-              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image", i18n: false }
+              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1", i18n: true }
+              - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
+              - { label: "Immagine a lato", name: "featuredImage", widget: "image" }
+              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image" }
               - label: "Pulsante call to action"
                 name: "cta"
                 widget: "object"
@@ -110,22 +112,23 @@ collections:
                   - name: "ctaText"
                     label: "Testo pulsante"
                     widget: "string"
+                    i18n: true
                   - name: "ctaLink"
                     label: "Link"
                     widget: "string"
-                    i18n: false
                     hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Testo in primo piano", name: "body", widget: "markdown" }
+          - { label: "Testo in primo piano", name: "body", widget: "markdown", i18n: true }
           
       - label: "About"
         name: "about"
         file: "src/content/pages/about.md"
+        i18n: true
         fields:
           - { name: "template", widget: "hidden", default: "about-page" }
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "about" }
-          - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Foto profilo", name: "featuredImage", widget: "image", i18n: false }
+          - { label: "Titolo", name: "title", widget: "string", i18n: true }
+          - { label: "Foto profilo", name: "featuredImage", widget: "image" }
           - label: "Pulsante call to action"
             name: "cta"
             widget: "object"
@@ -137,29 +140,30 @@ collections:
               - name: "ctaLink"
                 label: "Link"
                 widget: "string"
-                i18n: false
                 hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Biografia completa", name: "body", widget: "markdown" }
+          - { label: "Biografia completa", name: "body", widget: "markdown", i18n: true }
 
       - label: "Contatti"
         name: "contact"
         file: "src/content/pages/contact.md"
+        i18n: true
         fields:
           - { name: "template", widget: "hidden", default: "contact-page" }
           - { name: "type", widget: "hidden", default: "page" }
           - { name: "slug", widget: "hidden", default: "contact" }
-          - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown"}
+          - { label: "Titolo", name: "title", widget: "string", i18n: true }
+          - { label: "Testo", name: "body", widget: "markdown", i18n: true}
 
       - label: "Eventi in programma"
         name: "events"
         file: "src/content/pages/events.md"
+        i18n: true
         fields:
           - { name: "template", widget: "hidden", default: "events-page" }
           - { name: "type", widget: "hidden", default: "list-page" }
           - { name: "slug", widget: "hidden", default: "events" }
-          - { label: "Titolo", name: "title", widget: "string" }
-          - { label: "Testo", name: "body", widget: "markdown" }
+          - { label: "Titolo", name: "title", widget: "string", i18n: true }
+          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
   - name: settings
     label: Impostazioni
     i18n: false
