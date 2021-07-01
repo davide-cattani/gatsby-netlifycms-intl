@@ -1,10 +1,8 @@
 {
   "meta": {
-    "title": "Simonetta Cattini",
-    "description": "Gallery website of Italian portrait artist Simonetta Cattini",
-    "siteUrl": "https://www.simonettacattini.art",
-    "logo": "/assets/placeholder.png",
-    "twitterUsername": "@stackrole"
-  },
-  "ga": "UA-XXXXXXXXX-X"
+    "title": "Gatsby netlifyCMS international",
+    "description": "A quick example of how to implement i18n internationalization with Gatsby.js and netlify CMS",
+    "siteUrl": "https://gatsby-netlifycms-i18n.netlify.app",
+    "logo": "/assets/placeholder.png"
+  }
 }

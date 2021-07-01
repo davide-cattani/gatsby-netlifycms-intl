@@ -28,12 +28,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       frontmatter: Frontmatter
     }
     type Frontmatter {
-      technique: String
-      dimensions: String
-      buy_link: String
-      number: String
-      direct_sale: Boolean
-      featuredImage: File @fileByRelativePath
+      it: Lang
+      en: Lang
+    }
+    type Lang {
+      body: String @md
     }
   `
   actions.createTypes(typeDefs)
@@ -47,7 +46,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const allPages = await graphql(`
     {
-      paintings: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "painting" } } }) {
+      posts: allMarkdownRemark(filter: { frontmatter: { it: { type: { eq: "post" } } } }) {
         edges {
           node {
             id
@@ -55,22 +54,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               slug
             }
             frontmatter {
-              template
-              title
-            }
-          }
-        }
-      }
-      events: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { template: { eq: "event" } } }) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              template
-              title
+              it {
+                type
+              }
             }
           }
         }
@@ -92,73 +78,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  // Handle errors
-  if (allPages.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
-  }
-
   const locales = ["it/", "en/"]
 
   locales.forEach(locale => {
 
     // Create markdown pages
-    const paintings = allPages.data.paintings.edges
-    let paintingCount = 0
+    const posts = allPages.data.posts.edges
 
-    paintings.forEach((post, index) => {
+    posts.forEach((post, index) => {
       const id = post.node.id
-      const previous = index === paintings.length - 1 ? null : paintings[index + 1].node
-      const next = index === 0 ? null : paintings[index - 1].node
 
       createPage({
         path: locale + post.node.fields.slug,
-        component: path.resolve(`src/templates/${String(post.node.frontmatter.template)}.js`),
+        component: path.resolve(`src/templates/post.js`),
         // additional data can be passed via context
         context: {
           id,
-          previous,
-          next,
-        },
-      })
-      // Count artists.
-      if (post.node.frontmatter.template === "painting") {
-        paintingCount++
-      }
-    })
-
-    // Create painting index pages
-    const paintingsPerPage = 12
-    const numPages = Math.ceil(paintingCount / paintingsPerPage)
-
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path: locale + (i === 0 ? `/paintings` : `/paintings/${i + 1}`),
-        component: paintingList,
-        context: {
-          limit: paintingsPerPage,
-          skip: i * paintingsPerPage,
-          numPages,
-          currentPage: i + 1,
-        },
-      })
-    })
-
-    // Create events index pages
-    const eventsCount = allPages.data.events.edges.length
-
-    const eventsPerPage = 6
-    const eventNumPages = Math.ceil(eventsCount / eventsPerPage)
-
-    Array.from({ length: eventNumPages }).forEach((_, i) => {
-      createPage({
-        path: locale + (i === 0 ? `/events` : `/events/${i + 1}`),
-        component: eventList,
-        context: {
-          limit: eventsPerPage,
-          skip: i * eventsPerPage,
-          eventNumPages,
-          currentPage: i + 1,
         },
       })
     })

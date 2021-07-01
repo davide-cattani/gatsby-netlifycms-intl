@@ -17,237 +17,38 @@ media_folder: "static/assets"
 public_folder: "/assets"
 
 i18n:
-  structure: multiple_folders
+  structure: single_file
   locales: [it, en]
 
 collections:
-  - name: "paintings"
-    label: "Dipinti"
-    label_singular: "Dipinto"
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
     identifier_field: title
-    folder: "src/content/paintings"
+    folder: "src/content/posts"
     slug: "{{fields.title}}"
     summary: "{{title}}"
     create: true
     i18n: true
     fields:
-      - { name: "template", widget: "hidden", default: "painting", i18n: duplicate }
-      - { label: "Titolo", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
-      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
-      - { label: "Tecnica", name: "technique", widget: "string", i18n: true }
-      - { label: "Dimensioni", name: "dimensions", widget: "string", i18n: duplicate }
-      - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
-      - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
-      - { label: "Link per acquisto", name: "buy_link", widget: "string", required: false, i18n: duplicate }
-      - { label: "Prezzo", name: "price", widget: "number", required: false, i18n: duplicate }
-      - { label: "Vendita diretta disponibile", name: "direct_sale", widget: "boolean", required: false, i18n: duplicate }
+      - { name: "type", widget: "hidden", default: "post", i18n: duplicate }
+      - { label: "Title", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
+      - { label: "Special Text", name: "special_text", widget: "string", i18n: true }
+      - { label: "Article", name: "body", widget: "markdown", required: false, i18n: true }
 
-  - name: "events"
-    label: "Eventi"
-    label_singular: "Evento"
-    identifier_field: title
-    folder: "src/content/events"
-    slug: "{{fields.title}}-{{fields.date_start}}"
-    summary: "{{title}}"
-    create: true
-    i18n: true
-    fields:
-      - { name: "template", widget: "hidden", default: "event", i18n: duplicate }
-      - { label: "Titolo/Nome", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
-      - { label: "Data inizio", name: "date_start", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
-      - { label: "Data fine", name: "date_end", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
-      - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
-      - { label: "Descrizione", name: "body", widget: "markdown", i18n: true }
-
-  - name: "publications"
-    label: "Pubblicazioni"
-    label_singular: "Pubblicazione"
-    identifier_field: title
-    folder: "src/content/publications"
-    slug: "{{fields.title}}"
-    summary: "{{title}}"
-    create: true
-    i18n: true
-    fields:
-      - { name: "template", widget: "hidden", default: "publication", i18n: duplicate }
-      - { label: "Titolo", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
-      - { label: "Data", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, i18n: duplicate }
-      - { label: "Commento", name: "body", widget: "markdown", required: false, i18n: true }
-      - { label: "Link", name: "link", widget: "string", required: false, i18n: duplicate }
-      - label: "Immagini"
-        name: "images"
-        widget: "list"
-        allow_add: true
-        collapsed: true
-        add_to_top: true
-        i18n: true
-        fields:
-          - { label: "Immagine", name: "image", widget: "image", i18n: duplicate }
-
-  - label: "Pagine del sito"
+  - label: "Pages"
     name: "pages"
-    i18n:
-      structure: single_file
+    i18n: true
     files:
       - label: "Home"
         name: "home"
         file: "src/content/pages/index.md"
         i18n: true
         fields:
-          - label: "Sezione landing"
-            name: "mainSection"
-            widget: "object"
-            i18n: true
-            fields:
-              - { label: "Titolo in primo piano", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
-              - { label: "Sottotitolo", name: "tagline", widget: "string", i18n: true }
-              - { label: "Testo in primo piano", name: "body", widget: "markdown", required: false, i18n: true }
-              - { label: "Immagine a lato", name: "featuredImage", widget: "image", i18n: duplicate }
-              - { label: "Immagine sfondo", name: "backgroundImage", widget: "image", i18n: duplicate }
-              - label: "Pulsante call to action"
-                name: "cta"
-                widget: "object"
-                i18n: true
-                fields:
-                  - name: "ctaText"
-                    label: "Testo pulsante"
-                    widget: "string"
-                    i18n: true
-                  - name: "ctaLink"
-                    label: "Link"
-                    widget: "string"
-                    i18n: duplicate
-                    hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { name: "template", widget: "hidden", default: "index-page", i18n: duplicate, hint: "Non modificare" }
-          - { name: "type", widget: "hidden", default: "page", i18n: duplicate, hint: "Non modificare" }
-          - { name: "slug", widget: "hidden", default: "", i18n: duplicate, hint: "Non modificare" }
-          
-      - label: "About"
-        name: "about"
-        file: "src/content/pages/about.md"
-        i18n: true
-        fields:
-          - { name: "template", widget: "hidden", default: "about-page", i18n: duplicate }
-          - { name: "type", widget: "hidden", default: "page", i18n: duplicate }
-          - { name: "slug", widget: "hidden", default: "about", i18n: duplicate }
-          - { label: "Titolo", name: "title", widget: "string", i18n: true }
-          - { label: "Foto profilo", name: "featuredImage", widget: "image", i18n: duplicate }
-          - label: "Pulsante call to action"
-            name: "cta"
-            widget: "object"
-            i18n: true
-            fields:
-              - name: "ctaText"
-                label: "Testo pulsante"
-                widget: "string"
-                i18n: true
-              - name: "ctaLink"
-                label: "Link"
-                widget: "string"
-                i18n: duplicate
-                hint: "inserire il sotto-url a cui rimandare es. /contact"
-          - { label: "Biografia completa", name: "body", widget: "markdown", i18n: true }
-
-      - label: "Contatti"
-        name: "contact"
-        file: "src/content/pages/contact.md"
-        i18n: true
-        fields:
-          - { name: "template", widget: "hidden", default: "contact-page", i18n: duplicate }
-          - { name: "type", widget: "hidden", default: "page", i18n: duplicate }
-          - { name: "slug", widget: "hidden", default: "contact", i18n: duplicate }
-          - { label: "Titolo", name: "title", widget: "string", i18n: true }
-          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
-
-      - label: "Eventi in programma"
-        name: "events"
-        file: "src/content/pages/events.md"
-        i18n: true
-        fields:
-          - { name: "template", widget: "hidden", default: "events-page", i18n: duplicate }
-          - { name: "type", widget: "hidden", default: "list-page", i18n: duplicate }
-          - { name: "slug", widget: "hidden", default: "events", i18n: duplicate }
-          - { label: "Titolo", name: "title", widget: "string", i18n: true }
-          - { label: "Testo", name: "body", widget: "markdown", i18n: true }
-  - name: settings
-    label: Impostazioni
-    i18n: false
-    files:
-      - name: general
-        label: Generali
-        file: "src/util/site.json"
-        fields:
-          - label: Impostazioni del sito
-            name: meta
-            widget: object
-            fields:
-              - widget: string
-                name: title
-                label: Nome del sito
-                required: true
-              - widget: string
-                name: siteUrl
-                label: URL sito
-                required: true
-              - widget: text
-                name: description
-                label: Descrizione SEO sito
-                default: ""
-                required: false
-              - widget: image
-                name: logo
-                label: Logo
-                hint: "Dimensione 1024x1024"
-              - widget: string
-                name: twitterUsername
-                label: Twitter
-                required: false
-
-          - label: "Google Analytics"
-            name: ga
-            widget: string
-            hint: "Add you tracking ID, for example UA-XXXXXXXXX-X"
-      - label: Social Links
-        name: socialLinks
-        file: "src/util/socialmedia.json"
-        fields:
-          - label: Social Links
-            name: socialLinks
-            widget: list
-            collapsed: true
-            hint: "Here you can add social links, Click on 'Add social links'"
-            fields:
-              - label: "Social"
-                name: "social"
-                widget: "select"
-                options: ["facebook", "twitter", "linkedin", "youtube", "instagram", "rss", "github", "telegram", "pinterest", "snapchat", "skype", "wordpress", "dribbble", "medium", "behance", "vk"]
-                hint: "Select the Social"
-              - widget: string
-                name: url
-                label: url
-                required: true
-                hint: "Paste the 'URL' of your Social media"
-
-  - label: "Tema"
-    name: "appearance"
-    identifier_field: "name"
-    files:
-      - label: "Tema default"
-        name: "themescolors"
-        file: "src/util/default-colors.json"
-        fields:
-          - label: "Colore menu + fondo pagina"
-            name: "primaryColor"
-            widget: "color"
-            enableAlpha: false
-            allowInput: true
-          # - label: "Colore sfondo"
-          #   name: "background"
-          #   widget: "color"
-          #   enableAlpha: false
-          #   allowInput: true
-          # - label: "Colore testo"
-          #   name: "text"
-          #   widget: "color"
-          #   enableAlpha: false
-          #   allowInput: true
+          - { label: "Featured Title", name: "title", widget: "string", tagname: "h1", i18n: duplicate }
+          - { label: "Subtitle", name: "subtitle", widget: "string", i18n: true }
+          - { label: "Body", name: "body", widget: "markdown", required: false, i18n: true }
+          - { name: "template", widget: "string", default: "index", i18n: duplicate }
+          - { name: "type", widget: "string", default: "page", i18n: duplicate }
+          - { name: "slug", widget: "string", default: "", i18n: duplicate }
+        

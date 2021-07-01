@@ -14,12 +14,12 @@ module.exports = {
   siteMetadata: settings.meta,
   plugins: [
     `gatsby-plugin-preact`,
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/layout.js`),
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/components/layout.js`),
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -54,54 +54,26 @@ module.exports = {
               withWebp: true
             },
           },
-          /* {
-            resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
-            options: {
-              // Fields to index
-              fields: [`title`, `template`, `slug`],
-              // How to resolve each field`s value for a supported node type
-              resolvers: {
-                // For any node of type MarkdownRemark, list how to resolve the fields` values
-                MarkdownRemark: {
-                  template: node => node.frontmatter.template,
-                  title: node => node.frontmatter.title,
-                  slug: node => node.frontmatter.slug,
-                },
-              },
-              // Optional filter to limit indexed nodes
-              filter: (node, getNode) => node.frontmatter.tags !== "exempt",
-            },
-          }, */
-          `gatsby-remark-responsive-iframe`,
-          // {
-          //   resolve: `gatsby-remark-prismjs`,
-          //   options: {
-          //     classPrefix: "language-",
-          //     inlineCodeMarker: null,
-          //     aliases: {},
-          //     showLineNumbers: false,
-          //     noInlineHighlight: false,
-          //     // By default the HTML entities <>&'" are escaped.
-          //     // Add additional HTML escapes by providing a mapping
-          //     // of HTML entities and their escape value IE: { '}': '&#123;' }
-          //     escapeEntities: {},
-          //   },
-          // },
         ],
       },
     },
     `gatsby-transformer-remark-frontmatter`,
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`, `it`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/en` when connecting `/`
+        redirect: true,
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-theme-ui",
     `gatsby-plugin-netlify-cms`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: settings.ga,
-    //   },
-    // },
-    //`gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
